@@ -4,7 +4,7 @@ sidebar_label: 'About'
 
 # About Me
 
-## 苏心贤 aka 苏长皓
+## 苏心贤
 
 **Leader's Personal Site**: [fcsu.dev](https://fcsu.dev)
 
