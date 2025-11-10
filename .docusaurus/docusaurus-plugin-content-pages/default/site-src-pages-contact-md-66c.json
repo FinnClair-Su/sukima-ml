@@ -1,0 +1,12 @@
+{
+  "type": "mdx",
+  "permalink": "/contact",
+  "source": "@site/src/pages/contact.md",
+  "title": "联系方式",
+  "description": "与隙间月影社团取得联系",
+  "frontMatter": {
+    "title": "联系方式",
+    "description": "与隙间月影社团取得联系"
+  },
+  "unlisted": false
+}

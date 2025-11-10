@@ -2,24 +2,33 @@
 sidebar_label: 'About'
 ---
 
-**About**
-**Me**
+# About Me
 
-**Your Name**
+## 苏心贤 aka 苏长皓
 
-Your Title/Role
+**Leader's Personal Site**: [fcsu.dev](https://fcsu.dev)
 
-* This is a personal space for my thoughts, explorations, and reflections.
-* I am interested in [your interests/field of study].
-* I care deeply about [your passions/values].
+BJTU Incoming PhD Student, Computer Science ➡️ Cybersecurity
 
-**Recently**
-* [Current project or interest]
-* [Another project or activity]
-* [Personal growth or learning]
-* [Reading/studying]
+I study software supply chain vulnerabilities and constitutional AI in multicultural contexts.
 
-**More**
-* Add your personal philosophy or motto here.
-* Share what drives you or what you're passionate about.
-* Include any fun facts or personal touches that make this space uniquely yours.
+I care deeply about learning science and cognitive security.
+
+## Recently
+
+* 软件供应链漏洞检测 Agent
+* 东方Project制品筹备
+* 身心调优与亲密关系思考
+* 读书
+
+## More
+
+**sukima-ml** stands for **Sukima moonlight**，（but Machine Learning? I can do that too 😉）
+
+希望为东方带来更有文化底蕴的制品。
+
+上学好累，下辈子想做人见人爱的富家天才美少女。
+
+---
+
+*Currently, this circle is just me working solo, but I'm excited about what we'll create together!*

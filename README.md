@@ -27,8 +27,8 @@
 
 1. **克隆仓库**
    ```bash
-   git clone https://github.com/FinnClair-Su/xyy-diary-template.git
-   cd xyy-diary-template
+   git clone https://github.com/FinnClair-Su/sukima-ml.git
+   cd sukima-ml
    ```
 
 2. **安装依赖**

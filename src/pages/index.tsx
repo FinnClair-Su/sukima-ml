@@ -4,12 +4,111 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React, { useState, useEffect } from 'react';
+import GalleryCarousel, { type ArtworkItem } from '../components/GalleryCarousel';
 
 import styles from './index.module.css';
 
+// 占位数据：作品展示
+const placeholderArtworks: ArtworkItem[] = [
+  {
+    id: 'artwork-1',
+    title: '戴珍珠耳环的少女 × 戴猫眼石耳环的紫妈',
+    description: '经典名画与东方角色的完美融合',
+    originalPainting: '戴珍珠耳环的少女',
+    touhouCharacter: '戴猫眼石耳环的紫妈',
+    originalImagePath: '/img/artworks/戴珍珠耳环的少女to戴猫眼石耳环的紫妈.jpg',
+    imagePath: '/img/artworks/placeholder-in-progress.svg',
+    imageAlt: '戴珍珠耳环的少女 × 戴猫眼石耳环的紫妈',
+  },
+  {
+    id: 'artwork-2',
+    title: '神奈川冲浪里 × baka的完美冻结',
+    description: '浮世绘与幻想乡的碰撞',
+    originalPainting: '神奈川冲浪里',
+    touhouCharacter: 'baka的完美冻结',
+    originalImagePath: '/img/artworks/神奈川冲浪里to baka的完美冻结.jpg',
+    imagePath: '/img/artworks/placeholder-in-progress.svg',
+    imageAlt: '神奈川冲浪里 × baka的完美冻结',
+  },
+  {
+    id: 'artwork-3',
+    title: 'The Bookworm × The Pachouli-sama',
+    description: '书虫与知识的魔女',
+    originalPainting: 'The Bookworm',
+    touhouCharacter: 'The Pachouli-sama',
+    originalImagePath: '/img/artworks/The Bookworm to The Pachouli-sama.jpg',
+    imagePath: '/img/artworks/placeholder-in-progress.svg',
+    imageAlt: 'The Bookworm × The Pachouli-sama',
+  },
+  {
+    id: 'artwork-4',
+    title: '宫娥 × 辉夜&永远亭：我不是嫦娥',
+    description: '宫廷画作的幻想乡演绎',
+    originalPainting: '宫娥',
+    touhouCharacter: '辉夜&永远亭：我不是嫦娥',
+    originalImagePath: '/img/artworks/宫娥to辉夜&永远亭：我不是嫦娥.jpg',
+    imagePath: '/img/artworks/placeholder-in-progress.svg',
+    imageAlt: '宫娥 × 辉夜&永远亭：我不是嫦娥',
+  },
+];
+
+// 占位数据：导航按钮
+interface NavigationItem {
+  title: string;
+  description: ReactNode;
+  link: string;
+}
+
+const navigationItems: NavigationItem[] = [
+  {
+    title: '作品集',
+    link: '/gallery',
+    description: (
+      <>
+        <p>浏览我们的名画同人创作</p>
+        <p>探索经典艺术与东方Project的奇妙结合</p>
+        <p>每一幅作品都是对经典的致敬与创新</p>
+      </>
+    ),
+  },
+  {
+    title: '关于我们',
+    link: '/about',
+    description: (
+      <>
+        <p>了解隙间月影社团</p>
+        <p>我们的创作理念与艺术追求</p>
+        <p>一群热爱艺术与东方的创作者</p>
+      </>
+    ),
+  },
+  {
+    title: '社团动态',
+    link: '/blog',
+    description: (
+      <>
+        <p>最新活动和创作进展</p>
+        <p>分享创作过程与心得体会</p>
+        <p>记录我们的艺术探索之旅</p>
+      </>
+    ),
+  },
+  {
+    title: '联系方式',
+    link: '/contact',
+    description: (
+      <>
+        <p>与我们取得联系</p>
+        <p>合作、交流、或只是打个招呼</p>
+        <p>期待与你的相遇</p>
+      </>
+    ),
+  },
+];
+
 // ASCII码动态展示组件
 function ASCIIDemo() {
-  const text = "Learning never stops ";
+  const text = "Endlessly 17 year old~";
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cumulativeSum, setCumulativeSum] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
@@ -143,7 +242,7 @@ function ASCIIDemo() {
           </div>
         ) : (
           <div className={styles.completeMessage}>
-            Meta cognition, Desirable difficulty
+            据考究，紫的真实年龄不小于◾️◾️◾️◾️数据删除
           </div>
         )}
       </div>
@@ -181,8 +280,8 @@ export default function Home() {
           <Link to="/about">
             <div className={styles.avatarSection}>
               <img 
-                src="/img/authors/your-avatar.jpg" 
-                alt="Your Name" 
+                src="/img/authors/xinxian.jpg" 
+                alt="苏心贤" 
                 className={styles.avatar}
               />
               <div className={styles.avatarBorder}></div>
@@ -197,61 +296,22 @@ export default function Home() {
             <ASCIIDemo />
           </div>
 
-          {/* 模块介绍砖块区域 */}
-          <div className={styles.modulesSection}>
-            <ModuleBlock
-              title="Learning & Growth"
-              link="/learning"
-              content={
-                <>
-                  <p>This section is dedicated to exploring how we learn, grow, and develop both personally and professionally.</p>
-                  <p>Share your insights on effective learning strategies, cognitive science, and personal development.</p>
-                  <p>Document your journey of continuous learning and the lessons you've discovered along the way.</p>
-                </>
-              }
-            />
-            
-            <ModuleBlock
-              title="Tech & Research"
-              link="/blog"
-              content={
-                <>
-                  <p>Explore the latest developments in technology, research, and innovation.</p>
-                  <p>Share your thoughts on emerging technologies, research findings, and their implications.</p>
-                  <p>Document your technical projects, experiments, and discoveries.</p>
-                  <p><strong>Technology shapes our world - let's understand it better.</strong></p>
-                </>
-              }
-            />
-            
-            <ModuleBlock
-              title="Technical Guides"
-              link="/docs/intro"
-              content={
-                <>
-                  <p><em>"It should be simple"</em></p>
-                  <p>Clear, practical guides for technical challenges and solutions.</p>
-                  <p>Step-by-step tutorials, tips, and best practices.</p>
-                  <p>Tools, methods, and solutions without unnecessary complexity.</p>
-                  <p><strong>Knowledge should be shared. This is what matters most.</strong></p>
-                </>
-              }
-            />
+          {/* Gallery Carousel - 画作展示轮播 */}
+          <div className={styles.gallerySection}>
+            <GalleryCarousel artworks={placeholderArtworks} />
+          </div>
 
-            <ModuleBlock
-              title="Life Reflections"
-              link="/life"
-              className={styles.moduleBlockLast}
-              content={
-                <>
-                  <p>Life is a journey of constant learning and self-discovery.</p>
-                  <p>Here I reflect on experiences, challenges, and the lessons they bring.</p>
-                  <p>Personal growth, relationships, and finding balance in our busy lives.</p>
-                  <p><strong>Good life management should make life more peaceful, not more stressful</strong>. It should be a philosophy, not just a set of techniques.</p>
-                  <p><strong>Here, I document life's moments, emotional insights, and continuous exploration of personal growth.</strong></p>
-                </>
-              }
-            />
+          {/* 导航按钮区域 */}
+          <div className={styles.modulesSection}>
+            {navigationItems.map((item, index) => (
+              <ModuleBlock
+                key={item.title}
+                title={item.title}
+                link={item.link}
+                content={item.description}
+                className={index === navigationItems.length - 1 ? styles.moduleBlockLast : ''}
+              />
+            ))}
           </div>
         </div>
 
@@ -259,14 +319,14 @@ export default function Home() {
         <footer className={styles.homeFooter}>
           <div className={styles.footerContent}>
             <p className={styles.footerText}>
-              🌟 Your Personal Space - A place for thoughts, learning, and life reflections
+              🌟 隙间月影 Sukima Moonlight - 为东方带来更有文化底蕴的制品
             </p>
             <div className={styles.socialLinks}>
-              <Link to="https://github.com/your-github-username">GitHub</Link>
+              <Link to="https://fcsu.dev">Leader's Personal Site</Link>
               <span>·</span>
-              <Link to="mailto:your-email@example.com">Email</Link>
+              <Link to="https://github.com/FinnClair-Su">GitHub</Link>
               <span>·</span>
-              <Link to="/friends">Friends</Link>
+              <Link to="/about">About</Link>
             </div>
           </div>
         </footer>

@@ -169,6 +169,13 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Gallery Section - 画作展示区域 */
+.gallerySection {
+  width: 100%;
+  max-width: 1400px;
+  margin: 60px 0;
+}
+
 /* 模块介绍砖块区域 */
 .modulesSection {
   width: 100%;
@@ -346,6 +353,11 @@
   
   .asciiText {
     font-size: 20px;
+  }
+  
+  /* Gallery Section 响应式调整 */
+  .gallerySection {
+    margin: 40px 0;
   }
   
   /* 模块砖块响应式调整 */

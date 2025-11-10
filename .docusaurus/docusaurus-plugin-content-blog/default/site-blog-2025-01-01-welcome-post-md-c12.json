@@ -1,0 +1,51 @@
+{
+  "permalink": "/blog/welcome-post",
+  "editUrl": "https://github.com/sukima-ml/sukima-ml-website/tree/main/blog/2025-01-01-welcome-post.md",
+  "source": "@site/blog/2025-01-01-welcome-post.md",
+  "title": "Welcome to Your Blog",
+  "description": "This is your first blog post! Here you can share your thoughts, experiences, and knowledge with the world.",
+  "date": "2025-01-01T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": true,
+      "label": "blog",
+      "permalink": "/blog/tags/blog"
+    },
+    {
+      "inline": true,
+      "label": "welcome",
+      "permalink": "/blog/tags/welcome"
+    },
+    {
+      "inline": true,
+      "label": "introduction",
+      "permalink": "/blog/tags/introduction"
+    }
+  ],
+  "readingTime": 0.52,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Your Name",
+      "title": "Your Title/Role",
+      "url": "https://github.com/your-github-username",
+      "email": "your-email@example.com",
+      "imageURL": "/img/authors/your-avatar.jpg",
+      "key": "your-username",
+      "page": null
+    }
+  ],
+  "frontMatter": {
+    "slug": "welcome-post",
+    "title": "Welcome to Your Blog",
+    "authors": [
+      "your-username"
+    ],
+    "tags": [
+      "blog",
+      "welcome",
+      "introduction"
+    ]
+  },
+  "unlisted": false
+}

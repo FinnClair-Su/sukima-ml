@@ -5,9 +5,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Your Site Title',
-  tagline: 'Your Site Tagline',
-  favicon: 'img/fish-square-removebg-preview.png',
+  title: '隙间月影 | Sukima Moonlight',
+  tagline: '名画与东方的邂逅 | Where Classic Art Meets Touhou',
+  favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -15,15 +15,14 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-domain.com',
+  url: 'https://sukima-ml.club',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'your-github-username', // Usually your GitHub org/user name.
-  projectName: 'your-repo-name', // Usually your repo name.
+  // Cloudflare Pages deployment config
+  organizationName: 'sukima-ml',
+  projectName: 'sukima-ml-website',
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
@@ -43,11 +42,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/your-github-username/your-repo-name/tree/main/',
+          editUrl: 'https://github.com/FinnClair-Su/sukima-ml/tree/main/',
           showLastUpdateTime: false,
-                      showLastUpdateAuthor: false,
+          showLastUpdateAuthor: false,
         },
         blog: {
           path: 'blog',
@@ -59,14 +56,11 @@ const config: Config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          blogTitle: 'LLM Research & Practice',
-          blogDescription: 'LLM Research & Practice',
-          blogSidebarTitle: 'All posts',
+          blogTitle: '社团动态',
+          blogDescription: '隙间月影社团的最新活动和创作进展',
+          blogSidebarTitle: '所有文章',
           blogSidebarCount: 'ALL',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/your-github-username/your-repo-name/tree/main/',
-          // Useful options to enforce blogging best practices
+          editUrl: 'https://github.com/FinnClair-Su/sukima-ml/tree/main/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -79,167 +73,114 @@ const config: Config = {
   ],
 
   plugins: [
-    [
-      '@docusaurus/plugin-content-blog',
-      {
-        id: 'learning',
-        routeBasePath: 'learning',
-        path: './learning',
-        blogTitle: 'Learning Science & Cognition',
-        blogDescription: 'Learning Science & Cognition',
-        blogSidebarTitle: 'All posts',
-        blogSidebarCount: 'ALL',
-        feedOptions: {
-          type: 'all',
-          copyright: `Copyright © ${new Date().getFullYear()} Your Site Name`,
-        },
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-blog',
-      {
-        id: 'life',
-        routeBasePath: 'life',
-        path: './life',
-        blogTitle: 'Life Reflections',
-        blogDescription: 'Life Reflections',
-        blogSidebarTitle: 'All posts',
-        blogSidebarCount: 'ALL',
-        feedOptions: {
-          type: 'all',
-          copyright: `Copyright © ${new Date().getFullYear()} Your Site Name`,
-        },
-      },
-    ],
+    // Removed learning and life blog plugins - not needed for art showcase site
   ],
 
   themeConfig: {
     // Replace with your project's social card
     image: 'img/social-card.jpg',
     metadata: [
-      {name: 'keywords', content: 'blog, personal site, template'},
-      {name: 'description', content: 'A personal blog template built with Docusaurus'},
+      {name: 'keywords', content: '隙间月影, 东方Project, 名画同人, Touhou, 同人创作'},
+      {name: 'description', content: '隙间月影 - 名画与东方的邂逅，展示经典名画与东方Project角色的同人创作'},
     ],
     navbar: {
-      title: 'Your Site Title',
+      title: '隙间月影 | Sukima Moonlight',
       logo: {
-        alt: 'Your Site Logo',
-        src: 'img/fish-square-removebg-preview.png',
+        alt: 'Sukima Moonlight Logo',
+        src: 'img/logo.jpg',
         width: 32,
         height: 32,
       },
       items: [
-        /*
         {
-          to: '/life',
-          label: '🌱 生活思考',
+          to: '/gallery',
+          label: '作品集',
           position: 'left',
-          activeBaseRegex: `/life/`,
         },
         {
-          to: '/learning',
-          label: '🧠 学习科学',
+          to: '/about',
+          label: '关于我们',
           position: 'left',
-          activeBaseRegex: `/learning/`,
         },
         {
           to: '/blog',
-          label: '🤖 LLM研究',
+          label: '社团动态',
           position: 'left',
-          activeBaseRegex: `/blog/`,
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'knowledgeSidebar',
-          position: 'left',
-          label: '📚 知识库',
-        },
-        */
-        {
-          to: '/about',
-          label: 'About me',
+          to: '/contact',
+          label: '联系方式',
           position: 'right',
         },
-        {
-          to: '/friends',
-          label: 'Friends',
-          position: 'right',
-        },
-        /* {
-          type: 'localeDropdown',
-          position: 'right',
-        }, */
-        {
-          href: 'https://github.com/your-github-username',
-          label: 'GitHub',
-          position: 'right',
-        },
+        // Docs section commented out - can be enabled later if needed
+        // {
+        //   type: 'docSidebar',
+        //   sidebarId: 'tutorialSidebar',
+        //   position: 'left',
+        //   label: '文档',
+        // },
       ],
     },
     footer: {
       style: 'dark',
       links: [
         {
-          title: 'Categories',
+          title: '导航',
           items: [
             {
-              label: 'Life Reflections',
-              to: '/life',
+              label: '作品集',
+              to: '/gallery',
             },
             {
-              label: 'Learning Science',
-              to: '/learning',
+              label: '关于我们',
+              to: '/about',
             },
             {
-              label: 'LLM Research',
+              label: '社团动态',
               to: '/blog',
             },
             {
-              label: 'Technical Guides',
-              to: '/docs/intro',
+              label: '联系方式',
+              to: '/contact',
             },
           ],
         },
         {
-          title: '学术相关',
+          title: '社交媒体',
           items: [
             {
-              label: 'Google Scholar',
-              href: 'https://scholar.google.com/citations?user=your-id',
+              label: 'Bilibili',
+              href: 'https://space.bilibili.com/368984327',
             },
             {
-              label: 'ORCID',
-              href: 'https://orcid.org/your-id',
+              label: 'Pixiv',
+              href: 'https://www.pixiv.net/users/placeholder',
             },
             {
-              label: 'ResearchGate',
-              href: 'https://www.researchgate.net/profile/your-profile',
+              label: 'QQ群',
+              href: 'https://qm.qq.com/q/917948669',
             },
           ],
         },
         {
-          title: '联系方式',
+          title: '社团资源',
           items: [
-            {
-              label: 'Email',
-              href: 'mailto:your-email@example.com',
-            },
             {
               label: 'GitHub',
-              href: 'https://github.com/your-github-username',
+              href: 'https://github.com/FinnClair-Su/sukima-ml',
             },
             {
-              label: 'Twitter',
-              href: 'https://x.com/your-twitter-handle',
+              label: '创作者主页',
+              href: 'https://fcsu.dev',
             },
             {
-              label: 'LinkedIn',
-              href: 'https://www.linkedin.com/in/your-linkedin-profile/',
+              label: 'Email',
+              href: 'mailto:kanade271828@gmail.com',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Your Site Name. Built with ❤️ and Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} 隙间月影 Sukima Moonlight. Built with ❤️ and Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

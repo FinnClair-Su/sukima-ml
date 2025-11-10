@@ -1,0 +1,301 @@
+.galleryCarousel {
+  width: 100%;
+  max-width: 1400px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.carouselContainer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+}
+
+.carouselButton {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.carouselButton:hover:not(:disabled) {
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carouselButton:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.carouselButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.artworkContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 对比卡片 - 包含左右两张图片 */
+.comparisonCard {
+  width: 100%;
+  max-width: 1200px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 32px;
+  align-items: center;
+  animation: fadeIn 0.6s ease-out;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* 图片区域（左侧原作 / 右侧同人） */
+.imageSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.imageContainer {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.imageSection:hover .imageContainer {
+  transform: scale(1.02);
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* 图片标签 */
+.imageLabel {
+  text-align: center;
+}
+
+.labelTag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.imageName {
+  margin: 8px 0 0 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-900);
+}
+
+/* 中间分隔符 */
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.arrow {
+  font-size: 32px;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+/* 底部作品信息 */
+.artworkInfo {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.artworkTitle {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.artworkDescription {
+  margin: 0;
+  font-size: 16px;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}
+
+/* Tablet layout */
+@media (max-width: 1024px) {
+  .comparisonCard {
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .arrow {
+    font-size: 28px;
+  }
+
+  .artworkTitle {
+    font-size: 20px;
+  }
+
+  .artworkDescription {
+    font-size: 14px;
+  }
+}
+
+/* Mobile layout - vertical stacking */
+@media (max-width: 767px) {
+  .galleryCarousel {
+    margin: 40px auto;
+    padding: 0 16px;
+  }
+
+  .carouselContainer {
+    gap: 16px;
+  }
+
+  .carouselButton {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .comparisonCard {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .separator {
+    padding: 0;
+  }
+
+  .arrow {
+    font-size: 24px;
+    transform: rotate(90deg);
+  }
+
+  .artworkInfo {
+    padding-top: 16px;
+  }
+
+  .artworkTitle {
+    font-size: 18px;
+  }
+
+  .artworkDescription {
+    font-size: 14px;
+  }
+
+  .imageName {
+    font-size: 14px;
+  }
+}
+
+/* Dark mode styles */
+[data-theme='dark'] .comparisonCard {
+  background: #334155;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .imageContainer {
+  background: #1e293b;
+}
+
+[data-theme='dark'] .carouselButton {
+  background: rgba(51, 65, 85, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+[data-theme='dark'] .carouselButton:hover:not(:disabled) {
+  background: #334155;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .labelTag {
+  background: rgba(79, 195, 247, 0.2);
+  color: #4fc3f7;
+}
+
+[data-theme='dark'] .imageName {
+  color: var(--ifm-color-emphasis-100);
+}
+
+[data-theme='dark'] .arrow {
+  color: #4fc3f7;
+}
+
+[data-theme='dark'] .artworkInfo {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .artworkTitle {
+  color: var(--ifm-color-emphasis-100);
+}
+
+[data-theme='dark'] .artworkDescription {
+  color: var(--ifm-color-emphasis-300);
+}
