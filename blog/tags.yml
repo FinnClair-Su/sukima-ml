@@ -1,64 +1,19 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+社团:
+  label: 社团
+  permalink: /社团
+  description: 隙间月影社团相关内容
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+创立:
+  label: 创立
+  permalink: /创立
+  description: 社团创立相关记录
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+东方Project:
+  label: 东方Project
+  permalink: /东方Project
+  description: 东方Project相关内容
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
-
-密码学:
-  label: 密码学
-  permalink: /cryptography
-  description: 现代密码学理论与应用
-
-区块链:
-  label: 区块链
-  permalink: /blockchain
-  description: 区块链技术和安全分析
-
-零知识证明:
-  label: 零知识证明
-  permalink: /zero-knowledge-proof
-  description: 零知识证明技术与应用
-
-同态加密:
-  label: 同态加密
-  permalink: /homomorphic-encryption
-  description: 同态加密技术研究
-
-网络安全:
-  label: 网络安全
-  permalink: /cybersecurity
-  description: 网络安全技术与实践
-
-LLM:
-  label: LLM
-  description: "大语言模型"
-  permalink: /llm
-
-AI工具:
-  label: AI工具
-  description: "AI工具推荐与使用"
-  permalink: /ai-tools
-
-使用指南:
-  label: 使用指南
-  description: "工具或理论的使用指南"
-  permalink: /user-guide
-
-人工智能:
-  label: 人工智能
-  description: "人工智能相关内容"
-  permalink: /artificial-intelligence
+名画同人:
+  label: 名画同人
+  permalink: /名画同人
+  description: 名画同人创作相关内容
