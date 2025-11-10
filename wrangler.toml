@@ -1,3 +1,9 @@
+name = "sukima-ml"
+compatibility_date = "2024-11-10"
+
+[assets]
+directory = "./build"
+
 [env.production]
 name = "sukima-ml"
 compatibility_date = "2024-11-10"
