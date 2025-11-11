@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: '隙间月影 | Sukima Moonlight',
   tagline: '名画与东方的邂逅 | Where Classic Art Meets Touhou',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -87,7 +87,7 @@ const config: Config = {
       title: '隙间月影 | Sukima Moonlight',
       logo: {
         alt: 'Sukima Moonlight Logo',
-        src: 'img/logo.jpg',
+        src: 'img/new.jpg',
         width: 32,
         height: 32,
       },
