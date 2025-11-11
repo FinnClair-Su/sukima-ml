@@ -167,7 +167,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/FinnClair-Su/sukima-ml',
+              href: 'https://github.com/FinnClair-Su',
             },
             {
               label: '创作者主页',
