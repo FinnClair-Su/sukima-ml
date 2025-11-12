@@ -6,7 +6,7 @@
 export default {
   "title": "隙间月影 | Sukima Moonlight",
   "tagline": "名画与东方的邂逅 | Where Classic Art Meets Touhou",
-  "favicon": "img/favicon.ico",
+  "favicon": "img/favicon.svg",
   "future": {
     "v4": {
       "removeLegacyPostBuildHeadAttribute": false,
@@ -88,7 +88,7 @@ export default {
       "title": "隙间月影 | Sukima Moonlight",
       "logo": {
         "alt": "Sukima Moonlight Logo",
-        "src": "img/logo.jpg",
+        "src": "img/new.jpg",
         "width": 32,
         "height": 32
       },
@@ -153,7 +153,7 @@ export default {
             },
             {
               "label": "QQ群",
-              "href": "https://qm.qq.com/q/917948669"
+              "to": "/qq-group"
             }
           ]
         },
@@ -162,7 +162,7 @@ export default {
           "items": [
             {
               "label": "GitHub",
-              "href": "https://github.com/FinnClair-Su/sukima-ml"
+              "href": "https://github.com/FinnClair-Su"
             },
             {
               "label": "创作者主页",

@@ -158,7 +158,7 @@ const config: Config = {
             },
             {
               label: 'QQ群',
-              href: 'https://qm.qq.com/q/917948669',
+              to: '/qq-group',
             },
           ],
         },

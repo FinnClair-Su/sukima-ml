@@ -1,0 +1,98 @@
+.contactContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: calc(100vh - 60px);
+}
+
+.contactContent {
+  background: var(--ifm-background-surface-color);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contactContent h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--ifm-heading-color);
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+  border-bottom: 2px solid var(--ifm-color-primary);
+  padding-bottom: 0.5rem;
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+}
+
+.contactList li {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.contactList strong {
+  color: var(--ifm-color-primary);
+  margin-right: 0.5rem;
+}
+
+.contactList a {
+  color: var(--ifm-link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contactList a:hover {
+  color: var(--ifm-link-hover-color);
+  text-decoration: underline;
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  color: var(--ifm-link-color);
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.linkButton:hover {
+  color: var(--ifm-link-hover-color);
+  text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .contactContainer {
+    padding: 1rem;
+  }
+
+  .contactContent {
+    padding: 1.5rem;
+  }
+
+  .contactContent h1 {
+    font-size: 2rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  .contactList li {
+    font-size: 1rem;
+  }
+}

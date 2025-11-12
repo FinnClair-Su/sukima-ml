@@ -12,13 +12,13 @@ import styles from './index.module.css';
 const placeholderArtworks: ArtworkItem[] = [
   {
     id: 'artwork-1',
-    title: '戴珍珠耳环的少女 × 戴猫眼石耳环的紫妈',
+    title: '戴珍珠耳环的少女 × 戴珍珠耳环的17岁少女',
     description: '经典名画与东方角色的完美融合',
     originalPainting: '戴珍珠耳环的少女',
-    touhouCharacter: '戴猫眼石耳环的紫妈',
+    touhouCharacter: '戴珍珠耳环的17岁少女(draft)',
     originalImagePath: '/img/artworks/戴珍珠耳环的少女to戴猫眼石耳环的紫妈.jpg',
-    imagePath: '/img/artworks/placeholder-in-progress.svg',
-    imageAlt: '戴珍珠耳环的少女 × 戴猫眼石耳环的紫妈',
+    imagePath: '/img/artworks/yukari_demo.jpg',
+    imageAlt: '戴珍珠耳环的少女 × 戴珍珠耳环的17岁少女',
   },
   {
     id: 'artwork-2',

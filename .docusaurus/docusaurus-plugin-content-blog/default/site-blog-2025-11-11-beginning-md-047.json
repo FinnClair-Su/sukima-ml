@@ -1,0 +1,67 @@
+{
+  "permalink": "/blog/beginning",
+  "editUrl": "https://github.com/FinnClair-Su/sukima-ml/tree/main/blog/2025-11-11-beginning.md",
+  "source": "@site/blog/2025-11-11-beginning.md",
+  "title": "一切的开始",
+  "description": "2025年11月8日的北京THO上，我看到了三幅惊艳的名画同人，买下两幅后依然惊叹于这一创意，意犹未尽。",
+  "date": "2025-11-11T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": false,
+      "label": "社团",
+      "permalink": "/blog/tags/社团",
+      "description": "隙间月影社团相关内容"
+    },
+    {
+      "inline": false,
+      "label": "创立",
+      "permalink": "/blog/tags/创立",
+      "description": "社团创立相关记录"
+    },
+    {
+      "inline": false,
+      "label": "东方Project",
+      "permalink": "/blog/tags/东方Project",
+      "description": "东方Project相关内容"
+    },
+    {
+      "inline": false,
+      "label": "名画同人",
+      "permalink": "/blog/tags/名画同人",
+      "description": "名画同人创作相关内容"
+    }
+  ],
+  "readingTime": 0.99,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "苏心贤",
+      "title": "Leader",
+      "url": "https://fcsu.dev",
+      "email": "kanade271828@gmail.com",
+      "page": {
+        "permalink": "/blog/authors/xinxian"
+      },
+      "socials": {
+        "github": "https://github.com/FinnClair-Su"
+      },
+      "imageURL": "/img/authors/xinxian.jpg",
+      "key": "xinxian"
+    }
+  ],
+  "frontMatter": {
+    "slug": "beginning",
+    "title": "一切的开始",
+    "authors": [
+      "xinxian"
+    ],
+    "tags": [
+      "社团",
+      "创立",
+      "东方Project",
+      "名画同人"
+    ],
+    "date": "2025-11-11T00:00:00.000Z"
+  },
+  "unlisted": false
+}

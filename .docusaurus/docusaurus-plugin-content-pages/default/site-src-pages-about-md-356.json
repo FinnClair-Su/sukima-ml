@@ -3,7 +3,7 @@
   "permalink": "/about",
   "source": "@site/src/pages/about.md",
   "title": "About Me",
-  "description": "苏心贤 aka 苏长皓",
+  "description": "苏心贤",
   "frontMatter": {
     "sidebar_label": "About"
   },

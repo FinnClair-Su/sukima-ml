@@ -44,7 +44,7 @@ export default [
   },
   {
     path: '/blog',
-    component: ComponentCreator('/blog', '17f'),
+    component: ComponentCreator('/blog', '308'),
     exact: true
   },
   {
@@ -58,23 +58,13 @@ export default [
     exact: true
   },
   {
-    path: '/blog/authors/all-sebastien-lorber-articles',
-    component: ComponentCreator('/blog/authors/all-sebastien-lorber-articles', '495'),
-    exact: true
-  },
-  {
     path: '/blog/authors/xinxian',
-    component: ComponentCreator('/blog/authors/xinxian', '9cc'),
-    exact: true
-  },
-  {
-    path: '/blog/authors/yangshun',
-    component: ComponentCreator('/blog/authors/yangshun', '7c6'),
+    component: ComponentCreator('/blog/authors/xinxian', '3cc'),
     exact: true
   },
   {
     path: '/blog/beginning',
-    component: ComponentCreator('/blog/beginning', '3db'),
+    component: ComponentCreator('/blog/beginning', '43c'),
     exact: true
   },
   {
@@ -83,28 +73,28 @@ export default [
     exact: true
   },
   {
-    path: '/blog/tags/东方-project',
-    component: ComponentCreator('/blog/tags/东方-project', '0aa'),
+    path: '/blog/tags/东方Project',
+    component: ComponentCreator('/blog/tags/东方Project', 'c82'),
     exact: true
   },
   {
     path: '/blog/tags/创立',
-    component: ComponentCreator('/blog/tags/创立', '687'),
+    component: ComponentCreator('/blog/tags/创立', 'ce1'),
     exact: true
   },
   {
     path: '/blog/tags/名画同人',
-    component: ComponentCreator('/blog/tags/名画同人', 'a8f'),
+    component: ComponentCreator('/blog/tags/名画同人', 'c45'),
     exact: true
   },
   {
     path: '/blog/tags/社团',
-    component: ComponentCreator('/blog/tags/社团', '807'),
+    component: ComponentCreator('/blog/tags/社团', 'ddd'),
     exact: true
   },
   {
     path: '/contact',
-    component: ComponentCreator('/contact', 'b68'),
+    component: ComponentCreator('/contact', 'a03'),
     exact: true
   },
   {
@@ -120,6 +110,11 @@ export default [
   {
     path: '/markdown-page',
     component: ComponentCreator('/markdown-page', '3d7'),
+    exact: true
+  },
+  {
+    path: '/qq-group',
+    component: ComponentCreator('/qq-group', 'a46'),
     exact: true
   },
   {

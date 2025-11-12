@@ -49,7 +49,7 @@
     },
     "content": "content---about-356-540"
   },
-  "/blog-17f": {
+  "/blog-308": {
     "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
     "__context": {
       "plugin": "plugin---blog-369-22e"
@@ -57,7 +57,7 @@
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
       {
-        "content": "content---blog-35-b-0fb"
+        "content": "content---blog-7-c-0-0a1"
       }
     ],
     "__props": "__props---blogc-15-573"
@@ -80,19 +80,7 @@
     "sidebar": "sidebar---blog-814-8ac",
     "__props": "__props---blog-authorsef-8-44f"
   },
-  "/blog/authors/all-sebastien-lorber-articles-495": {
-    "__comp": "__comp---theme-blog-pages-blog-authors-posts-page-33-f-bd5",
-    "__context": {
-      "data": {
-        "blogMetadata": "blogMetadata---blog-authorsace-e7d"
-      },
-      "plugin": "plugin---blog-369-22e"
-    },
-    "items": [],
-    "sidebar": "sidebar---blog-814-8ac",
-    "__props": "__props---blog-authors-all-sebastien-lorber-articlesc-9-c-639"
-  },
-  "/blog/authors/xinxian-9cc": {
+  "/blog/authors/xinxian-3cc": {
     "__comp": "__comp---theme-blog-pages-blog-authors-posts-page-33-f-bd5",
     "__context": {
       "data": {
@@ -102,25 +90,13 @@
     },
     "items": [
       {
-        "content": "content---blog-35-b-0fb"
+        "content": "content---blog-7-c-0-0a1"
       }
     ],
     "sidebar": "sidebar---blog-814-8ac",
     "__props": "__props---blog-authors-xinxianc-35-aff"
   },
-  "/blog/authors/yangshun-7c6": {
-    "__comp": "__comp---theme-blog-pages-blog-authors-posts-page-33-f-bd5",
-    "__context": {
-      "data": {
-        "blogMetadata": "blogMetadata---blog-authorsace-e7d"
-      },
-      "plugin": "plugin---blog-369-22e"
-    },
-    "items": [],
-    "sidebar": "sidebar---blog-814-8ac",
-    "__props": "__props---blog-authors-yangshun-1-de-d0c"
-  },
-  "/blog/beginning-3db": {
+  "/blog/beginning-43c": {
     "__comp": "__comp---theme-blog-post-pageccc-cab",
     "__context": {
       "data": {
@@ -129,7 +105,7 @@
       "plugin": "plugin---blog-369-22e"
     },
     "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-beginning-6-b-4-116"
+    "content": "content---blog-beginning-047-824"
   },
   "/blog/tags-287": {
     "__comp": "__comp---theme-blog-tags-list-page-01-a-d0b",
@@ -139,7 +115,7 @@
     "sidebar": "sidebar---blog-814-8ac",
     "__props": "__props---blog-tags-3-a-2-fa2"
   },
-  "/blog/tags/东方-project-0aa": {
+  "/blog/tags/东方Project-c82": {
     "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
     "__context": {
       "plugin": "plugin---blog-369-22e"
@@ -147,12 +123,12 @@
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
       {
-        "content": "content---blog-35-b-0fb"
+        "content": "content---blog-7-c-0-0a1"
       }
     ],
-    "__props": "__props---blog-tags-东方-project-444-a26"
+    "__props": "__props---blog-tags-东方-projecta-8-b-1bd"
   },
-  "/blog/tags/创立-687": {
+  "/blog/tags/创立-ce1": {
     "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
     "__context": {
       "plugin": "plugin---blog-369-22e"
@@ -160,12 +136,12 @@
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
       {
-        "content": "content---blog-35-b-0fb"
+        "content": "content---blog-7-c-0-0a1"
       }
     ],
     "__props": "__props---blog-tags-创立-9-d-3-537"
   },
-  "/blog/tags/名画同人-a8f": {
+  "/blog/tags/名画同人-c45": {
     "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
     "__context": {
       "plugin": "plugin---blog-369-22e"
@@ -173,12 +149,12 @@
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
       {
-        "content": "content---blog-35-b-0fb"
+        "content": "content---blog-7-c-0-0a1"
       }
     ],
     "__props": "__props---blog-tags-名画同人-78-a-633"
   },
-  "/blog/tags/社团-807": {
+  "/blog/tags/社团-ddd": {
     "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
     "__context": {
       "plugin": "plugin---blog-369-22e"
@@ -186,17 +162,17 @@
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
       {
-        "content": "content---blog-35-b-0fb"
+        "content": "content---blog-7-c-0-0a1"
       }
     ],
     "__props": "__props---blog-tags-社团-9-c-0-682"
   },
-  "/contact-b68": {
-    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+  "/contact-a03": {
+    "__comp": "__comp---site-src-pages-contact-tsx-8-b-3-cf6",
     "__context": {
       "plugin": "plugin---abouta-74-d48"
     },
-    "content": "content---contact-66-c-5e3"
+    "config": "config---friends-5-e-9-9de"
   },
   "/friends-fc6": {
     "__comp": "__comp---site-src-pages-friends-tsx-389-9fa",
@@ -218,6 +194,13 @@
       "plugin": "plugin---abouta-74-d48"
     },
     "content": "content---markdown-page-393-028"
+  },
+  "/qq-group-a46": {
+    "__comp": "__comp---site-src-pages-qq-group-tsx-40-e-316",
+    "__context": {
+      "plugin": "plugin---abouta-74-d48"
+    },
+    "config": "config---friends-5-e-9-9de"
   },
   "/docs-82f": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
