@@ -125,24 +125,50 @@ function ArtworkComparisonCard({ artwork }: ArtworkComparisonCardProps): ReactNo
   const [originalError, setOriginalError] = useState(false);
   const [fanartError, setFanartError] = useState(false);
 
+  // 判断是否有链接
+  const hasOriginalLink = artwork.originalPainting === '戴珍珠耳环的少女';
+  const hasFanartLink = artwork.touhouCharacter.includes('戴珍珠耳环的17岁少女');
+
   return (
     <div className={styles.comparisonCard}>
       {/* 左侧：原作 */}
       <div className={styles.imageSection}>
-        <div className={styles.imageContainer}>
-          {originalError ? (
-            <div className={styles.imagePlaceholder}>
-              <p>原作图片加载失败</p>
-            </div>
-          ) : (
-            <img
-              src={artwork.originalImagePath}
-              alt={`原作：${artwork.originalPainting}`}
-              onError={() => setOriginalError(true)}
-              loading="lazy"
-            />
-          )}
-        </div>
+        {hasOriginalLink ? (
+          <a
+            href="https://zh.wikipedia.org/wiki/%E6%88%B4%E7%8F%8D%E7%8F%A0%E8%80%B3%E7%92%B0%E7%9A%84%E5%B0%91%E5%A5%B3#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.imageContainer}
+          >
+            {originalError ? (
+              <div className={styles.imagePlaceholder}>
+                <p>原作图片加载失败</p>
+              </div>
+            ) : (
+              <img
+                src={artwork.originalImagePath}
+                alt={`原作：${artwork.originalPainting}`}
+                onError={() => setOriginalError(true)}
+                loading="lazy"
+              />
+            )}
+          </a>
+        ) : (
+          <div className={styles.imageContainer}>
+            {originalError ? (
+              <div className={styles.imagePlaceholder}>
+                <p>原作图片加载失败</p>
+              </div>
+            ) : (
+              <img
+                src={artwork.originalImagePath}
+                alt={`原作：${artwork.originalPainting}`}
+                onError={() => setOriginalError(true)}
+                loading="lazy"
+              />
+            )}
+          </div>
+        )}
         <div className={styles.imageLabel}>
           <span className={styles.labelTag}>原作</span>
           <h4 className={styles.imageName}>{artwork.originalPainting}</h4>
@@ -156,20 +182,40 @@ function ArtworkComparisonCard({ artwork }: ArtworkComparisonCardProps): ReactNo
 
       {/* 右侧：同人作品 */}
       <div className={styles.imageSection}>
-        <div className={styles.imageContainer}>
-          {fanartError ? (
-            <div className={styles.imagePlaceholder}>
-              <p>同人作品图片加载失败</p>
-            </div>
-          ) : (
-            <img
-              src={artwork.imagePath}
-              alt={artwork.imageAlt}
-              onError={() => setFanartError(true)}
-              loading="lazy"
-            />
-          )}
-        </div>
+        {hasFanartLink ? (
+          <a
+            href="/artwork-001"
+            className={styles.imageContainer}
+          >
+            {fanartError ? (
+              <div className={styles.imagePlaceholder}>
+                <p>同人作品图片加载失败</p>
+              </div>
+            ) : (
+              <img
+                src={artwork.imagePath}
+                alt={artwork.imageAlt}
+                onError={() => setFanartError(true)}
+                loading="lazy"
+              />
+            )}
+          </a>
+        ) : (
+          <div className={styles.imageContainer}>
+            {fanartError ? (
+              <div className={styles.imagePlaceholder}>
+                <p>同人作品图片加载失败</p>
+              </div>
+            ) : (
+              <img
+                src={artwork.imagePath}
+                alt={artwork.imageAlt}
+                onError={() => setFanartError(true)}
+                loading="lazy"
+              />
+            )}
+          </div>
+        )}
         <div className={styles.imageLabel}>
           <span className={styles.labelTag}>同人创作</span>
           <h4 className={styles.imageName}>{artwork.touhouCharacter}</h4>
