@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import QRCodeModal from '../components/QRCodeModal';
+import GiscusComments from '../components/GiscusComments';
 import styles from './contact.module.css';
 
 export default function Contact() {
@@ -8,14 +9,13 @@ export default function Contact() {
 
   return (
     <Layout
-      title="联系方式"
-      description="与隙间月影社团取得联系">
+      title="创意交流"
+      description="与隙间月影社团取得联系，分享你的创意">
       <main className={styles.contactContainer}>
-        <div className={styles.contactContent}>
-          <h1>联系方式</h1>
-          
-          <section className={styles.section}>
-            <h2>社交媒体</h2>
+        <div className={styles.cardsWrapper}>
+          {/* 联系方式卡片 */}
+          <div className={styles.card}>
+            <h2 className={styles.cardTitle}>联系方式</h2>
             <ul className={styles.contactList}>
               <li>
                 <strong>QQ群</strong>: 
@@ -40,12 +40,21 @@ export default function Contact() {
                 <strong>Pixiv</strong>: 敬请期待
               </li>
             </ul>
-          </section>
+          </div>
 
-          <section className={styles.section}>
-            <h2>合作咨询</h2>
-            <p>如果您对我们的创作感兴趣，或希望与我们合作，欢迎通过以上方式联系我们。</p>
-          </section>
+          {/* 创意投稿区卡片 */}
+          <div className={styles.card}>
+            <h2 className={styles.cardTitle}>创意投稿区</h2>
+            <p className={styles.cardDescription}>
+              欢迎在下方评论区分享你的创意想法、作品建议或任何有趣的点子！
+            </p>
+            <p className={styles.tipText}>
+              💡 提示：你可以直接拖拽或粘贴图片到评论框中上传作品哦～
+            </p>
+            <div className={styles.commentsSection}>
+              <GiscusComments />
+            </div>
+          </div>
         </div>
       </main>
 

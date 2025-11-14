@@ -554,3 +554,28 @@
 [data-theme='dark'] .separator {
   color: #475569;
 }
+
+/* 评论区样式 */
+.commentsSection {
+  width: 100%;
+  max-width: 900px;
+  margin: 60px auto 40px;
+  padding: 40px;
+  background: rgba(248, 250, 252, 0.8);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='dark'] .commentsSection {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .commentsSection {
+    margin: 40px 20px 20px;
+    padding: 24px;
+  }
+}

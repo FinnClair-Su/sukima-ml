@@ -165,3 +165,22 @@
   }
 
 }
+
+/* 评论区样式 - 使用更宽的布局 */
+.artworkComments {
+  max-width: 1400px;
+  margin: 60px auto 40px;
+}
+
+/* 在宽屏上使用更大的宽度 */
+@media (min-width: 1400px) {
+  .artworkComments {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  .artworkComments {
+    margin: 40px 0 20px;
+  }
+}

@@ -17,7 +17,7 @@ const placeholderArtworks: ArtworkItem[] = [
     originalPainting: '戴珍珠耳环的少女',
     touhouCharacter: '戴珍珠耳环的17岁少女(draft)',
     originalImagePath: '/img/artworks/戴珍珠耳环的少女to戴猫眼石耳环的紫妈.jpg',
-    imagePath: '/img/artworks/yukari_demo.jpg',
+    imagePath: '/img/artworks/yukari_v0.5.jpg',
     imageAlt: '戴珍珠耳环的少女 × 戴珍珠耳环的17岁少女',
   },
   {
@@ -94,7 +94,7 @@ const navigationItems: NavigationItem[] = [
     ),
   },
   {
-    title: '联系方式',
+    title: '创意交流',
     link: '/contact',
     description: (
       <>

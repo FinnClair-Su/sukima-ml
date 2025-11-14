@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import QRCodeModal from '../components/QRCodeModal';
+import CommentsSection from '../components/CommentsSection';
 import styles from './artwork-001.module.css';
 
 export default function Artwork001() {
@@ -17,7 +18,7 @@ export default function Artwork001() {
           <div className={styles.imageSection}>
             <div className={styles.imageContainer}>
               <img 
-                src="/img/artworks/001.jpg" 
+                src="/img/artworks/yukari_v0.5.jpg" 
                 alt="戴珍珠耳环的17岁少女"
                 className={styles.productImage}
               />
@@ -66,6 +67,13 @@ export default function Artwork001() {
           </div>
         </div>
       </div>
+
+      {/* 评论区 */}
+      <CommentsSection 
+        title="作品评论"
+        description="欢迎分享你对这幅作品的看法和建议"
+        className={styles.artworkComments}
+      />
 
       {/* 弹窗 */}
       <QRCodeModal 

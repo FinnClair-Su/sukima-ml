@@ -43,6 +43,11 @@ export default [
     exact: true
   },
   {
+    path: '/artwork-001',
+    component: ComponentCreator('/artwork-001', '985'),
+    exact: true
+  },
+  {
     path: '/blog',
     component: ComponentCreator('/blog', '308'),
     exact: true
@@ -104,7 +109,7 @@ export default [
   },
   {
     path: '/gallery',
-    component: ComponentCreator('/gallery', '85d'),
+    component: ComponentCreator('/gallery', '5cb'),
     exact: true
   },
   {

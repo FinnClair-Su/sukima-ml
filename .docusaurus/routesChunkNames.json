@@ -49,6 +49,13 @@
     },
     "content": "content---about-356-540"
   },
+  "/artwork-001-985": {
+    "__comp": "__comp---site-src-pages-artwork-001-tsx-6-b-5-2a6",
+    "__context": {
+      "plugin": "plugin---abouta-74-d48"
+    },
+    "config": "config---artwork-0015-e-9-8ae"
+  },
   "/blog-308": {
     "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
     "__context": {
@@ -172,21 +179,21 @@
     "__context": {
       "plugin": "plugin---abouta-74-d48"
     },
-    "config": "config---friends-5-e-9-9de"
+    "config": "config---artwork-0015-e-9-8ae"
   },
   "/friends-fc6": {
     "__comp": "__comp---site-src-pages-friends-tsx-389-9fa",
     "__context": {
       "plugin": "plugin---abouta-74-d48"
     },
-    "config": "config---friends-5-e-9-9de"
+    "config": "config---artwork-0015-e-9-8ae"
   },
-  "/gallery-85d": {
-    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+  "/gallery-5cb": {
+    "__comp": "__comp---site-src-pages-gallery-tsxaf-3-bcf",
     "__context": {
       "plugin": "plugin---abouta-74-d48"
     },
-    "content": "content---galleryaf-8-553"
+    "config": "config---artwork-0015-e-9-8ae"
   },
   "/markdown-page-3d7": {
     "__comp": "__comp---theme-mdx-page-1-f-3-b90",
@@ -200,7 +207,7 @@
     "__context": {
       "plugin": "plugin---abouta-74-d48"
     },
-    "config": "config---friends-5-e-9-9de"
+    "config": "config---artwork-0015-e-9-8ae"
   },
   "/docs-82f": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
@@ -224,6 +231,6 @@
     "__context": {
       "plugin": "plugin---abouta-74-d48"
     },
-    "config": "config---friends-5-e-9-9de"
+    "config": "config---artwork-0015-e-9-8ae"
   }
 }
