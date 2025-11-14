@@ -17,7 +17,7 @@ const artworks: ArtworkCard[] = [
     id: '001',
     title: '《戴珍珠耳环的17岁少女》',
     subtitle: '八云紫同人 · 草稿版',
-    imagePath: '/img/artworks/001.jpg',
+    imagePath: '/img/artworks/yukari_v0.5.jpg',
     link: '/artwork-001',
     badge: '草稿作品',
   },

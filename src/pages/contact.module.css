@@ -116,8 +116,36 @@
   font-style: italic;
 }
 
+.imageHostTip {
+  color: #7c3aed;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 0;
+}
+
+.imageHostTip a {
+  color: #7c3aed;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.imageHostTip a:hover {
+  color: #6d28d9;
+}
+
 [data-theme='dark'] .tipText {
   color: #10b981;
+}
+
+[data-theme='dark'] .imageHostTip {
+  color: #a78bfa;
+}
+
+[data-theme='dark'] .imageHostTip a {
+  color: #a78bfa;
+}
+
+[data-theme='dark'] .imageHostTip a:hover {
+  color: #c4b5fd;
 }
 
 [data-theme='dark'] .card {

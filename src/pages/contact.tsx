@@ -51,6 +51,9 @@ export default function Contact() {
             <p className={styles.tipText}>
               💡 提示：支持 Markdown 格式，可以使用图床链接插入图片
             </p>
+            <p className={styles.imageHostTip}>
+              📷 推荐图床：<a href="https://imgbb.com/" target="_blank" rel="noopener noreferrer">imgbb.com</a> (免费无需注册)
+            </p>
             <div className={styles.commentsSection}>
               <GiscusComments />
             </div>
