@@ -49,7 +49,7 @@ export default function Contact() {
               欢迎在下方评论区分享你的创意想法、作品建议或任何有趣的点子！
             </p>
             <p className={styles.tipText}>
-              💡 提示：你可以直接拖拽或粘贴图片到评论框中上传作品哦～
+              💡 提示：支持 Markdown 格式，可以使用图床链接插入图片
             </p>
             <div className={styles.commentsSection}>
               <GiscusComments />

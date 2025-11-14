@@ -16,7 +16,7 @@
 - **Giscus 集成**：基于 GitHub Discussions 的评论系统
 - **自动主题适配**：评论区自动跟随网站深色/浅色主题
 - **多场景支持**：博客文章、作品页面、自定义页面均可启用评论
-- **富文本支持**：Markdown 格式、图片上传、表情反应
+- **Markdown 支持**：支持 Markdown 格式和表情反应
 
 ### 📝 内容管理
 - **社团动态博客**：记录创作过程、活动进展
@@ -185,7 +185,7 @@ import CommentsSection from '../components/CommentsSection';
 ```
 
 更多评论功能：
-- 支持 Markdown 格式和图片上传
+- 支持 Markdown 格式（可通过图床链接插入图片）
 - 自动适配深色/浅色主题
 - 基于 GitHub 账号登录
 
