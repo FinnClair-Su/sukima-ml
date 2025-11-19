@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import QRCodeModal from '../components/QRCodeModal';
-import CommentsSection from '../components/CommentsSection';
 import styles from './artwork-001.module.css';
 
 // 定义产品数据
@@ -148,14 +147,6 @@ export default function Artwork001() {
             </div>
           </div>
         </main>
-
-        <div className={styles.commentsWrapper}>
-          <CommentsSection 
-            title="Faith & Offerings"
-            description="信徒留言板"
-            forceTheme="light"
-          />
-        </div>
       </div>
 
       <QRCodeModal 
