@@ -37,7 +37,7 @@ const friends: Friend[] = [
   },
 ];
 
-function FriendCard({ friend }: { friend: Friend }) {
+const FriendCard: React.FC<{ friend: Friend }> = ({ friend }) => {
   return (
     <Link to={friend.url} className={styles.friendCardLink}>
       <div className={styles.friendCard}>
@@ -60,23 +60,23 @@ function FriendCard({ friend }: { friend: Friend }) {
       </div>
     </Link>
   );
-}
+};
 
 export default function FriendsPage() {
   return (
     <Layout title="Friends" description="A list of my friends and their websites.">
-      <div className="container" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-        <div className="row">
-          <div className="col">
-            <h1>Friends</h1>
-            <div className={styles.friendList}>
-              {friends.map((friend, idx) => (
-                <FriendCard key={idx} friend={friend} />
-              ))}
-            </div>
-          </div>
+      <main className={styles.friendsContainer}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>Friends</h1>
+          <p className={styles.subtitle}>Links to friends and interesting people</p>
         </div>
-      </div>
+
+        <div className={styles.friendList}>
+          {friends.map((friend, idx) => (
+            <FriendCard key={idx} friend={friend} />
+          ))}
+        </div>
+      </main>
     </Layout>
   );
 } 

@@ -238,15 +238,25 @@ function ASCIIDemo() {
       </div>
 
       <div className={styles.asciiComplete}>
-        {!isComplete ? (
-          <div className={styles.interimMessage}>
-            Constructing understanding...
-          </div>
-        ) : (
-          <div className={styles.completeMessage}>
+        <div className={styles.messageStack}>
+          {/* Invisible placeholder to reserve width */}
+          <div className={styles.messagePlaceholder}>
             据考究，紫的真实年龄不小于◾️◾️◾️◾️数据删除
           </div>
-        )}
+
+          {/* Actual content */}
+          <div className={styles.messageContent}>
+            {!isComplete ? (
+              <div className={styles.interimMessage}>
+                Constructing understanding...
+              </div>
+            ) : (
+              <div className={styles.completeMessage}>
+                据考究，紫的真实年龄不小于◾️◾️◾️◾️数据删除
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -40,12 +40,7 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/FinnClair-Su/sukima-ml/tree/main/',
-          showLastUpdateTime: false,
-          showLastUpdateAuthor: false,
-        },
+        docs: false,
         blog: {
           path: 'blog',
           routeBasePath: 'blog',

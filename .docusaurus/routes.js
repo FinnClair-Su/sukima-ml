@@ -39,7 +39,7 @@ export default [
   },
   {
     path: '/about',
-    component: ComponentCreator('/about', '954'),
+    component: ComponentCreator('/about', 'ca4'),
     exact: true
   },
   {
@@ -121,30 +121,6 @@ export default [
     path: '/qq-group',
     component: ComponentCreator('/qq-group', 'a46'),
     exact: true
-  },
-  {
-    path: '/docs',
-    component: ComponentCreator('/docs', '82f'),
-    routes: [
-      {
-        path: '/docs',
-        component: ComponentCreator('/docs', '9a0'),
-        routes: [
-          {
-            path: '/docs',
-            component: ComponentCreator('/docs', '441'),
-            routes: [
-              {
-                path: '/docs/intro',
-                component: ComponentCreator('/docs/intro', '7e4'),
-                exact: true,
-                sidebar: "knowledgeSidebar"
-              }
-            ]
-          }
-        ]
-      }
-    ]
   },
   {
     path: '/',

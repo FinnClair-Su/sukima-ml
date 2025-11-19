@@ -4,355 +4,237 @@
  * work well for content-centric websites.
  */
 
-/* Windows 7风格的蓝色渐变配色方案 */
+/* Elegant Art Gallery Theme */
 :root {
-  /* 主色调 - Windows 7蓝色 */
-  --ifm-color-primary: #0078d4;
-  --ifm-color-primary-dark: #106ebe;
-  --ifm-color-primary-darker: #005a9e;
-  --ifm-color-primary-darkest: #004578;
-  --ifm-color-primary-light: #40e0d0;
-  --ifm-color-primary-lighter: #64b5f6;
-  --ifm-color-primary-lightest: #bbdefb;
+  /* Colors - Refined Palette */
+  --ifm-color-primary: #000000;
+  --ifm-color-primary-dark: #1a1a1a;
+  --ifm-color-primary-darker: #000000;
+  --ifm-color-primary-darkest: #000000;
+  --ifm-color-primary-light: #444444;
+  --ifm-color-primary-lighter: #666666;
+  --ifm-color-primary-lightest: #888888;
 
-  /* Windows 7风格的辅助色 */
-  --ifm-color-secondary: #f5f7fa;
-  --ifm-color-secondary-dark: #e3e8ed;
-  --ifm-color-secondary-darker: #d6dde4;
-  --ifm-color-secondary-darkest: #b8c5d1;
-  --ifm-color-secondary-light: #f8f9fb;
-  --ifm-color-secondary-lighter: #fbfcfd;
+  /* Secondary Colors */
+  --ifm-color-secondary: #f4f1ea;
+  /* Canvas/Paper color */
+  --ifm-color-secondary-dark: #e0ded5;
+  --ifm-color-secondary-darker: #d0cec5;
+  --ifm-color-secondary-darkest: #b0aea5;
+  --ifm-color-secondary-light: #faf8f2;
+  --ifm-color-secondary-lighter: #fdfcf8;
   --ifm-color-secondary-lightest: #ffffff;
 
-  /* 背景和文字 */
+  /* Backgrounds and Text */
   --ifm-background-color: #ffffff;
-  --ifm-color-content: #1f2937;
-  --ifm-color-content-secondary: #6b7280;
+  --ifm-background-surface-color: #f9f9f9;
+  --ifm-color-content: #1a1a1a;
+  --ifm-color-content-secondary: #555555;
 
-  /* 代码样式 */
-  --ifm-code-font-size: 95%;
-  --ifm-code-background: #f1f5f9;
-  --ifm-code-color: #1e40af;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 120, 212, 0.1);
+  /* Typography - Elegant Serif Stack */
+  --ifm-font-family-base: "Times New Roman", "Songti SC", "SimSun", serif;
+  --ifm-heading-font-family: "Times New Roman", "Songti SC", serif;
+  --ifm-font-family-monospace: "Courier New", Courier, monospace;
 
-  /* 导航栏 - Windows 7风格 */
-  --ifm-navbar-background-color: linear-gradient(to bottom, #ffffff 0%, #e6f3ff 100%);
-  --ifm-navbar-shadow: 0 2px 4px rgba(0, 120, 212, 0.1);
-
-  /* 字体 */
-  --ifm-font-family-base: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  --ifm-heading-font-family: var(--ifm-font-family-base);
   --ifm-font-size-base: 16px;
-  --ifm-line-height-base: 1.6;
+  --ifm-line-height-base: 1.7;
 
-  /* 圆角 - Windows 7风格较小的圆角 */
-  --ifm-global-radius: 4px;
-  --ifm-button-border-radius: 3px;
-  --ifm-card-border-radius: 6px;
+  /* Borders and Radius - Sharp and Clean */
+  --ifm-global-radius: 0px;
+  /* Sharp corners for artistic feel */
+  --ifm-button-border-radius: 0px;
+  --ifm-card-border-radius: 0px;
 
-  /* 间距 */
-  --ifm-spacing-horizontal: 1rem;
-  --ifm-spacing-vertical: 1rem;
+  /* Spacing */
+  --ifm-spacing-horizontal: 1.5rem;
+  --ifm-spacing-vertical: 1.5rem;
 
-  /* Windows 7风格的边框 */
-  --ifm-border-color: #d1d9e0;
+  /* Borders */
+  --ifm-border-color: #e0e0e0;
 }
 
-/* 深色模式 - 保持Windows风格 */
+/* Dark Mode - Gallery Dark Room */
 [data-theme='dark'] {
-  /* 深色模式下的蓝色调整 */
-  --ifm-color-primary: #4fc3f7;
-  --ifm-color-primary-dark: #29b6f6;
-  --ifm-color-primary-darker: #03a9f4;
-  --ifm-color-primary-darkest: #0288d1;
-  --ifm-color-primary-light: #81d4fa;
-  --ifm-color-primary-lighter: #b3e5fc;
-  --ifm-color-primary-lightest: #e1f5fe;
+  --ifm-color-primary: #ffffff;
+  --ifm-color-primary-dark: #e0e0e0;
+  --ifm-color-primary-darker: #cccccc;
+  --ifm-color-primary-darkest: #aaaaaa;
+  --ifm-color-primary-light: #ffffff;
+  --ifm-color-primary-lighter: #ffffff;
+  --ifm-color-primary-lightest: #ffffff;
 
-  /* 深色背景 */
-  --ifm-background-color: #1e293b;
-  --ifm-background-surface-color: #334155;
-  --ifm-color-content: #f1f5f9;
-  --ifm-color-content-secondary: #cbd5e1;
+  --ifm-background-color: #121212;
+  --ifm-background-surface-color: #1e1e1e;
+  --ifm-color-content: #e0e0e0;
+  --ifm-color-content-secondary: #a0a0a0;
 
-  /* 代码样式 */
-  --ifm-code-background: #475569;
-  --ifm-code-color: #93c5fd;
-  --docusaurus-highlighted-code-line-bg: rgba(79, 195, 247, 0.15);
-
-  /* 导航栏深色模式 */
-  --ifm-navbar-background-color: #334155;
-  --ifm-navbar-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  /* 深色模式边框 */
-  --ifm-border-color: #475569;
+  --ifm-border-color: #333333;
 }
 
-/* 全局样式优化 */
-.markdown h1,
-.markdown h2,
-.markdown h3,
-.markdown h4,
-.markdown h5,
-.markdown h6 {
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--ifm-color-primary-dark);
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
-[data-theme='dark'] .markdown h1,
-[data-theme='dark'] .markdown h2,
-[data-theme='dark'] .markdown h3,
-[data-theme='dark'] .markdown h4,
-[data-theme='dark'] .markdown h5,
-[data-theme='dark'] .markdown h6 {
-  color: var(--ifm-color-primary-light);
+.markdown h1 {
+  font-size: 2.5rem;
+  border-bottom: 1px solid var(--ifm-border-color);
+  padding-bottom: 0.5rem;
 }
 
-.markdown p {
-  margin-bottom: 1.2rem;
-}
-
-/* 首页hero样式 - Windows 7风格渐变 */
-/* 首页hero样式 - Tyndall Effect (Moonlight through fog) */
-.hero {
-  background: radial-gradient(circle at 20% 20%, rgba(100, 100, 255, 0.15) 0%, transparent 40%),
-    linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-  padding: 4rem 0;
-  border-bottom: none;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Add fog layers */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 60%),
-    radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
-  filter: blur(20px);
-  pointer-events: none;
-}
-
-[data-theme='dark'] .hero {
-  background: radial-gradient(circle at 20% 20%, rgba(100, 100, 255, 0.2) 0%, transparent 50%),
-    linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
-}
-
-.hero__title {
-  font-size: 3rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, var(--ifm-color-primary-dark), var(--ifm-color-primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-[data-theme='dark'] .hero__title {
-  background: linear-gradient(45deg, var(--ifm-color-primary-light), var(--ifm-color-primary-lightest));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero__subtitle {
-  font-size: 1.25rem;
-  color: var(--ifm-color-content-secondary);
-  margin-bottom: 2rem;
-}
-
-/* Windows 7风格的卡片 */
-.card {
-  border: 1px solid var(--ifm-border-color);
-  box-shadow: 0 1px 3px rgba(0, 120, 212, 0.1);
-  transition: all 0.3s ease;
-  background: var(--ifm-background-color);
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 120, 212, 0.15);
-  border-color: var(--ifm-color-primary-light);
-}
-
-[data-theme='dark'] .card {
-  background-color: var(--ifm-background-surface-color);
-  border-color: var(--ifm-border-color);
-  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
-}
-
-[data-theme='dark'] .card:hover {
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-  border-color: var(--ifm-color-primary-light);
-}
-
-/* Windows 7风格的按钮 */
-.button {
-  font-weight: 500;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
-}
-
-.button--primary {
-  background: linear-gradient(to bottom, #4fc3f7 0%, #0078d4 100%);
-  border: 1px solid #0066cc;
-  color: white;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-
-.button--primary:hover {
-  background: linear-gradient(to bottom, #29b6f6 0%, #005a9e 100%);
-  border-color: #004578;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 120, 212, 0.2);
-}
-
-.button--secondary {
-  background: linear-gradient(to bottom, #ffffff 0%, #f5f7fa 100%);
-  border: 1px solid var(--ifm-border-color);
-  color: var(--ifm-color-primary-dark);
-}
-
-.button--secondary:hover {
-  background: linear-gradient(to bottom, #f5f7fa 0%, #e3e8ed 100%);
-  border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary-dark);
-}
-
-/* 博客标题样式 */
-.blog-wrapper h1,
-.blog-wrapper h2 {
-  color: var(--ifm-color-primary-dark);
-}
-
-[data-theme='dark'] .blog-wrapper h1,
-[data-theme='dark'] .blog-wrapper h2 {
-  color: var(--ifm-color-primary-light);
-}
-
-/* 导航栏优化 - Transparent/Dark for Tyndall effect */
+/* Navbar Styling - Minimalist Gallery Header */
 .navbar {
-  background: transparent;
-  /* Remove background in light mode */
-  border-bottom: none;
-  /* Remove border */
-  backdrop-filter: none;
-  /* Remove blur */
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: none;
+  backdrop-filter: blur(10px);
+  font-family: "Times New Roman", "Songti SC", serif;
 }
 
 [data-theme='dark'] .navbar {
-  background: rgba(2, 6, 23, 0.8);
+  background: rgba(18, 18, 18, 0.9);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .navbar__title {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--ifm-color-primary-dark);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-[data-theme='dark'] .navbar__title {
-  color: var(--ifm-color-primary-light);
-}
-
-.navbar__toggle {
-  display: none !important;
-}
-
-.navbar-sidebar__title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-family: "Times New Roman", "Songti SC", serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .navbar__item {
-  font-weight: 500;
+  font-family: "Times New Roman", "Songti SC", serif;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-.navbar__link:hover {
-  color: var(--ifm-color-primary);
+/* Footer Styling - Minimalist */
+.footer {
+  background: #f4f1ea;
+  color: #333;
+  font-family: "Times New Roman", "Songti SC", serif;
+  border-top: none;
 }
 
-/* Static Sukima Style for Left Navbar Items */
-.navbar-sukima-item {
-  position: relative;
-  margin: 0 8px;
+[data-theme='dark'] .footer {
+  background: #0a0a0a;
+  color: #888;
 }
 
-.navbar-sukima-item .navbar__link {
-  color: white !important;
-  background: black;
-  border: 2px solid #800080;
-  border-radius: 20px;
-  /* Rounded shape */
-  padding: 6px 16px;
-  box-shadow: 0 0 5px rgba(128, 0, 128, 0.5);
+.footer__title {
+  font-family: "Times New Roman", "Songti SC", serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.footer__link-item {
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+/* Button Styling - Sharp & Elegant */
+.button {
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  font-weight: 600;
   transition: all 0.3s ease;
-  /* Create a slight gap shape using border-radius tricks if possible, or just rounded */
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+}
+
+.button--primary {
+  background: #000;
+  border: 1px solid #000;
+  color: #fff;
+}
+
+.button--primary:hover {
+  background: #333;
+  border-color: #333;
+  transform: translateY(-2px);
+}
+
+[data-theme='dark'] .button--primary {
+  background: #fff;
+  border: 1px solid #fff;
+  color: #000;
+}
+
+[data-theme='dark'] .button--primary:hover {
+  background: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+/* Card Styling - Clean & Sharp */
+.card {
+  border-radius: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Blog & Markdown Content */
+.markdown {
+  font-family: "Times New Roman", "Songti SC", serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.markdown code {
+  font-family: "Courier New", monospace;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+/* Hero Section Override */
+.hero {
+  background: transparent;
+  font-family: "Times New Roman", "Songti SC", serif;
+}
+
+.hero__title {
+  font-family: "Times New Roman", "Songti SC", serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* Navbar Sukima Item Special Style */
+.navbar-sukima-item .navbar__link {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ifm-color-content) !important;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0.5rem 1rem;
 }
 
 .navbar-sukima-item .navbar__link:hover {
-  box-shadow: 0 0 10px #800080, inset 0 0 10px #800080;
-  transform: scale(1.05);
+  background: rgba(0, 0, 0, 0.05);
+  transform: none;
+  box-shadow: none;
   text-decoration: none;
 }
 
-/* Add "eyes" or decoration? Maybe too complex for CSS only. 
-   Let's stick to the black/purple/shape aesthetic. */
-
-
-/* Windows 7风格的阴影和边框 */
-.dropdown {
-  border: 1px solid var(--ifm-border-color);
-  box-shadow: 0 2px 8px rgba(0, 120, 212, 0.1);
+[data-theme='dark'] .navbar-sukima-item .navbar__link {
+  color: var(--ifm-color-content) !important;
 }
 
-/* 页脚样式 */
-.footer {
-  background: linear-gradient(to bottom, #2c3e50 0%, #1a252f 100%);
-  border-top: 1px solid var(--ifm-border-color);
-}
-
-/* 响应式设计 */
-@media screen and (max-width: 996px) {
-  .hero__title {
-    font-size: 2.5rem;
-  }
-
-  .hero__subtitle {
-    font-size: 1.1rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .hero__title {
-    font-size: 2rem;
-  }
-
-  .hero__subtitle {
-    font-size: 1rem;
-  }
-}
-
-.footer--dark {
-  --ifm-footer-background-color: var(--ifm-background-surface-color);
-  --ifm-footer-title-color: var(--ifm-color-primary-light);
-  --ifm-footer-link-color: var(--ifm-color-content-secondary);
+[data-theme='dark'] .navbar-sukima-item .navbar__link:hover {
+  background: rgba(255, 255, 255, 0.1);
 }

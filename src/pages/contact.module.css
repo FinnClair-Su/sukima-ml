@@ -1,155 +1,250 @@
-.contactContainer {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  min-height: calc(100vh - 60px);
+.pageContainer {
+  width: 100%;
+  background-color: #fff;
+  color: #1a1a1a;
+  font-family: "Times New Roman", "Songti SC", Serif;
 }
 
-.cardsWrapper {
+.mainGrid {
   display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 2rem;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
 }
 
-.card {
-  background: var(--ifm-background-surface-color);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  height: fit-content;
+.visualColumn {
+  background-color: #f4f1ea;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* Align content to the right side of the left column */
+  justify-content: center;
+  padding: 60px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.cardTitle {
-  font-size: 1.8rem;
-  margin: 0 0 1.5rem 0;
-  color: var(--ifm-heading-color);
-  border-bottom: 2px solid var(--ifm-color-primary);
-  padding-bottom: 0.75rem;
+.infoColumn {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 60px;
+  justify-content: center;
+  align-items: flex-start;
+  /* Align content to the left side of the right column */
 }
 
-.cardDescription {
+.infoContent {
+  max-width: 540px;
+  width: 100%;
+  text-align: left;
+}
+
+.mainTitle {
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1.1;
   margin-bottom: 1rem;
-  line-height: 1.6;
-  color: var(--ifm-font-color-base);
+  color: #000;
+  letter-spacing: -0.02em;
 }
 
-.contactList {
+.subTitleCn {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 12px;
+  color: #333;
+  font-weight: normal;
+  font-family: "Songti SC", serif;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #000;
+  letter-spacing: -0.02em;
+}
+
+.sectionSubtitleCn {
+  display: block;
+  font-size: 1.2rem;
+  margin-top: 8px;
+  color: #555;
+  font-weight: normal;
+  font-family: "Songti SC", serif;
+}
+
+.dividerShort {
+  width: 40px;
+  height: 2px;
+  background-color: #000;
+  margin: 2rem 0;
+}
+
+.descriptionBlock {
+  text-align: left;
+  margin-bottom: 2.5rem;
+  color: #333;
+  line-height: 1.8;
+}
+
+.descriptionBlock h3 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.plainList {
   list-style: none;
   padding: 0;
 }
 
-.contactList li {
+.plainList li {
   margin-bottom: 1rem;
   font-size: 1.1rem;
-  line-height: 1.8;
 }
 
-.contactList strong {
-  color: var(--ifm-color-primary);
+.plainList strong {
+  font-family: "Courier New", monospace;
+  color: #000;
   margin-right: 0.5rem;
-}
-
-.contactList a {
-  color: var(--ifm-link-color);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contactList a:hover {
-  color: var(--ifm-link-hover-color);
-  text-decoration: underline;
 }
 
 .linkButton {
   background: none;
   border: none;
-  color: var(--ifm-link-color);
+  color: #000;
   cursor: pointer;
   font-size: inherit;
   font-family: inherit;
   padding: 0;
-  text-decoration: none;
+  text-decoration: underline;
   transition: color 0.2s ease;
 }
 
 .linkButton:hover {
-  color: var(--ifm-link-hover-color);
-  text-decoration: underline;
+  color: #555;
 }
 
-/* 响应式设计 */
-@media (max-width: 1024px) {
-  .cardsWrapper {
+.quoteBlock {
+  text-align: left;
+  background: #f9f9f9;
+  padding: 24px;
+  border-left: 4px solid #000;
+  margin-bottom: 2rem;
+  font-style: italic;
+  color: #444;
+  line-height: 1.8;
+}
+
+.descriptionText {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.tipsBlock {
+  background: #fafafa;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  border: 1px solid #eee;
+}
+
+.tipText,
+.imageHostTip {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.5rem 0;
+  font-family: "Courier New", monospace;
+}
+
+.commentsSection {
+  margin-top: 2rem;
+}
+
+/* 响应式 */
+@media (max-width: 968px) {
+  .mainGrid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 768px) {
-  .contactContainer {
-    padding: 1.5rem 1rem;
+  .visualColumn {
+    height: auto;
+    position: static;
+    padding: 40px 20px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
   }
 
-  .card {
-    padding: 1.5rem;
-  }
-
-  .cardTitle {
-    font-size: 1.5rem;
-  }
-
-  .contactList li {
-    font-size: 1rem;
+  .infoColumn {
+    padding: 40px 20px;
+    align-items: center;
   }
 }
 
-/* 评论区样式 */
-.commentsSection {
-  margin-top: 1.5rem;
+/* Dark Mode Support */
+[data-theme='dark'] .pageContainer {
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
-.tipText {
-  color: #059669;
-  font-size: 0.9rem;
-  margin: 0.5rem 0 0 0;
-  font-style: italic;
+[data-theme='dark'] .visualColumn {
+  background-color: #1e1e1e;
+  border-bottom-color: #333;
 }
 
-.imageHostTip {
-  color: #7c3aed;
-  font-size: 0.9rem;
-  margin: 0.5rem 0 0 0;
+[data-theme='dark'] .infoColumn {
+  background-color: #121212;
 }
 
-.imageHostTip a {
-  color: #7c3aed;
-  font-weight: 600;
-  text-decoration: underline;
+[data-theme='dark'] .mainTitle,
+[data-theme='dark'] .sectionTitle {
+  color: #fff;
 }
 
-.imageHostTip a:hover {
-  color: #6d28d9;
+[data-theme='dark'] .subTitleCn,
+[data-theme='dark'] .sectionSubtitleCn {
+  color: #ccc;
 }
 
-[data-theme='dark'] .tipText {
-  color: #10b981;
+[data-theme='dark'] .dividerShort {
+  background-color: #fff;
 }
 
+[data-theme='dark'] .descriptionBlock,
+[data-theme='dark'] .descriptionText {
+  color: #ccc;
+}
+
+[data-theme='dark'] .descriptionBlock h3 {
+  border-bottom-color: #333;
+}
+
+[data-theme='dark'] .quoteBlock {
+  background: #1e1e1e;
+  border-left-color: #fff;
+  color: #ccc;
+}
+
+[data-theme='dark'] .tipsBlock {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+[data-theme='dark'] .tipText,
 [data-theme='dark'] .imageHostTip {
-  color: #a78bfa;
+  color: #aaa;
 }
 
-[data-theme='dark'] .imageHostTip a {
-  color: #a78bfa;
-}
-
-[data-theme='dark'] .imageHostTip a:hover {
-  color: #c4b5fd;
-}
-
-[data-theme='dark'] .card {
-  background: rgba(30, 41, 59, 0.9);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+[data-theme='dark'] .plainList strong,
+[data-theme='dark'] .linkButton {
+  color: #fff;
 }

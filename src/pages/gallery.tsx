@@ -15,11 +15,11 @@ interface ArtworkCard {
 const artworks: ArtworkCard[] = [
   {
     id: '001',
-    title: '《戴珍珠耳环的17岁少女》',
-    subtitle: '八云紫同人 · 草稿版',
+    title: '戴珍珠耳环的17岁少女',
+    subtitle: 'YUKARI YAKUMO',
     imagePath: '/img/artworks/yukari_v0.5.jpg',
     link: '/artwork-001',
-    badge: '草稿作品',
+    // badge: 'DRAFT', // Removed as it is now official
   },
   // 可以在这里添加更多作品
 ];
@@ -30,11 +30,11 @@ export default function Gallery() {
       title="作品集"
       description="隙间月影社团的名画同人作品展示"
     >
-      <div className={styles.galleryContainer}>
-        <div className={styles.header}>
-          <h1>作品集</h1>
-          <p className={styles.subtitle}>名画同人创作展示</p>
-        </div>
+      <main className={styles.galleryContainer}>
+        <header className={styles.header}>
+          <h1>Gallery</h1>
+          <p className={styles.subtitle}>Masterpiece Reimagined in Gensokyo</p>
+        </header>
 
         <div className={styles.artworkGrid}>
           {artworks.map((artwork) => (
@@ -61,12 +61,11 @@ export default function Gallery() {
           ))}
         </div>
 
-        {artworks.length === 0 && (
-          <div className={styles.emptyState}>
-            <p>暂无作品展示，敬请期待...</p>
-          </div>
-        )}
-      </div>
+        <div className={styles.galleryFooter}>
+          <p className={styles.footerTextCn}>更多作品正在跨越幻想与现实的界线</p>
+          <p className={styles.footerTextEn}>More masterpieces are crossing the boundary between fantasy and reality.</p>
+        </div>
+      </main>
     </Layout>
   );
 }
