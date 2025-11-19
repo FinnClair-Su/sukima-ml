@@ -59,7 +59,7 @@ export default function Artwork001() {
               />
             </div>
             <div className={styles.captionText}>
-              Fig 1. The Sage of Gensokyo (Exiled), 2024.
+              Fig 1. The Sage of Gensokyo (Exiled), 2025.
             </div>
           </div>
 
