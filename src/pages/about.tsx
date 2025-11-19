@@ -29,12 +29,12 @@ export default function About() {
                         <div className={styles.infoContent}>
 
                             <h1 className={styles.mainTitle}>
-                                About the Creator<br />
-                                <span className={styles.subTitleCn}>关于苏心贤</span>
+                                About the Organizer｜关于主催<br />
+                                <span className={styles.subTitleCn}>苏心贤</span>
                             </h1>
 
                             <div className={styles.artistMeta}>
-                                Founder & Lead Developer · Sukima Moonlight
+                                Founder & Chief Developer · Sukima Moonlight
                             </div>
 
                             <div className={styles.dividerShort}></div>
@@ -42,7 +42,7 @@ export default function About() {
                             <div className={styles.descriptionBlock}>
                                 <h3>Profile</h3>
                                 <p>
-                                    <strong>Leader's Personal Site</strong>: <a href="https://fcsu.dev" target="_blank" rel="noopener noreferrer">fcsu.dev</a>
+                                    <strong>Organizer's Personal Site</strong>: <a href="https://fcsu.dev" target="_blank" rel="noopener noreferrer">fcsu.dev</a>
                                 </p>
                                 <p>
                                     BJTU Incoming PhD Student, Computer Science ➡️ Cybersecurity.

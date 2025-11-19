@@ -2,7 +2,7 @@
 
 > **名画与东方的邂逅 | Where Classic Art Meets Touhou**
 
-![Sukima Moonlight Banner](static/img/social-card.jpg)
+![Sukima Moonlight Logo](static/img/sukima-ml.svg)
 
 **隙间月影 (Sukima Moonlight)** 是一个专注于展示经典名画与东方Project角色结合的同人艺术社团网站。我们致力于通过高质量的艺术微喷（Giclée）和精美的周边制作，将幻想乡的魅力带入现实生活。
 
