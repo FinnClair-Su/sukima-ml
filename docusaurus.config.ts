@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -50,8 +50,8 @@ const config: Config = {
           path: 'blog',
           routeBasePath: 'blog',
           showReadingTime: true,
-          readingTime: ({content, frontMatter, defaultReadingTime}) =>
-            defaultReadingTime({content, locale: 'zh-Hans', frontMatter, options: {wordsPerMinute: 200}}),
+          readingTime: ({ content, frontMatter, defaultReadingTime }) =>
+            defaultReadingTime({ content, locale: 'zh-Hans', frontMatter, options: { wordsPerMinute: 200 } }),
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -80,8 +80,8 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/social-card.jpg',
     metadata: [
-      {name: 'keywords', content: '隙间月影, 东方Project, 名画同人, Touhou, 同人创作'},
-      {name: 'description', content: '隙间月影 - 名画与东方的邂逅，展示经典名画与东方Project角色的同人创作'},
+      { name: 'keywords', content: '隙间月影, 东方Project, 名画同人, Touhou, 同人创作' },
+      { name: 'description', content: '隙间月影 - 名画与东方的邂逅，展示经典名画与东方Project角色的同人创作' },
     ],
     navbar: {
       title: '隙间月影 | Sukima Moonlight',
@@ -96,16 +96,19 @@ const config: Config = {
           to: '/gallery',
           label: '作品集',
           position: 'left',
+          className: 'navbar-sukima-item',
         },
         {
           to: '/about',
           label: '关于我们',
           position: 'left',
+          className: 'navbar-sukima-item',
         },
         {
           to: '/blog',
           label: '社团动态',
           position: 'left',
+          className: 'navbar-sukima-item',
         },
         {
           to: '/contact',

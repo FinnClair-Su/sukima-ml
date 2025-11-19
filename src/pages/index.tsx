@@ -1,10 +1,12 @@
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React, { useState, useEffect } from 'react';
 import GalleryCarousel, { type ArtworkItem } from '../components/GalleryCarousel';
+import GapRevealContainer from '../components/GapRevealContainer';
+import LiquidCard from '../components/LiquidCard';
 
 import styles from './index.module.css';
 
@@ -126,7 +128,7 @@ function ASCIIDemo() {
       return () => clearTimeout(timer);
     } else if (!isComplete) {
       setIsComplete(true);
-      
+
       // 在2025停留3秒后开始逐段熄灭动画
       setTimeout(() => {
         let segmentIndex = 0;
@@ -137,7 +139,7 @@ function ASCIIDemo() {
             return newStates;
           });
           segmentIndex++;
-          
+
           if (segmentIndex >= 4) {
             clearInterval(disappearInterval);
             // 所有段都熄灭后，重新开始循环
@@ -177,9 +179,9 @@ function ASCIIDemo() {
       '8': [1, 1, 1, 1, 1, 1, 1],
       '9': [1, 1, 1, 1, 0, 1, 1]
     };
-    
+
     const digitSegments = segments[digit] || [0, 0, 0, 0, 0, 0, 0];
-    
+
     return (
       <div className={styles.digitalDigit}>
         <div className={`${styles.segment} ${styles.segmentA} ${digitSegments[0] && isVisible ? styles.segmentOn : ''}`}></div>
@@ -213,7 +215,7 @@ function ASCIIDemo() {
         ))}
         <span className={styles.quote}>"</span>
       </div>
-      
+
       {/* 当前字符ASCII显示 */}
       <div className={styles.currentCharInfo}>
         {currentIndex === 0 ? (
@@ -224,7 +226,7 @@ function ASCIIDemo() {
           "./start.sh"
         )}
       </div>
-      
+
       {/* 数码管显示 */}
       <div className={styles.digitalContainer}>
         <div className={styles.digitalDisplay}>
@@ -234,7 +236,7 @@ function ASCIIDemo() {
           <DigitalDisplay digit={numberString[3]} isVisible={segmentStates[3]} />
         </div>
       </div>
-      
+
       <div className={styles.asciiComplete}>
         {!isComplete ? (
           <div className={styles.interimMessage}>
@@ -254,34 +256,36 @@ function ASCIIDemo() {
 function ModuleBlock({ title, content, link, className = '' }) {
   return (
     <Link to={link} className={`${styles.moduleBlock} ${className}`}>
-      <div className={styles.moduleContent}>
-        <h3 className={styles.moduleTitle}>{title}</h3>
-        <div className={styles.moduleText}>
-          {content}
+      <LiquidCard className={styles.moduleLiquidCard}>
+        <div className={styles.moduleContent}>
+          <h3 className={styles.moduleTitle}>{title}</h3>
+          <div className={styles.moduleText}>
+            {content}
+          </div>
         </div>
-      </div>
+      </LiquidCard>
     </Link>
   );
 }
 
 // 主页组件
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
-  
+  const { siteConfig } = useDocusaurusContext();
+
   return (
     <Layout
       title={`${siteConfig.title}`}
       description="Science of Learning and Cognition；The Art of LLM and Tech Tools">
-      
+
       <main className={styles.mainContainer}>
         {/* 中央内容区域 */}
         <div className={styles.centerContent}>
           {/* 头像区域 */}
           <Link to="/about">
             <div className={styles.avatarSection}>
-              <img 
-                src="/img/authors/xinxian.jpg" 
-                alt="苏心贤" 
+              <img
+                src="/img/authors/xinxian.jpg"
+                alt="苏心贤"
                 className={styles.avatar}
               />
               <div className={styles.avatarBorder}></div>
@@ -291,17 +295,21 @@ export default function Home() {
           {/* Tagline */}
           <p className={styles.tagline}>{siteConfig.tagline}</p>
 
-          {/* ASCII码动态演示区域 */}
+          {/* ASCII码动态演示区域 - Load Animation */}
           <div className={styles.signatureSection}>
-            <ASCIIDemo />
+            <GapRevealContainer mode="load" defaultOpen={false}>
+              <ASCIIDemo />
+            </GapRevealContainer>
           </div>
 
-          {/* Gallery Carousel - 画作展示轮播 */}
+          {/* Gallery Carousel - Scroll Animation */}
           <div className={styles.gallerySection}>
-            <GalleryCarousel artworks={placeholderArtworks} />
+            <GapRevealContainer mode="scroll">
+              <GalleryCarousel artworks={placeholderArtworks} />
+            </GapRevealContainer>
           </div>
 
-          {/* 导航按钮区域 */}
+          {/* 导航按钮区域 - Hover Animation */}
           <div className={styles.modulesSection}>
             {navigationItems.map((item, index) => (
               <ModuleBlock

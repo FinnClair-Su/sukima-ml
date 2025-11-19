@@ -96,17 +96,20 @@ export default {
         {
           "to": "/gallery",
           "label": "作品集",
-          "position": "left"
+          "position": "left",
+          "className": "navbar-sukima-item"
         },
         {
           "to": "/about",
           "label": "关于我们",
-          "position": "left"
+          "position": "left",
+          "className": "navbar-sukima-item"
         },
         {
           "to": "/blog",
           "label": "社团动态",
-          "position": "left"
+          "position": "left",
+          "className": "navbar-sukima-item"
         },
         {
           "to": "/contact",

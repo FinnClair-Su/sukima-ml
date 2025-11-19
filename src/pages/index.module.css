@@ -579,3 +579,26 @@
     padding: 24px;
   }
 }
+
+/* Liquid Card Integration */
+.moduleLiquidCard {
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  border-radius: 0 !important;
+}
+
+.moduleLiquidCard:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.moduleBlock {
+  padding: 0;
+}
+
+.moduleContent {
+  height: 100%;
+}
