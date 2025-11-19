@@ -22,8 +22,21 @@ const GapRevealContainer: React.FC<GapRevealContainerProps> = ({
 
     const [progress, setProgress] = useState(defaultOpen ? 1 : 0);
 
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     // Generate random eyes
     useEffect(() => {
+        if (isMobile) return; // Skip eye generation on mobile
         // Increase eye count for better density
         const newEyes = Array.from({ length: 25 }).map((_, i) => ({
             id: i,
@@ -34,7 +47,7 @@ const GapRevealContainer: React.FC<GapRevealContainerProps> = ({
             delay: Math.random() * 2,
         }));
         setEyes(newEyes);
-    }, []);
+    }, [isMobile]);
 
     // Auto-close timer ref
     const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -131,6 +144,14 @@ const GapRevealContainer: React.FC<GapRevealContainerProps> = ({
         clipPath: `url(#${uniqueId})`,
         padding: isCounter ? '4rem 8rem' : '6rem 5rem', // Even more padding
     };
+
+    if (isMobile) {
+        return (
+            <div className={clsx(styles.container, className)}>
+                {children}
+            </div>
+        );
+    }
 
     return (
         <div

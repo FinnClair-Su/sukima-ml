@@ -61,6 +61,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -242,12 +243,22 @@ a.imageContainer:hover {
 
   .carouselContainer {
     gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .artworkContainer {
+    order: 1;
+    flex: 0 0 100%;
   }
 
   .carouselButton {
     width: 40px;
     height: 40px;
     font-size: 20px;
+    order: 2;
+    margin: 0 10px;
+    /* Spacing between buttons */
   }
 
   .comparisonCard {
