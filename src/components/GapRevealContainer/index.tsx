@@ -142,7 +142,7 @@ const GapRevealContainer: React.FC<GapRevealContainerProps> = ({
     const isCounter = mode === 'load';
     const wrapperStyle = {
         clipPath: `url(#${uniqueId})`,
-        padding: isCounter ? '4rem 8rem' : '6rem 5rem', // Even more padding
+        padding: isCounter ? '2rem 4rem' : '3rem 2.5rem', // Reduced to 50% of original
     };
 
     if (isMobile) {
