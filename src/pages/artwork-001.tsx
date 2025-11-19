@@ -153,7 +153,7 @@ export default function Artwork001() {
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         imageSrc="/img/groupQRcode.JPG"
-        title={`扫码支付 ¥${selectedItem.price} 偷渡幻想乡`}
+        title="扫码加群详询"
       />
     </Layout>
   );
