@@ -1,7 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
 
-export default function GiscusComments() {
+interface GiscusCommentsProps {
+  forceTheme?: 'light' | 'dark';
+}
+
+export default function GiscusComments({ forceTheme }: GiscusCommentsProps = {}) {
   const { colorMode } = useColorMode();
   const giscusRef = useRef<HTMLDivElement>(null);
 
@@ -19,7 +23,7 @@ export default function GiscusComments() {
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', 'top');
-    script.setAttribute('data-theme', colorMode === 'dark' ? 'dark' : 'light');
+    script.setAttribute('data-theme', forceTheme || (colorMode === 'dark' ? 'dark' : 'light'));
     script.setAttribute('data-lang', 'zh-CN');
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
@@ -31,7 +35,7 @@ export default function GiscusComments() {
         giscusRef.current.innerHTML = '';
       }
     };
-  }, [colorMode]);
+  }, [colorMode, forceTheme]);
 
   return <div ref={giscusRef} />;
 }

@@ -6,12 +6,14 @@ interface CommentsSectionProps {
   title?: string;
   description?: string;
   className?: string;
+  forceTheme?: 'light' | 'dark';
 }
 
 export default function CommentsSection({ 
   title = '评论区', 
   description,
-  className = ''
+  className = '',
+  forceTheme
 }: CommentsSectionProps) {
   return (
     <div className={`${styles.commentsWrapper} ${className}`}>
@@ -22,7 +24,7 @@ export default function CommentsSection({
         )}
       </div>
       <div className={styles.commentsContent}>
-        <GiscusComments />
+        <GiscusComments forceTheme={forceTheme} />
       </div>
     </div>
   );
