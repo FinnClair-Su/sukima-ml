@@ -1,34 +1,34 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
-import QRCodeModal from '../components/QRCodeModal';
+import Link from '@docusaurus/Link';
 import styles from './artwork-001.module.css';
 
 // 定义产品数据
 const products = [
-  { 
-    id: '14inch', 
-    size: '[14寸] 30.5 x 35.6 cm', 
-    price: 65, 
+  {
+    id: '14inch',
+    size: '[14寸] 30.5 x 35.6 cm',
+    price: 65,
     tag: '油咖喱强推 / 满印无裁',
-    isRecommended: true 
+    isRecommended: true
   },
-  { 
-    id: '16inch', 
-    size: '[16寸] 30.5 x 40.6 cm', 
+  {
+    id: '16inch',
+    size: '[16寸] 30.5 x 40.6 cm',
     price: 72,
     tag: null,
     isRecommended: false
   },
-  { 
-    id: '18inch', 
-    size: '[18寸] 35.0 x 45.0 cm', 
+  {
+    id: '18inch',
+    size: '[18寸] 35.0 x 45.0 cm',
     price: 92,
     tag: null,
     isRecommended: false
   },
-  { 
-    id: '20inch', 
-    size: '[20寸] 40.0 x 50.0 cm', 
+  {
+    id: '20inch',
+    size: '[20寸] 40.0 x 50.0 cm',
     price: 114,
     tag: null,
     isRecommended: false
@@ -36,7 +36,6 @@ const products = [
 ];
 
 export default function Artwork001() {
-  const [showModal, setShowModal] = useState(false);
   // 默认选中第一个（14寸推荐款）
   const [selectedItem, setSelectedItem] = useState(products[0]);
 
@@ -47,12 +46,12 @@ export default function Artwork001() {
     >
       <div className={styles.pageContainer}>
         <main className={styles.mainGrid}>
-          
+
           {/* 左侧：艺术展示区 */}
           <div className={styles.visualColumn}>
             <div className={styles.frameWrapper}>
-              <img 
-                src="/img/artworks/yukari_v0.5.jpg" 
+              <img
+                src="/img/artworks/yukari_v0.5.jpg"
                 alt="戴珍珠耳环的八云紫"
                 className={styles.artworkImage}
               />
@@ -65,7 +64,7 @@ export default function Artwork001() {
           {/* 右侧：信息交互区 */}
           <div className={styles.infoColumn}>
             <div className={styles.infoContent}>
-              
+
               <h1 className={styles.mainTitle}>
                 Portrait of the Gap Sage<br />
                 <span className={styles.subTitleCn}>戴珍珠耳环的八云紫</span>
@@ -85,13 +84,14 @@ export default function Artwork001() {
               <div className={styles.dividerShort}></div>
 
               {/* 动态按钮文案 */}
-              <button 
+              <Link
+                to="/buy"
                 className={styles.purchaseBtn}
-                onClick={() => setShowModal(true)}
+                style={{ display: 'block', textDecoration: 'none' }}
               >
                 奉纳信仰 (V我{selectedItem.price}) / OFFER FAITH
-              </button>
-              
+              </Link>
+
               <p className={styles.smallNotice}>* 点击按钮扫码，助紫妈重返幻想乡</p>
 
               <div className={styles.quoteBlock}>
@@ -115,7 +115,7 @@ export default function Artwork001() {
                 <h3 className={styles.specTitle}>选择供奉规格 (Select Offering)</h3>
                 <div className={styles.priceList}>
                   {products.map((item) => (
-                    <div 
+                    <div
                       key={item.id}
                       className={`
                         ${styles.priceItem} 
@@ -128,7 +128,7 @@ export default function Artwork001() {
                         <span className={styles.sizeLabel}>{item.size}</span>
                         <span className={styles.priceValue}>¥ {item.price}</span>
                       </div>
-                      
+
                       {/* 如果有标签或者被选中，显示额外信息 */}
                       {(item.tag) && (
                         <div className={styles.itemTagRow}>
@@ -140,7 +140,7 @@ export default function Artwork001() {
                 </div>
                 <p className={styles.costNote}>
                   * 售价仅含极低的美术资源回收成本。
-                  <br/>* 全尺寸可选“无边框满印”或“加白边”。
+                  <br />* 全尺寸可选“无边框满印”或“加白边”。
                 </p>
               </div>
 
@@ -148,13 +148,6 @@ export default function Artwork001() {
           </div>
         </main>
       </div>
-
-      <QRCodeModal 
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-        imageSrc="/img/groupQRcode.JPG"
-        title="扫码加群详询"
-      />
     </Layout>
   );
 }

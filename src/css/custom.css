@@ -120,7 +120,8 @@ h6 {
 /* Footer Styling - Minimalist */
 .footer {
   background: #f4f1ea;
-  color: #333;
+  color: #000000;
+  /* Changed to pure black */
   font-family: "Times New Roman", "Songti SC", serif;
   border-top: none;
 }
@@ -132,15 +133,38 @@ h6 {
 
 .footer__title {
   font-family: "Times New Roman", "Songti SC", serif;
-  font-weight: 400;
+  font-weight: 600;
+  /* Increased weight for visibility */
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 1rem;
+  color: #000000;
+  /* Ensure title is black */
+}
+
+[data-theme='dark'] .footer__title {
+  color: #e0e0e0;
 }
 
 .footer__link-item {
   font-family: "Courier New", monospace;
   font-size: 0.9rem;
+  color: #000000;
+  /* Ensure links are black */
+  font-weight: 500;
+}
+
+.footer__link-item:hover {
+  color: #444444;
+  text-decoration: underline;
+}
+
+[data-theme='dark'] .footer__link-item {
+  color: #888;
+}
+
+[data-theme='dark'] .footer__link-item:hover {
+  color: #fff;
 }
 
 /* Button Styling - Sharp & Elegant */

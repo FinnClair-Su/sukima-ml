@@ -1,0 +1,185 @@
+.pageContainer {
+    width: 100%;
+    background-color: #fff;
+    color: #1a1a1a;
+    font-family: "Times New Roman", "Songti SC", Serif;
+    min-height: 100vh;
+    padding: 60px 20px;
+}
+
+.contentWrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.section {
+    margin-bottom: 4rem;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 2rem;
+    font-family: "Songti SC", serif;
+}
+
+.paymentMethods {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.qrCard {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.qrImage {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.qrLabel {
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    color: #555;
+}
+
+.contactInfo {
+    background: #f4f1ea;
+    padding: 30px;
+    border-radius: 4px;
+    line-height: 1.8;
+}
+
+.emailList {
+    margin: 1rem 0;
+}
+
+.emailItem {
+    display: block;
+    font-family: "Courier New", monospace;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.primary {
+    color: #b71c1c;
+    font-weight: bold;
+}
+
+.secondary {
+    color: #666;
+}
+
+.templateBox {
+    background: #fafafa;
+    border: 1px dashed #ccc;
+    padding: 30px;
+    font-family: "Courier New", monospace;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    position: relative;
+}
+
+.copyHint {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: #999;
+    font-family: sans-serif;
+}
+
+.importantNote {
+    margin-top: 20px;
+    color: #b71c1c;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 60px;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #444;
+}
+
+@media (max-width: 600px) {
+    .paymentMethods {
+        gap: 20px;
+    }
+
+    .qrImage {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+/* Dark Mode Styles */
+[data-theme='dark'] .pageContainer {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+[data-theme='dark'] .sectionTitle {
+    border-bottom-color: #444;
+    color: #fff;
+}
+
+[data-theme='dark'] .qrCard {
+    background: #1e1e1e;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .qrLabel {
+    color: #aaa;
+}
+
+[data-theme='dark'] .contactInfo {
+    background: #1e1e1e;
+    color: #ccc;
+}
+
+[data-theme='dark'] .primary {
+    color: #ff5252;
+}
+
+[data-theme='dark'] .secondary {
+    color: #aaa;
+}
+
+[data-theme='dark'] .templateBox {
+    background: #1e1e1e;
+    border-color: #444;
+    color: #ccc;
+}
+
+[data-theme='dark'] .copyHint {
+    color: #666;
+}
+
+[data-theme='dark'] .importantNote {
+    color: #ff5252;
+}
+
+[data-theme='dark'] .signature {
+    color: #888;
+}
