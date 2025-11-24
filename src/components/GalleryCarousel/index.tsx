@@ -13,6 +13,8 @@ export interface ArtworkItem {
   imageAlt: string;
   artist?: string;
   createdDate?: string;
+  link?: string; // Optional link for the fanart
+  badge?: string; // Optional badge (e.g. Visual Mockup)
 }
 
 export interface GalleryCarouselProps {
@@ -71,7 +73,7 @@ export default function GalleryCarousel(props: GalleryCarouselProps): ReactNode 
   }, [currentIndex, maxIndex]);
 
   return (
-    <div 
+    <div
       className={styles.galleryCarousel}
       role="region"
       aria-label="作品展示轮播"
@@ -91,7 +93,7 @@ export default function GalleryCarousel(props: GalleryCarouselProps): ReactNode 
         )}
 
         {/* Artwork display area - 左侧原作，右侧同人 */}
-        <div 
+        <div
           className={styles.artworkContainer}
           aria-live="polite"
           aria-atomic="true"
@@ -127,7 +129,8 @@ function ArtworkComparisonCard({ artwork }: ArtworkComparisonCardProps): ReactNo
 
   // 判断是否有链接
   const hasOriginalLink = artwork.originalPainting === '戴珍珠耳环的少女';
-  const hasFanartLink = artwork.touhouCharacter.includes('戴珍珠耳环的17岁少女');
+  // Use explicit link if provided, otherwise fallback to hardcoded check
+  const fanartLink = artwork.link || (artwork.touhouCharacter.includes('戴珍珠耳环的17岁少女') ? '/artwork-001' : null);
 
   return (
     <div className={styles.comparisonCard}>
@@ -182,9 +185,9 @@ function ArtworkComparisonCard({ artwork }: ArtworkComparisonCardProps): ReactNo
 
       {/* 右侧：同人作品 */}
       <div className={styles.imageSection}>
-        {hasFanartLink ? (
+        {fanartLink ? (
           <a
-            href="/artwork-001"
+            href={fanartLink}
             className={styles.imageContainer}
           >
             {fanartError ? (
@@ -192,12 +195,17 @@ function ArtworkComparisonCard({ artwork }: ArtworkComparisonCardProps): ReactNo
                 <p>同人作品图片加载失败</p>
               </div>
             ) : (
-              <img
-                src={artwork.imagePath}
-                alt={artwork.imageAlt}
-                onError={() => setFanartError(true)}
-                loading="lazy"
-              />
+              <>
+                <img
+                  src={artwork.imagePath}
+                  alt={artwork.imageAlt}
+                  onError={() => setFanartError(true)}
+                  loading="lazy"
+                />
+                {artwork.badge && (
+                  <span className={styles.badgeOverlay}>{artwork.badge}</span>
+                )}
+              </>
             )}
           </a>
         ) : (
@@ -207,12 +215,17 @@ function ArtworkComparisonCard({ artwork }: ArtworkComparisonCardProps): ReactNo
                 <p>同人作品图片加载失败</p>
               </div>
             ) : (
-              <img
-                src={artwork.imagePath}
-                alt={artwork.imageAlt}
-                onError={() => setFanartError(true)}
-                loading="lazy"
-              />
+              <>
+                <img
+                  src={artwork.imagePath}
+                  alt={artwork.imageAlt}
+                  onError={() => setFanartError(true)}
+                  loading="lazy"
+                />
+                {artwork.badge && (
+                  <span className={styles.badgeOverlay}>{artwork.badge}</span>
+                )}
+              </>
             )}
           </div>
         )}

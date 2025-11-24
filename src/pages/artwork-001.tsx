@@ -10,6 +10,7 @@ const products = [
     size: '[14寸] 30.5 x 35.6 cm',
     price: 65,
     tag: '油咖喱强推 / 满印无裁',
+    description: null,
     isRecommended: true
   },
   {
@@ -17,13 +18,7 @@ const products = [
     size: '[16寸] 30.5 x 40.6 cm',
     price: 72,
     tag: null,
-    isRecommended: false
-  },
-  {
-    id: '18inch',
-    size: '[18寸] 35.0 x 45.0 cm',
-    price: 92,
-    tag: null,
+    description: null,
     isRecommended: false
   },
   {
@@ -31,6 +26,31 @@ const products = [
     size: '[20寸] 40.0 x 50.0 cm',
     price: 114,
     tag: null,
+    description: null,
+    isRecommended: false
+  },
+  {
+    id: 'planA',
+    size: '[14寸] 30.5 x 35.6 cm + 35x40cm 专业装裱',
+    price: 227,
+    tag: '小巧紧凑',
+    description: '卡纸宽2.5cm，画面利用率高',
+    isRecommended: false
+  },
+  {
+    id: 'planB',
+    size: '[16寸] 30.5 x 40.6 cm + 35x40cm 专业装裱',
+    price: 240,
+    tag: '艺术感强',
+    description: '卡纸宽5cm，更有艺术品装裱的感觉',
+    isRecommended: false
+  },
+  {
+    id: 'planC',
+    size: '[20寸] 40.0 x 50.0 cm + 45x51cm 专业装裱',
+    price: 360,
+    tag: '富哥优选 / 效果最佳',
+    description: '卡纸宽5cm，大画幅视觉张力更强',
     isRecommended: false
   },
 ];
@@ -130,9 +150,10 @@ export default function Artwork001() {
                       </div>
 
                       {/* 如果有标签或者被选中，显示额外信息 */}
-                      {(item.tag) && (
+                      {(item.tag || item.description) && (
                         <div className={styles.itemTagRow}>
                           {item.tag && <span className={styles.badge}>{item.tag}</span>}
+                          {item.description && <span className={styles.itemDescription}>{item.description}</span>}
                         </div>
                       )}
                     </div>
