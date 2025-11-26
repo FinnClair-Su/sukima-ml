@@ -405,6 +405,71 @@
   color: #000;
 }
 
+/* Special Variant Toggle */
+.specialToggle {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 12px;
+  border: 1px dashed #999;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+.specialToggle:hover {
+  background-color: #fff5f5;
+  border-color: #b71c1c;
+}
+
+.specialToggleActive {
+  background-color: #ffebee;
+  border-color: #b71c1c;
+  border-style: solid;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #666;
+  border-radius: 3px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+.specialToggle:hover .checkbox {
+  border-color: #b71c1c;
+}
+
+.specialToggleActive .checkbox {
+  background-color: #b71c1c;
+  border-color: #b71c1c;
+}
+
+.checkMark {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.specialLabel {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.specialToggleActive .specialLabel {
+  color: #b71c1c;
+  font-weight: 700;
+}
+
 /* 响应式 */
 @media (max-width: 968px) {
   .mainGrid {

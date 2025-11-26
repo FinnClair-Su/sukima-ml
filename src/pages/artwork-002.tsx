@@ -84,12 +84,27 @@ export default function Artwork002() {
         setIsModalOpen(false);
     };
 
+    const [isSpecial, setIsSpecial] = React.useState(false);
+
     // Special logic for 8-inch set: it includes both variants
     const isSet = selectedProduct.id === 'core-8';
 
+    // Determine the effective variant B name and image based on special state
+    const variantBName = isSpecial ? 'The Forbidden Knowledge (Special)' : 'The Forbidden Knowledge';
+    const variantBImage = isSpecial ? '/img/artworks/Variant_special.jpg' : '/img/artworks/Variant_B.jpg';
+
     // If it's the set, we display a combined name or logic
-    const displayVariantName = isSet ? 'The Weight of Knowledge + The Forbidden Knowledge' : variantName;
-    const displayVariantCode = isSet ? 'Set (A + B)' : activeVariant;
+    // Note: Set currently assumes standard B. If special is allowed in set, logic needs adjustment.
+    // Assuming Set = Standard A + Standard B for now unless requested otherwise.
+    const displayVariantName = isSet
+        ? 'The Weight of Knowledge + The Forbidden Knowledge'
+        : (activeVariant === 'A' ? 'The Weight of Knowledge' : variantBName);
+
+    const displayVariantCode = isSet
+        ? 'Set (A + B)'
+        : (activeVariant === 'A' ? 'A' : (isSpecial ? 'B (Special)' : 'B'));
+
+    const currentImage = activeVariant === 'A' ? '/img/artworks/Variant_A.jpg' : variantBImage;
 
     // Construct buy page URL with query parameters
     const buyPageUrl = `/buy?product=The Bookworm&variant=${encodeURIComponent(displayVariantCode)}&spec=${encodeURIComponent(selectedProduct.name + (selectedProduct.spec ? ` (${selectedProduct.spec})` : ''))}&price=${currentPrice}`;
@@ -129,17 +144,17 @@ export default function Artwork002() {
                             >
                                 <div className={styles.frameWrapper}>
                                     <img
-                                        src="/img/artworks/Variant_B.jpg"
-                                        alt="The Forbidden Knowledge"
+                                        src={variantBImage}
+                                        alt={variantBName}
                                         className={styles.artworkImage}
                                     />
                                 </div>
-                                <div className={styles.cardLabel}>Variant B: The Forbidden Knowledge</div>
+                                <div className={styles.cardLabel}>Variant B: {variantBName}</div>
                             </div>
                         </div>
 
                         <div className={styles.captionText}>
-                            Fig 2. The Bookworm × {isSet ? 'Both Variants' : variantName}, 2025.
+                            Fig 2. The Bookworm × {isSet ? 'Both Variants' : displayVariantName}, 2025.
                         </div>
                     </div>
 
@@ -226,6 +241,22 @@ export default function Artwork002() {
                                         <span className={styles.variantName}>The Forbidden Knowledge</span>
                                     </div>
                                 </div>
+
+                                {/* Special Version Toggle for Variant B */}
+                                {!isSet && activeVariant === 'B' && (
+                                    <div
+                                        className={`${styles.specialToggle} ${isSpecial ? styles.specialToggleActive : ''}`}
+                                        onClick={() => setIsSpecial(!isSpecial)}
+                                    >
+                                        <div className={styles.checkbox}>
+                                            {isSpecial && <span className={styles.checkMark}>✓</span>}
+                                        </div>
+                                        <span className={styles.specialLabel}>
+                                            裸足版本 (Barefoot Version)
+                                        </span>
+                                    </div>
+                                )}
+
                                 {isSet && <p className={styles.smallNotice} style={{ marginTop: '10px', color: '#e65100' }}>* 8寸套装包含 A款 与 B款 各一张</p>}
                             </div>
 
@@ -253,7 +284,7 @@ export default function Artwork002() {
                                             <img src="/img/artworks/Variant_B.jpg" alt="Variant B" className={styles.modalImage} style={{ width: '50%' }} />
                                         </div>
                                     ) : (
-                                        <img src={variantImage} alt={variantName} className={styles.modalImage} />
+                                        <img src={currentImage} alt={displayVariantName} className={styles.modalImage} />
                                     )}
                                 </div>
                                 <div className={styles.modalInfoSection}>
@@ -265,7 +296,7 @@ export default function Artwork002() {
                                         </div>
                                         <div className={styles.modalDetailRow}>
                                             <span className={styles.modalDetailLabel}>款式:</span>
-                                            <span>{isSet ? 'Set (Variant A + B)' : `${variantName} (${activeVariant})`}</span>
+                                            <span>{displayVariantCode}</span>
                                         </div>
                                         <div className={styles.modalDetailRow}>
                                             <span className={styles.modalDetailLabel}>规格:</span>

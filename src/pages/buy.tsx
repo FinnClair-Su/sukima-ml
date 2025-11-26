@@ -55,7 +55,7 @@ export default function BuyPage() {
                         <h2 className={styles.sectionTitle}>2. 联系方式 / Contact</h2>
                         <div className={styles.contactInfo}>
                             <p>推荐发邮件给我，请优先使用 iCloud 邮箱，Gmail 作为备选（因为很多人用 QQ 邮箱无法给 Gmail 写信）。</p>
-                            <p>发送邮件或加群后，请添加群主好友私信。我会以邮件回复或私聊回复确认订单。</p>
+                            <p>发送购买邮件后，请添加社团交流群。我会以邮件回复确认订单并提供快递运输信息，若遇到问题请在群中发起私聊联系主催。</p>
 
                             <div className={styles.emailList}>
                                 <span className={`${styles.emailItem} ${styles.primary}`}>
