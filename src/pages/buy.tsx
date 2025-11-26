@@ -2,7 +2,19 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import styles from './buy.module.css';
 
+import { useLocation } from '@docusaurus/router';
+
 export default function BuyPage() {
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+
+    const product = searchParams.get('product');
+    const variant = searchParams.get('variant');
+    const spec = searchParams.get('spec');
+    const price = searchParams.get('price');
+
+    const hasPreFill = product && variant && spec;
+
     return (
         <Layout
             title="购买指引 / Purchase Guide"
@@ -32,6 +44,11 @@ export default function BuyPage() {
                                 <div className={styles.qrLabel}>微信支付 (WeChat)</div>
                             </div>
                         </div>
+                        {hasPreFill && (
+                            <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '1.2rem', fontWeight: 'bold', color: '#b71c1c' }}>
+                                待支付金额: ¥ {price}.00
+                            </div>
+                        )}
                     </div>
 
                     <div className={styles.section}>
@@ -55,14 +72,35 @@ export default function BuyPage() {
                         <h2 className={styles.sectionTitle}>3. 邮件填写模板 / Email Template</h2>
                         <div className={styles.templateBox}>
                             <span className={styles.copyHint}>请复制下方内容 / Copy below</span>
-                            <p><strong>邮件标题：</strong>【某某制品购买】你的QQ号+尺寸</p>
-                            <p><strong>邮件正文：</strong></p>
-                            <p>购买规格</p>
-                            <p>尺寸：（例如：14寸）</p>
-                            <p>样式：（需要留白 / 无边框满印）</p>
-                            <p>数量：</p>
-                            <p>收货信息：</p>
-                            <p>姓名&联系电话&收货地址</p>
+
+                            {hasPreFill ? (
+                                <>
+                                    <p><strong>邮件标题：</strong>【{product}购买】你的QQ号 + {spec}</p>
+                                    <p><strong>邮件正文：</strong></p>
+                                    <p>购买规格</p>
+                                    <p>作品：{product}</p>
+                                    <p>款式：{variant}</p>
+                                    <p>规格：{spec}</p>
+                                    <p>价格：¥ {price}</p>
+                                    <p>数量：1</p>
+                                    <p>--------------------------------</p>
+                                    <p>收货信息：</p>
+                                    <p>姓名：</p>
+                                    <p>电话：</p>
+                                    <p>地址：</p>
+                                </>
+                            ) : (
+                                <>
+                                    <p><strong>邮件标题：</strong>【某某制品购买】你的QQ号+尺寸</p>
+                                    <p><strong>邮件正文：</strong></p>
+                                    <p>购买规格</p>
+                                    <p>尺寸：（例如：14寸）</p>
+                                    <p>样式：（需要留白 / 无边框满印）</p>
+                                    <p>数量：</p>
+                                    <p>收货信息：</p>
+                                    <p>姓名&联系电话&收货地址</p>
+                                </>
+                            )}
 
                             <div className={styles.importantNote}>
                                 * 请务必在邮件附件中上传“付款记录截图”，截图需要能看清“商户单号”或“交易单号”（Order ID），以便主催核对入账。

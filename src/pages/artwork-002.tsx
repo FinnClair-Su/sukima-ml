@@ -2,26 +2,144 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import styles from './artwork-002.module.css';
 
+// 定义产品数据
+const products = [
+    {
+        id: 'core-8',
+        type: '仅画芯',
+        name: '8寸 (套装)',
+        spec: '15 × 20 cm',
+        imageSize: '15 × 20 cm',
+        priceA: 50,
+        priceB: 50,
+        note: '满印，无白边',
+        priceNote: '(2张)'
+    },
+    {
+        id: 'core-16',
+        type: '仅画芯',
+        name: '16寸',
+        spec: '30 × 40 cm',
+        imageSize: '30 × 40 cm',
+        priceA: 70,
+        priceB: 78,
+        note: '满印，无白边'
+    },
+    {
+        id: 'core-18',
+        type: '仅画芯',
+        name: '18寸',
+        spec: '35 × 45 cm',
+        imageSize: '30 × 40 cm',
+        priceA: 85,
+        priceB: 90,
+        note: '四周留白2.5cm'
+    },
+    {
+        id: 'framed-14',
+        type: '画框尺寸: 16寸',
+        name: '14寸 & 装裱',
+        spec: '',
+        imageSize: '26.7 × 35.6 cm',
+        priceA: 210,
+        priceB: 215,
+        note: '含卡纸'
+    },
+    {
+        id: 'framed-16',
+        type: '画框尺寸: 40 × 50 cm',
+        name: '16寸 & 装裱',
+        spec: '',
+        imageSize: '30 × 40 cm',
+        priceA: 280,
+        priceB: 288,
+        note: '含20寸卡纸'
+    },
+    {
+        id: 'framed-20',
+        type: '画框尺寸: 60 × 50 cm',
+        name: '20寸 & 装裱',
+        spec: '',
+        imageSize: '50 × 37.5 cm',
+        priceA: 368,
+        priceB: 378,
+        note: '含卡纸'
+    }
+];
+
 export default function Artwork002() {
+    const [activeVariant, setActiveVariant] = React.useState<'A' | 'B'>('A');
+    const [selectedProduct, setSelectedProduct] = React.useState(products[1]); // Default to 16寸
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+    const currentPrice = activeVariant === 'A' ? selectedProduct.priceA : selectedProduct.priceB;
+    const variantName = activeVariant === 'A' ? 'The Weight of Knowledge' : 'The Forbidden Knowledge';
+    const variantImage = activeVariant === 'A' ? '/img/artworks/Variant_A.jpg' : '/img/artworks/Variant_B.jpg';
+
+    const handlePurchaseClick = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    // Special logic for 8-inch set: it includes both variants
+    const isSet = selectedProduct.id === 'core-8';
+
+    // If it's the set, we display a combined name or logic
+    const displayVariantName = isSet ? 'The Weight of Knowledge + The Forbidden Knowledge' : variantName;
+    const displayVariantCode = isSet ? 'Set (A + B)' : activeVariant;
+
+    // Construct buy page URL with query parameters
+    const buyPageUrl = `/buy?product=The Bookworm&variant=${encodeURIComponent(displayVariantCode)}&spec=${encodeURIComponent(selectedProduct.name + (selectedProduct.spec ? ` (${selectedProduct.spec})` : ''))}&price=${currentPrice}`;
+
     return (
         <Layout
-            title="《The Bookworm》- Visual Mockup"
-            description="帕秋莉&小恶魔同人 - Visual Mockup"
+            title="《The Bookworm》"
+            description="帕秋莉&小恶魔同人"
         >
             <div className={styles.pageContainer}>
                 <main className={styles.mainGrid}>
 
                     {/* 左侧：艺术展示区 */}
                     <div className={styles.visualColumn}>
-                        <div className={styles.frameWrapper}>
-                            <img
-                                src="/img/artworks/new.jpg"
-                                alt="The Bookworm × The Pachouli-sama"
-                                className={styles.artworkImage}
-                            />
+                        <div className={styles.cardContainer}>
+                            {/* Card A: The Weight of Knowledge */}
+                            <div
+                                className={`${styles.artworkCard} ${activeVariant === 'A' || isSet ? styles.cardActive : styles.cardInactiveLeft}`}
+                                style={isSet ? { transform: 'translateX(-10%) scale(0.95)', zIndex: 10 } : {}}
+                                onClick={() => setActiveVariant('A')}
+                            >
+                                <div className={styles.frameWrapper}>
+                                    <img
+                                        src="/img/artworks/Variant_A.jpg"
+                                        alt="The Weight of Knowledge"
+                                        className={styles.artworkImage}
+                                    />
+                                </div>
+                                <div className={styles.cardLabel}>Variant A: The Weight of Knowledge</div>
+                            </div>
+
+                            {/* Card B: The Forbidden Knowledge */}
+                            <div
+                                className={`${styles.artworkCard} ${activeVariant === 'B' || isSet ? styles.cardActive : styles.cardInactiveRight}`}
+                                style={isSet ? { transform: 'translateX(10%) scale(0.95)', zIndex: 10 } : {}}
+                                onClick={() => setActiveVariant('B')}
+                            >
+                                <div className={styles.frameWrapper}>
+                                    <img
+                                        src="/img/artworks/Variant_B.jpg"
+                                        alt="The Forbidden Knowledge"
+                                        className={styles.artworkImage}
+                                    />
+                                </div>
+                                <div className={styles.cardLabel}>Variant B: The Forbidden Knowledge</div>
+                            </div>
                         </div>
+
                         <div className={styles.captionText}>
-                            Fig 2. The Bookworm × The Pachouli-sama (Visual Mockup), 2025.
+                            Fig 2. The Bookworm × {isSet ? 'Both Variants' : variantName}, 2025.
                         </div>
                     </div>
 
@@ -30,27 +148,145 @@ export default function Artwork002() {
                         <div className={styles.infoContent}>
 
                             <h1 className={styles.mainTitle}>
-                                The Bookworm × The Pachouli-sama<br />
+                                The Bookworm × The Pachouli<br />
                                 <span className={styles.subTitleCn}>书虫与知识的魔女</span>
                             </h1>
 
                             <div className={styles.artistMeta}>
-                                Visual Mockup · Nano Banana Pro
-                                <br />
-                                概念演示 · 正在手绘中
+                                <span className={styles.badge}>Dual Version</span>
+                                <span style={{ marginLeft: '10px' }}>Touhou Project · Giclée</span>
+                            </div>
+
+                            {/* 动态价格显示 */}
+                            <div className={styles.priceTag}>
+                                ¥ {currentPrice}.00
+                                {selectedProduct.priceNote && <span className={styles.priceNote}> {selectedProduct.priceNote}</span>}
                             </div>
 
                             <div className={styles.dividerShort}></div>
 
                             <div className={styles.quoteBlock}>
                                 <p>
-                                    下一幅会是《The Bookworm》的帕秋莉&小恶魔同人，这个是我用Nano Banana Pro跑的Visual Mockup，和我们社团合作的画师正在手绘中。帕秋莉厨也欢迎来玩
+                                    收藏级画芯（EPSON 9580 & 哈内姆勒摄影纸）<br />
+                                    博物馆级装裱（铝合金框+卡纸+影像级高透亚克力面板+铝皮复合背板）
+                                    <br /><br />
+                                    <strong>点击画作或下方选项可切换异画版本。</strong>
                                 </p>
+                            </div>
+
+                            {/* 交互式价格表 */}
+                            <div className={styles.specsContainer}>
+                                <h3 className={styles.specTitle}>1. 选择规格 (Select Size)</h3>
+                                <div className={styles.priceList}>
+                                    {products.map((item) => (
+                                        <div
+                                            key={item.id}
+                                            className={`
+                                                ${styles.priceItem} 
+                                                ${selectedProduct.id === item.id ? styles.selected : ''}
+                                            `}
+                                            onClick={() => setSelectedProduct(item)}
+                                        >
+                                            <div className={styles.itemMainInfo}>
+                                                <span className={styles.sizeLabel}>
+                                                    {item.name} {item.spec && <span style={{ fontSize: '0.8em', color: '#666' }}>({item.spec})</span>}
+                                                </span>
+                                                <span className={styles.priceValue}>
+                                                    ¥ {activeVariant === 'A' ? item.priceA : item.priceB}
+                                                </span>
+                                            </div>
+                                            <div className={styles.itemTagRow}>
+                                                <span className={styles.itemDescription}>
+                                                    {item.type} · 画面: {item.imageSize} · {item.note}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* 款式选择 */}
+                            <div className={styles.specsContainer} style={{ marginTop: '30px' }}>
+                                <h3 className={styles.specTitle}>2. 选择款式 (Select Variant)</h3>
+                                <div className={styles.variantToggleContainer}>
+                                    <div
+                                        className={`${styles.variantOption} ${activeVariant === 'A' || isSet ? styles.variantSelected : ''}`}
+                                        onClick={() => !isSet && setActiveVariant('A')}
+                                        style={isSet ? { cursor: 'default', borderColor: '#000' } : {}}
+                                    >
+                                        <span className={styles.variantLabel}>Variant A</span>
+                                        <span className={styles.variantName}>The Weight of Knowledge</span>
+                                    </div>
+                                    <div
+                                        className={`${styles.variantOption} ${activeVariant === 'B' || isSet ? styles.variantSelected : ''}`}
+                                        onClick={() => !isSet && setActiveVariant('B')}
+                                        style={isSet ? { cursor: 'default', borderColor: '#000' } : {}}
+                                    >
+                                        <span className={styles.variantLabel}>Variant B</span>
+                                        <span className={styles.variantName}>The Forbidden Knowledge</span>
+                                    </div>
+                                </div>
+                                {isSet && <p className={styles.smallNotice} style={{ marginTop: '10px', color: '#e65100' }}>* 8寸套装包含 A款 与 B款 各一张</p>}
+                            </div>
+
+                            <div style={{ marginTop: '40px' }}>
+                                <button className={styles.purchaseBtn} onClick={handlePurchaseClick}>
+                                    学习知识 / ACQUIRE KNOWLEDGE
+                                </button>
+                                <p className={styles.smallNotice}>* 点击按钮扫码，备注款式与规格</p>
                             </div>
 
                         </div>
                     </div>
                 </main>
+
+                {/* Purchase Modal */}
+                {isModalOpen && (
+                    <div className={styles.modalOverlay} onClick={handleCloseModal}>
+                        <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                            <button className={styles.modalCloseBtn} onClick={handleCloseModal}>×</button>
+                            <div className={styles.modalGrid}>
+                                <div className={styles.modalImageSection}>
+                                    {isSet ? (
+                                        <div style={{ display: 'flex', gap: '10px' }}>
+                                            <img src="/img/artworks/Variant_A.jpg" alt="Variant A" className={styles.modalImage} style={{ width: '50%' }} />
+                                            <img src="/img/artworks/Variant_B.jpg" alt="Variant B" className={styles.modalImage} style={{ width: '50%' }} />
+                                        </div>
+                                    ) : (
+                                        <img src={variantImage} alt={variantName} className={styles.modalImage} />
+                                    )}
+                                </div>
+                                <div className={styles.modalInfoSection}>
+                                    <div>
+                                        <h2 className={styles.modalTitle}>确认选购信息</h2>
+                                        <div className={styles.modalDetailRow}>
+                                            <span className={styles.modalDetailLabel}>作品:</span>
+                                            <span>The Bookworm</span>
+                                        </div>
+                                        <div className={styles.modalDetailRow}>
+                                            <span className={styles.modalDetailLabel}>款式:</span>
+                                            <span>{isSet ? 'Set (Variant A + B)' : `${variantName} (${activeVariant})`}</span>
+                                        </div>
+                                        <div className={styles.modalDetailRow}>
+                                            <span className={styles.modalDetailLabel}>规格:</span>
+                                            <span>{selectedProduct.name}</span>
+                                        </div>
+                                        <div className={styles.modalDetailRow}>
+                                            <span className={styles.modalDetailLabel}>尺寸:</span>
+                                            <span>{selectedProduct.spec || selectedProduct.imageSize}</span>
+                                        </div>
+                                        <div className={styles.modalPrice}>
+                                            ¥ {currentPrice}.00
+                                        </div>
+                                    </div>
+                                    <a href={buyPageUrl} className={styles.confirmPurchaseBtn}>
+                                        前往购买页面 / Proceed to Buy
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </Layout>
     );

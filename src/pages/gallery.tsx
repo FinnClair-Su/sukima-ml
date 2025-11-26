@@ -25,9 +25,9 @@ const artworks: ArtworkCard[] = [
     id: '002',
     title: 'The Bookworm × Pachouli',
     subtitle: 'Visual Mockup',
-    imagePath: '/img/artworks/new.jpg',
+    imagePath: '/img/artworks/Variant_B.jpg',
     link: '/artwork-002',
-    badge: 'MOCKUP',
+    // badge: 'MOCKUP',
   },
   // 可以在这里添加更多作品
 ];
