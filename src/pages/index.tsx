@@ -6,7 +6,6 @@ import Layout from '@theme/Layout';
 import React, { useState, useEffect } from 'react';
 import GalleryCarousel, { type ArtworkItem } from '../components/GalleryCarousel';
 import GapRevealContainer from '../components/GapRevealContainer';
-import LiquidCard from '../components/LiquidCard';
 
 import styles from './index.module.css';
 
@@ -59,54 +58,30 @@ const placeholderArtworks: ArtworkItem[] = [
 // 占位数据：导航按钮
 interface NavigationItem {
   title: string;
-  description: ReactNode;
+  description: string;
   link: string;
 }
 
 const navigationItems: NavigationItem[] = [
   {
-    title: '作品集',
+    title: 'GALLERY',
     link: '/gallery',
-    description: (
-      <>
-        <p>浏览我们的名画同人创作</p>
-        <p>探索经典艺术与东方Project的奇妙结合</p>
-        <p>每一幅作品都是对经典的致敬与创新</p>
-      </>
-    ),
+    description: 'Browse our collection of Touhou Project × Classic Art mashups.',
   },
   {
-    title: '关于我们',
+    title: 'ABOUT',
     link: '/about',
-    description: (
-      <>
-        <p>了解隙间月影社团</p>
-        <p>我们的创作理念与艺术追求</p>
-        <p>一群热爱艺术与东方的创作者</p>
-      </>
-    ),
+    description: 'Learn about the Sukima Moonlight circle and our philosophy.',
   },
   {
-    title: '社团动态',
+    title: 'BLOG',
     link: '/blog',
-    description: (
-      <>
-        <p>最新活动和创作进展</p>
-        <p>分享创作过程与心得体会</p>
-        <p>记录我们的艺术探索之旅</p>
-      </>
-    ),
+    description: 'Read about our creative process, updates, and thoughts.',
   },
   {
-    title: '创意交流',
+    title: 'CONTACT',
     link: '/contact',
-    description: (
-      <>
-        <p>与我们取得联系</p>
-        <p>合作、交流、或只是打个招呼</p>
-        <p>期待与你的相遇</p>
-      </>
-    ),
+    description: 'Get in touch for collaborations, inquiries, or just to say hi.',
   },
 ];
 
@@ -265,17 +240,15 @@ function ASCIIDemo() {
 }
 
 // 模块介绍砖块组件
-function ModuleBlock({ title, content, link, className = '' }) {
+function ModuleBlock({ title, description, link, index }) {
+  const formattedIndex = (index + 1).toString().padStart(2, '0');
+
   return (
-    <Link to={link} className={`${styles.moduleBlock} ${className}`}>
-      <LiquidCard className={styles.moduleLiquidCard}>
-        <div className={styles.moduleContent}>
-          <h3 className={styles.moduleTitle}>{title}</h3>
-          <div className={styles.moduleText}>
-            {content}
-          </div>
-        </div>
-      </LiquidCard>
+    <Link to={link} className={styles.moduleBlock}>
+      <div className={styles.moduleNumber}>{formattedIndex}</div>
+      <h3 className={styles.moduleTitle}>{title}</h3>
+      <div className={styles.moduleDesc}>{description}</div>
+      <div className={styles.arrowIcon}>→</div>
     </Link>
   );
 }
@@ -290,66 +263,72 @@ export default function Home() {
       description="Science of Learning and Cognition；The Art of LLM and Tech Tools">
 
       <main className={styles.mainContainer}>
-        {/* 中央内容区域 */}
-        <div className={styles.centerContent}>
-          {/* 头像区域 */}
-          <Link to="/about">
-            <div className={styles.avatarSection}>
+
+        {/* 1. Hero Section: Split Screen */}
+        <div className={styles.heroSection}>
+          <div className={styles.heroLeft}>
+            <div className={styles.avatarWrapper}>
               <img
                 src="/img/authors/xinxian.jpg"
                 alt="苏心贤"
                 className={styles.avatar}
               />
-              <div className={styles.avatarBorder}></div>
             </div>
-          </Link>
+            <img
+              src="/img/sukima-ml.svg"
+              alt="Gap of the Moon"
+              className={styles.heroLogo}
+            />
+            <div className={styles.heroSubtitle}>
+              {siteConfig.tagline}
+            </div>
+          </div>
 
-          {/* Tagline */}
-          <p className={styles.tagline}>{siteConfig.tagline}</p>
-
-          {/* ASCII码动态演示区域 - Load Animation */}
-          <div className={styles.signatureSection}>
+          <div className={styles.heroRight}>
             <GapRevealContainer mode="load" defaultOpen={false}>
               <ASCIIDemo />
             </GapRevealContainer>
           </div>
-
-          {/* Gallery Carousel - Scroll Animation */}
-          <div className={styles.gallerySection}>
-            <GapRevealContainer mode="scroll">
-              <GalleryCarousel artworks={placeholderArtworks} />
-            </GapRevealContainer>
-          </div>
-
-          {/* 导航按钮区域 - Hover Animation */}
-          <div className={styles.modulesSection}>
-            {navigationItems.map((item, index) => (
-              <ModuleBlock
-                key={item.title}
-                title={item.title}
-                link={item.link}
-                content={item.description}
-                className={index === navigationItems.length - 1 ? styles.moduleBlockLast : ''}
-              />
-            ))}
-          </div>
         </div>
 
-        {/* 底部信息 */}
+        {/* 2. Gallery Section: Full Width */}
+        <div className={styles.gallerySection}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Featured Exhibitions</h2>
+            <div className={styles.sectionSubtitle}>Touhou Project × Classic Art</div>
+          </div>
+          <GapRevealContainer mode="scroll">
+            <GalleryCarousel artworks={placeholderArtworks} />
+          </GapRevealContainer>
+        </div>
+
+        {/* 3. Navigation Modules: Grid */}
+        <div className={styles.modulesSection}>
+          {navigationItems.map((item, index) => (
+            <ModuleBlock
+              key={item.title}
+              index={index}
+              title={item.title}
+              link={item.link}
+              description={item.description}
+            />
+          ))}
+        </div>
+
+        {/* 4. Footer */}
         <footer className={styles.homeFooter}>
           <div className={styles.footerContent}>
             <p className={styles.footerText}>
               🌟 隙间月影 Sukima Moonlight - 为东方带来更有文化底蕴的制品
             </p>
             <div className={styles.socialLinks}>
-              <Link to="https://fcsu.dev">Leader's Personal Site</Link>
-              <span>·</span>
+              <Link to="https://fcsu.dev">Leader's Site</Link>
               <Link to="https://github.com/FinnClair-Su">GitHub</Link>
-              <span>·</span>
               <Link to="/about">About</Link>
             </div>
           </div>
         </footer>
+
       </main>
     </Layout>
   );
