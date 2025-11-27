@@ -70,10 +70,13 @@ export default function DigitalDownload002() {
                                 如果你喜欢它们，希望你能将它们保存下来，作为壁纸、收藏，或是仅仅在某个时刻打开欣赏。
                             </p>
                             <p>
-                                如果条件允许，也希望你能通过下方的“君子协定”支持社团的运营。这笔资金将全部用于填补美术资源的成本，以及支持后续更多精彩作品的诞生。
+                                如果条件允许，也希望你能通过下方的“奉纳幻想”支持社团的运营。这笔资金将全部用于填补美术资源的成本，以及支持后续更多精彩作品的诞生。
                             </p>
                             <p>
                                 愿幻想乡的月光，常伴你左右。
+                            </p>
+                            <p>
+                                感谢各位的支持，让更多的世界名画能够浸入幻想的染缸，又再次穿越幻想与现实的界线，来到你我身边。
                             </p>
                         </div>
                         <div className={styles.signature}>
@@ -84,7 +87,7 @@ export default function DigitalDownload002() {
                     {/* Payment Section */}
                     <section className={styles.paymentSection}>
                         <div className={styles.gentlemanAgreement}>
-                            君子协定 / Gentleman's Agreement
+                            奉纳幻想 / Offering to Phantasm
                         </div>
 
                         <div className={styles.priceTag}>

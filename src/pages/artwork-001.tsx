@@ -6,6 +6,15 @@ import styles from './artwork-001.module.css';
 // 定义产品数据
 const products = [
   {
+    id: 'digital-copy',
+    size: 'Digital Original (JPG)',
+    price: 6.48,
+    tag: '数字典藏',
+    description: '含1张高清原图',
+    isRecommended: false,
+    isDigital: true
+  },
+  {
     id: '14inch',
     size: '[14寸] 30.5 x 35.6 cm',
     price: 65,
@@ -56,8 +65,8 @@ const products = [
 ];
 
 export default function Artwork001() {
-  // 默认选中第一个（14寸推荐款）
-  const [selectedItem, setSelectedItem] = useState(products[0]);
+  // 默认选中第二个（14寸推荐款），因为第一个现在是数字版
+  const [selectedItem, setSelectedItem] = useState(products[1]);
 
   return (
     <Layout
@@ -98,21 +107,10 @@ export default function Artwork001() {
 
               {/* 动态价格显示 */}
               <div className={styles.priceTag}>
-                ¥ {selectedItem.price}.00 <span className={styles.priceNote}>(Donation)</span>
+                ¥ {Number.isInteger(selectedItem.price) ? `${selectedItem.price}.00` : selectedItem.price} <span className={styles.priceNote}>(Donation)</span>
               </div>
 
               <div className={styles.dividerShort}></div>
-
-              {/* 动态按钮文案 */}
-              <Link
-                to="/buy"
-                className={styles.purchaseBtn}
-                style={{ display: 'block', textDecoration: 'none' }}
-              >
-                奉纳信仰 (V我{selectedItem.price}) / OFFER FAITH
-              </Link>
-
-              <p className={styles.smallNotice}>* 点击按钮扫码，助紫妈重返幻想乡</p>
 
               <div className={styles.quoteBlock}>
                 <p>
@@ -164,6 +162,20 @@ export default function Artwork001() {
                 <p className={styles.costNote}>
                   * 售价仅含极低的美术资源回收成本。
                   <br />* 全尺寸可选“无边框满印”或“加白边”。
+                </p>
+              </div>
+
+              <div style={{ marginTop: '40px' }}>
+                <Link
+                  to={selectedItem.isDigital ? '/digital-001' : '/buy'}
+                  className={styles.purchaseBtn}
+                  style={{ display: 'block', textDecoration: 'none' }}
+                >
+                  {selectedItem.isDigital ? '获取数字版 / GET DIGITAL COPY' : `奉纳信仰 (V我${selectedItem.price}) / OFFER FAITH`}
+                </Link>
+
+                <p className={styles.smallNotice}>
+                  {selectedItem.isDigital ? '* 数字典藏包含高清原图' : '* 点击按钮扫码，助紫妈重返幻想乡'}
                 </p>
               </div>
 
