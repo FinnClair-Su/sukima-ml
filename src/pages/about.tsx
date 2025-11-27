@@ -22,6 +22,11 @@ export default function About() {
                         <div className={styles.captionText}>
                             Fig 1. The Creator, 2025.
                         </div>
+                        <div className={styles.gicleeLinkWrapper}>
+                            <a href="/giclee" className={styles.gicleeLink}>
+                                我们选择的工艺——Giclée
+                            </a>
+                        </div>
                     </div>
 
                     {/* Right Column: Content */}

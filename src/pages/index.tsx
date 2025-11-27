@@ -267,12 +267,11 @@ export default function Home() {
         {/* 1. Hero Section: Split Screen */}
         <div className={styles.heroSection}>
           <div className={styles.heroLeft}>
-            <div className={styles.avatarWrapper}>
-              <img
-                src="/img/authors/xinxian.jpg"
-                alt="苏心贤"
-                className={styles.avatar}
-              />
+            <div className={styles.gicleeEntryWrapper}>
+              <Link to="/giclee" className={styles.gicleeEntryBtn}>
+                <span className={styles.gicleeBtnText}>我们选择的工艺<br />Giclée</span>
+                <span className={styles.gicleeBtnArrow}>→</span>
+              </Link>
             </div>
             <img
               src="/img/sukima-ml.svg"

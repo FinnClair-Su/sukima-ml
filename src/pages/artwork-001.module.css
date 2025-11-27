@@ -305,3 +305,32 @@
     font-size: 0.9rem;
   }
 }
+
+.learnMoreLink {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #b71c1c;
+  text-decoration: none;
+  border: 1px solid #b71c1c;
+  padding: 10px 20px;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+.learnMoreLink:hover {
+  background-color: #b71c1c;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Dark Mode Overrides */
+[data-theme='dark'] .learnMoreLink {
+  color: #ff8a80;
+  border-color: #ff8a80;
+}
+
+[data-theme='dark'] .learnMoreLink:hover {
+  background-color: #ff8a80;
+  color: #000;
+}

@@ -43,11 +43,44 @@
 }
 
 .captionText {
-    margin-top: 20px;
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Courier New", monospace;
     font-size: 0.8rem;
     color: #888;
-    opacity: 0.7;
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+
+.gicleeLinkWrapper {
+    margin-top: 30px;
+}
+
+.gicleeLink {
+    display: inline-block;
+    padding: 16px 32px;
+    border: 1px solid var(--ifm-color-primary);
+    color: var(--ifm-color-primary);
+    font-family: "Songti SC", serif;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.gicleeLink:hover {
+    background: var(--ifm-color-primary);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Dark Mode Overrides */
+[data-theme='dark'] .gicleeLink {
+    border-color: #e0e0e0;
+    color: #e0e0e0;
+}
+
+[data-theme='dark'] .gicleeLink:hover {
+    background: #e0e0e0;
+    color: #000;
 }
 
 .infoColumn {

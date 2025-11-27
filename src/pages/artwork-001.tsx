@@ -127,6 +127,8 @@ export default function Artwork001() {
                 <p>
                   载体升级为<strong>【硫化钡 315g (Baryta)】</strong>。
                   哑光、厚重，完美呈现高反差的肖像与隙间之黑。
+                  <br />
+                  <Link to="/giclee" className={styles.learnMoreLink}>点击了解更多工艺细节 →</Link>
                 </p>
               </div>
 

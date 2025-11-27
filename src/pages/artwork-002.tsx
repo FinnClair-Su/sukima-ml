@@ -184,6 +184,8 @@ export default function Artwork002() {
                                 <p>
                                     收藏级画芯（EPSON 9580 & 哈内姆勒摄影纸）<br />
                                     博物馆级装裱（铝合金框+卡纸+影像级高透亚克力面板+铝皮复合背板）
+                                    <br />
+                                    <a href="/giclee" className={styles.learnMoreLink}>点击了解更多工艺细节 →</a>
                                     <br /><br />
                                     画师主页：<a href="https://space.bilibili.com/520458415" target="_blank" rel="noopener noreferrer" style={{ color: '#6a1b9a', textDecoration: 'underline' }}>Bilibili @青未Q</a>
                                     <br /><br />
