@@ -5,6 +5,17 @@ import styles from './artwork-002.module.css';
 // 定义产品数据
 const products = [
     {
+        id: 'digital-set',
+        type: '数字典藏',
+        name: 'Digital Set (3 PNGs)',
+        spec: '4K+ Resolution',
+        imageSize: 'Original Source',
+        priceA: 6.48,
+        priceB: 6.48,
+        note: '含3张高清原图',
+        isDigital: true
+    },
+    {
         id: 'core-8',
         type: '仅画芯',
         name: '8寸 (套装)',
@@ -69,14 +80,20 @@ const products = [
 
 export default function Artwork002() {
     const [activeVariant, setActiveVariant] = React.useState<'A' | 'B'>('A');
-    const [selectedProduct, setSelectedProduct] = React.useState(products[1]); // Default to 16寸
+    const [selectedProduct, setSelectedProduct] = React.useState(products[2]); // Default to 16寸 (index 2 now)
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+    const isDigital = selectedProduct.isDigital;
 
     const currentPrice = activeVariant === 'A' ? selectedProduct.priceA : selectedProduct.priceB;
     const variantName = activeVariant === 'A' ? 'The Weight of Knowledge' : 'The Forbidden Knowledge';
     const variantImage = activeVariant === 'A' ? '/img/artworks/Variant_A.jpg' : '/img/artworks/Variant_B.jpg';
 
     const handlePurchaseClick = () => {
+        if (isDigital) {
+            window.location.href = '/digital-002';
+            return;
+        }
         setIsModalOpen(true);
     };
 
@@ -86,8 +103,8 @@ export default function Artwork002() {
 
     const [isSpecial, setIsSpecial] = React.useState(false);
 
-    // Special logic for 8-inch set: it includes both variants
-    const isSet = selectedProduct.id === 'core-8';
+    // Special logic for 8-inch set or Digital Set: it includes both variants
+    const isSet = selectedProduct.id === 'core-8' || isDigital;
 
     // Determine the effective variant B name and image based on special state
     const variantBName = isSpecial ? 'The Forbidden Knowledge (Special)' : 'The Forbidden Knowledge';
@@ -97,11 +114,11 @@ export default function Artwork002() {
     // Note: Set currently assumes standard B. If special is allowed in set, logic needs adjustment.
     // Assuming Set = Standard A + Standard B for now unless requested otherwise.
     const displayVariantName = isSet
-        ? (isSpecial ? 'The Weight of Knowledge + The Forbidden Knowledge (Special)' : 'The Weight of Knowledge + The Forbidden Knowledge')
+        ? (isDigital ? 'All Variants (A + B + Special)' : (isSpecial ? 'The Weight of Knowledge + The Forbidden Knowledge (Special)' : 'The Weight of Knowledge + The Forbidden Knowledge'))
         : (activeVariant === 'A' ? 'The Weight of Knowledge' : variantBName);
 
     const displayVariantCode = isSet
-        ? (isSpecial ? 'Set (A + Special)' : 'Set (A + B)')
+        ? (isDigital ? 'Digital Collection' : (isSpecial ? 'Set (A + Special)' : 'Set (A + B)'))
         : (activeVariant === 'A' ? 'A' : (isSpecial ? 'Special' : 'B'));
 
     const currentImage = activeVariant === 'A' ? '/img/artworks/Variant_A.jpg' : variantBImage;
@@ -261,12 +278,13 @@ export default function Artwork002() {
                                     </div>
                                 )}
 
-                                {isSet && <p className={styles.smallNotice} style={{ marginTop: '10px', color: '#e65100' }}>* 8寸套装包含 A款 与 B款 各一张</p>}
+                                {isSet && !isDigital && <p className={styles.smallNotice} style={{ marginTop: '10px', color: '#e65100' }}>* 8寸套装包含 A款 与 B款 各一张</p>}
+                                {isDigital && <p className={styles.smallNotice} style={{ marginTop: '10px', color: '#6a1b9a' }}>* 数字典藏包含所有款式的高清原图 (A + B + Special)</p>}
                             </div>
 
                             <div style={{ marginTop: '40px' }}>
                                 <button className={styles.purchaseBtn} onClick={handlePurchaseClick}>
-                                    学习知识 / ACQUIRE KNOWLEDGE
+                                    {isDigital ? '获取数字版 / GET DIGITAL COPY' : '学习知识 / ACQUIRE KNOWLEDGE'}
                                 </button>
                                 <p className={styles.smallNotice}>* 点击按钮扫码，备注款式与规格</p>
                             </div>
