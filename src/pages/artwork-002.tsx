@@ -10,8 +10,8 @@ const products = [
         name: '8寸 (套装)',
         spec: '15 × 20 cm',
         imageSize: '15 × 20 cm',
-        priceA: 50,
-        priceB: 50,
+        priceA: 45,
+        priceB: 45,
         note: '满印，无白边',
         priceNote: '(2张)'
     },
