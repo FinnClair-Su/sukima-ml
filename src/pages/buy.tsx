@@ -81,7 +81,7 @@ export default function BuyPage() {
                                     <p>作品：{product}</p>
                                     <p>款式：{variant}</p>
                                     <p>规格：{spec}</p>
-                                    <p>价格：¥ {price}</p>
+
                                     <p>数量：1</p>
                                     <p>--------------------------------</p>
                                     <p>收货信息：</p>

@@ -40,7 +40,7 @@ const products = [
         type: '画框尺寸: 16寸',
         name: '14寸 & 装裱',
         spec: '',
-        imageSize: '26.7 × 35.6 cm',
+        imageSize: '25 × 33.4 cm',
         priceA: 210,
         priceB: 215,
         note: '含卡纸'
@@ -97,12 +97,12 @@ export default function Artwork002() {
     // Note: Set currently assumes standard B. If special is allowed in set, logic needs adjustment.
     // Assuming Set = Standard A + Standard B for now unless requested otherwise.
     const displayVariantName = isSet
-        ? 'The Weight of Knowledge + The Forbidden Knowledge'
+        ? (isSpecial ? 'The Weight of Knowledge + The Forbidden Knowledge (Special)' : 'The Weight of Knowledge + The Forbidden Knowledge')
         : (activeVariant === 'A' ? 'The Weight of Knowledge' : variantBName);
 
     const displayVariantCode = isSet
-        ? 'Set (A + B)'
-        : (activeVariant === 'A' ? 'A' : (isSpecial ? 'B (Special)' : 'B'));
+        ? (isSpecial ? 'Set (A + Special)' : 'Set (A + B)')
+        : (activeVariant === 'A' ? 'A' : (isSpecial ? 'Special' : 'B'));
 
     const currentImage = activeVariant === 'A' ? '/img/artworks/Variant_A.jpg' : variantBImage;
 
@@ -245,7 +245,7 @@ export default function Artwork002() {
                                 </div>
 
                                 {/* Special Version Toggle for Variant B */}
-                                {!isSet && activeVariant === 'B' && (
+                                {((!isSet && activeVariant === 'B') || isSet) && (
                                     <div
                                         className={`${styles.specialToggle} ${isSpecial ? styles.specialToggleActive : ''}`}
                                         onClick={() => setIsSpecial(!isSpecial)}
@@ -283,7 +283,7 @@ export default function Artwork002() {
                                     {isSet ? (
                                         <div style={{ display: 'flex', gap: '10px' }}>
                                             <img src="/img/artworks/Variant_A.jpg" alt="Variant A" className={styles.modalImage} style={{ width: '50%' }} />
-                                            <img src="/img/artworks/Variant_B.jpg" alt="Variant B" className={styles.modalImage} style={{ width: '50%' }} />
+                                            <img src={variantBImage} alt="Variant B" className={styles.modalImage} style={{ width: '50%' }} />
                                         </div>
                                     ) : (
                                         <img src={currentImage} alt={displayVariantName} className={styles.modalImage} />
