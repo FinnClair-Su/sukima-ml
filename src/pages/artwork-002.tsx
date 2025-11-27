@@ -191,7 +191,7 @@ export default function Artwork002() {
 
                             {/* 动态价格显示 */}
                             <div className={styles.priceTag}>
-                                ¥ {currentPrice}.00
+                                ¥ {Number.isInteger(currentPrice) ? `${currentPrice}.00` : currentPrice}
                                 {selectedProduct.priceNote && <span className={styles.priceNote}> {selectedProduct.priceNote}</span>}
                             </div>
 
@@ -329,7 +329,7 @@ export default function Artwork002() {
                                             <span>{selectedProduct.spec || selectedProduct.imageSize}</span>
                                         </div>
                                         <div className={styles.modalPrice}>
-                                            ¥ {currentPrice}.00
+                                            ¥ {Number.isInteger(currentPrice) ? `${currentPrice}.00` : currentPrice}
                                         </div>
                                     </div>
                                     <a href={buyPageUrl} className={styles.confirmPurchaseBtn}>
