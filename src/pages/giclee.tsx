@@ -121,7 +121,7 @@ export default function GicleePage() {
 
                         <p className={styles.textBlock}>为了让大家更直观地感受差异，我们拍摄了实际成品的细节图：</p>
                         <div className={styles.photoGrid}>
-                            <img src="/img/IMG_9651.jpg" alt="Detail Shot 1" className={styles.gridImage} onClick={() => openImage("/img/IMG_9651.jpg")} />
+                            <img src="/img/BaS-huaxin.PNG" alt="Detail Shot 1" className={styles.gridImage} onClick={() => openImage("/img/BaS-huaxin.PNG")} />
                             <img src="/img/IMG_9650.jpg" alt="Detail Shot 2" className={styles.gridImage} onClick={() => openImage("/img/IMG_9650.jpg")} />
                             <img src="/img/IMG_9653.jpg" alt="Detail Shot 3" className={styles.gridImage} onClick={() => openImage("/img/IMG_9653.jpg")} />
                         </div>
