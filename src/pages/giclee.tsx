@@ -123,7 +123,7 @@ export default function GicleePage() {
                         <div className={styles.photoGrid}>
                             <img src="/img/BaS-huaxin.PNG" alt="Detail Shot 1" className={styles.gridImage} onClick={() => openImage("/img/BaS-huaxin.PNG")} />
                             <img src="/img/IMG_9650.jpg" alt="Detail Shot 2" className={styles.gridImage} onClick={() => openImage("/img/IMG_9650.jpg")} />
-                            <img src="/img/IMG_9653.jpg" alt="Detail Shot 3" className={styles.gridImage} onClick={() => openImage("/img/IMG_9653.jpg")} />
+
                         </div>
                     </section>
 
