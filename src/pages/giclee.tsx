@@ -122,7 +122,8 @@ export default function GicleePage() {
                         <p className={styles.textBlock}>为了让大家更直观地感受差异，我们拍摄了实际成品的细节图：</p>
                         <div className={styles.photoGrid}>
                             <img src="/img/BaS-huaxin.PNG" alt="Detail Shot 1" className={styles.gridImage} onClick={() => openImage("/img/BaS-huaxin.PNG")} />
-                            <img src="/img/IMG_9650.jpg" alt="Detail Shot 2" className={styles.gridImage} onClick={() => openImage("/img/IMG_9650.jpg")} />
+                            <img src="/img/IMG_0199.jpg" alt="Detail Shot 2" className={styles.gridImage} onClick={() => openImage("/img/IMG_0199.jpg")} />
+                            <img src="/img/IMG_0202.jpg" alt="Detail Shot 3" className={styles.gridImage} onClick={() => openImage("/img/IMG_0202.jpg")} />
 
                         </div>
                     </section>
@@ -150,9 +151,9 @@ export default function GicleePage() {
 
                         <div className={styles.photoGrid}>
                             <img src="/img/F253B61EBC19D9DF60101EEC6BAF2242.PNG" alt="Framing Detail 1" className={styles.gridImage} onClick={() => openImage("/img/F253B61EBC19D9DF60101EEC6BAF2242.PNG")} />
-                            <img src="/img/IMG_9171.jpg" alt="Framing Detail 2" className={styles.gridImage} onClick={() => openImage("/img/IMG_9171.jpg")} />
-                            <img src="/img/IMG_9172.jpg" alt="Framing Detail 3" className={styles.gridImage} onClick={() => openImage("/img/IMG_9172.jpg")} />
-                            <img src="/img/IMG_9173.jpg" alt="Framing Detail 4" className={styles.gridImage} onClick={() => openImage("/img/IMG_9173.jpg")} />
+                            <img src="/img/IMG_0195.jpg" alt="Framing Detail 2" className={styles.gridImage} onClick={() => openImage("/img/IMG_0195.jpg")} />
+                            <img src="/img/IMG_0196.jpg" alt="Framing Detail 3" className={styles.gridImage} onClick={() => openImage("/img/IMG_0196.jpg")} />
+                            <img src="/img/IMG_0197.jpg" alt="Framing Detail 4" className={styles.gridImage} onClick={() => openImage("/img/IMG_0197.jpg")} />
                         </div>
                     </section>
 
