@@ -310,48 +310,49 @@ a.imageContainer:hover {
 }
 
 /* Dark mode styles */
+/* Dark mode styles */
 [data-theme='dark'] .comparisonCard {
-  background: #334155;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1e1e1e;
+  border: 1px solid #333;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme='dark'] .imageContainer {
-  background: #1e293b;
+  background: #121212;
 }
 
 [data-theme='dark'] .carouselButton {
-  background: rgba(51, 65, 85, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(30, 30, 30, 0.9);
+  border: 1px solid #333;
   color: #fff;
 }
 
 [data-theme='dark'] .carouselButton:hover:not(:disabled) {
-  background: #334155;
+  background: #333;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme='dark'] .labelTag {
-  background: rgba(79, 195, 247, 0.2);
-  color: #4fc3f7;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
 }
 
 [data-theme='dark'] .imageName {
-  color: var(--ifm-color-emphasis-100);
+  color: #e0e0e0;
 }
 
 [data-theme='dark'] .arrow {
-  color: #4fc3f7;
+  color: #e0e0e0;
 }
 
 [data-theme='dark'] .artworkInfo {
-  border-top-color: rgba(255, 255, 255, 0.1);
+  border-top-color: #333;
 }
 
 [data-theme='dark'] .artworkTitle {
-  color: var(--ifm-color-emphasis-100);
+  color: #fff;
 }
 
 [data-theme='dark'] .artworkDescription {
-  color: var(--ifm-color-emphasis-300);
+  color: #aaa;
 }

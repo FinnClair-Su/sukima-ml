@@ -5,7 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React, { useState, useEffect } from 'react';
 import GalleryCarousel, { type ArtworkItem } from '../components/GalleryCarousel';
-import GapRevealContainer from '../components/GapRevealContainer';
+
 
 import styles from './index.module.css';
 
@@ -215,24 +215,17 @@ function ASCIIDemo() {
       </div>
 
       <div className={styles.asciiComplete}>
-        <div className={styles.messageStack}>
-          {/* Invisible placeholder to reserve width */}
-          <div className={styles.messagePlaceholder}>
-            据考究，紫的真实年龄不小于◾️◾️◾️◾️数据删除
-          </div>
-
-          {/* Actual content */}
-          <div className={styles.messageContent}>
-            {!isComplete ? (
-              <div className={styles.interimMessage}>
-                Constructing understanding...
-              </div>
-            ) : (
-              <div className={styles.completeMessage}>
-                据考究，紫的真实年龄不小于◾️◾️◾️◾️数据删除
-              </div>
-            )}
-          </div>
+        {/* Actual content */}
+        <div className={styles.messageContent}>
+          {!isComplete ? (
+            <div className={styles.interimMessage}>
+              Constructing understanding...
+            </div>
+          ) : (
+            <div className={styles.completeMessage}>
+              据考究，紫的真实年龄不小于◾️◾️◾️◾️数据删除
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -267,26 +260,25 @@ export default function Home() {
         {/* 1. Hero Section: Split Screen */}
         <div className={styles.heroSection}>
           <div className={styles.heroLeft}>
-            <div className={styles.gicleeEntryWrapper}>
-              <Link to="/giclee" className={styles.gicleeEntryBtn}>
-                <span className={styles.gicleeBtnText}>我们选择的工艺<br />Giclée</span>
-                <span className={styles.gicleeBtnArrow}>→</span>
-              </Link>
-            </div>
-            <img
-              src="/img/sukima-ml.svg"
-              alt="Gap of the Moon"
-              className={styles.heroLogo}
-            />
+            <Link to="/giclee" className={styles.heroLogoWrapper}>
+              <img
+                src="/img/sukima-ml.svg"
+                alt="Gap of the Moon"
+                className={styles.heroLogo}
+              />
+              <div className={styles.heroLogoCaption}>
+                我们选择的工艺——艺术微喷
+              </div>
+            </Link>
             <div className={styles.heroSubtitle}>
               {siteConfig.tagline}
             </div>
           </div>
 
           <div className={styles.heroRight}>
-            <GapRevealContainer mode="load" defaultOpen={false}>
+            <div className={styles.asciiContainer}>
               <ASCIIDemo />
-            </GapRevealContainer>
+            </div>
           </div>
         </div>
 
@@ -296,9 +288,9 @@ export default function Home() {
             <h2 className={styles.sectionTitle}>Featured Exhibitions</h2>
             <div className={styles.sectionSubtitle}>Touhou Project × Classic Art</div>
           </div>
-          <GapRevealContainer mode="scroll">
+          <div className={styles.galleryContainer}>
             <GalleryCarousel artworks={placeholderArtworks} />
-          </GapRevealContainer>
+          </div>
         </div>
 
         {/* 3. Navigation Modules: Grid */}
