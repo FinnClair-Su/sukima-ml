@@ -29,6 +29,14 @@ const artworks: ArtworkCard[] = [
     link: '/artwork-002',
     // badge: 'MOCKUP',
   },
+  {
+    id: '003',
+    title: '蓬莱宫娥',
+    subtitle: '辉夜&永远亭：我不是嫦娥',
+    imagePath: '/img/artworks/artwork-003.jpg',
+    link: '/artwork-003',
+    badge: 'NEW',
+  },
   // 可以在这里添加更多作品
 ];
 

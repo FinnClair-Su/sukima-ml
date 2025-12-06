@@ -34,6 +34,17 @@ const placeholderArtworks: ArtworkItem[] = [
     // badge: 'Visual Mockup',
   },
   {
+    id: 'artwork-4',
+    title: 'Las Meninas × 蓬莱宫娥',
+    description: '宫廷画作的幻想乡演绎',
+    originalPainting: 'Las Meninas',
+    touhouCharacter: '蓬莱宫娥',
+    originalImagePath: '/img/artworks/宫娥to辉夜&永远亭：我不是嫦娥.jpg',
+    imagePath: '/img/artworks/artwork-003.jpg',
+    imageAlt: '蓬莱宫娥',
+    link: '/artwork-003',
+  },
+  {
     id: 'artwork-2',
     title: '神奈川冲浪里 × baka的完美冻结',
     description: '浮世绘与幻想乡的碰撞',
@@ -42,16 +53,6 @@ const placeholderArtworks: ArtworkItem[] = [
     originalImagePath: '/img/artworks/神奈川冲浪里to baka的完美冻结.jpg',
     imagePath: '/img/artworks/placeholder-in-progress.svg',
     imageAlt: '神奈川冲浪里 × baka的完美冻结',
-  },
-  {
-    id: 'artwork-4',
-    title: '宫娥 × 辉夜&永远亭：我不是嫦娥',
-    description: '宫廷画作的幻想乡演绎',
-    originalPainting: '宫娥',
-    touhouCharacter: '辉夜&永远亭：我不是嫦娥',
-    originalImagePath: '/img/artworks/宫娥to辉夜&永远亭：我不是嫦娥.jpg',
-    imagePath: '/img/artworks/placeholder-in-progress.svg',
-    imageAlt: '宫娥 × 辉夜&永远亭：我不是嫦娥',
   },
 ];
 
@@ -92,7 +93,6 @@ function ASCIIDemo() {
   const [cumulativeSum, setCumulativeSum] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [currentCharASCII, setCurrentCharASCII] = useState(0);
-  const [segmentStates, setSegmentStates] = useState([true, true, true, true]); // 控制每个数字段的显示状态
 
   useEffect(() => {
     if (currentIndex < text.length) {
@@ -101,31 +101,15 @@ function ASCIIDemo() {
         setCurrentCharASCII(charCode);
         setCumulativeSum(prev => prev + charCode);
         setCurrentIndex(prev => prev + 1);
-      }, 500); // 每秒2个字符
+      }, 500); // 0.5s per char
       return () => clearTimeout(timer);
     } else if (!isComplete) {
       setIsComplete(true);
-
-      // 在2025停留3秒后开始逐段熄灭动画
-      setTimeout(() => {
-        let segmentIndex = 0;
-        const disappearInterval = setInterval(() => {
-          setSegmentStates(prev => {
-            const newStates = [...prev];
-            newStates[segmentIndex] = false;
-            return newStates;
-          });
-          segmentIndex++;
-
-          if (segmentIndex >= 4) {
-            clearInterval(disappearInterval);
-            // 所有段都熄灭后，重新开始循环
-            setTimeout(() => {
-              handleRestart();
-            }, 500);
-          }
-        }, 400);
-      }, 3000);
+      // Stay for 3s then restart
+      const restartTimer = setTimeout(() => {
+        handleRestart();
+      }, 5000);
+      return () => clearTimeout(restartTimer);
     }
   }, [currentIndex, text.length, isComplete]);
 
@@ -134,45 +118,9 @@ function ASCIIDemo() {
     setCumulativeSum(0);
     setIsComplete(false);
     setCurrentCharASCII(0);
-    setSegmentStates([true, true, true, true]);
   };
 
-  // 将数字转换为4位字符串
-  const formatNumber = (num) => {
-    return num.toString().padStart(4, '0');
-  };
-
-  // 七段数码管组件
-  const DigitalDisplay = ({ digit, isVisible }) => {
-    const segments = {
-      '0': [1, 1, 1, 1, 1, 1, 0],
-      '1': [0, 1, 1, 0, 0, 0, 0],
-      '2': [1, 1, 0, 1, 1, 0, 1],
-      '3': [1, 1, 1, 1, 0, 0, 1],
-      '4': [0, 1, 1, 0, 0, 1, 1],
-      '5': [1, 0, 1, 1, 0, 1, 1],
-      '6': [1, 0, 1, 1, 1, 1, 1],
-      '7': [1, 1, 1, 0, 0, 0, 0],
-      '8': [1, 1, 1, 1, 1, 1, 1],
-      '9': [1, 1, 1, 1, 0, 1, 1]
-    };
-
-    const digitSegments = segments[digit] || [0, 0, 0, 0, 0, 0, 0];
-
-    return (
-      <div className={styles.digitalDigit}>
-        <div className={`${styles.segment} ${styles.segmentA} ${digitSegments[0] && isVisible ? styles.segmentOn : ''}`}></div>
-        <div className={`${styles.segment} ${styles.segmentB} ${digitSegments[1] && isVisible ? styles.segmentOn : ''}`}></div>
-        <div className={`${styles.segment} ${styles.segmentC} ${digitSegments[2] && isVisible ? styles.segmentOn : ''}`}></div>
-        <div className={`${styles.segment} ${styles.segmentD} ${digitSegments[3] && isVisible ? styles.segmentOn : ''}`}></div>
-        <div className={`${styles.segment} ${styles.segmentE} ${digitSegments[4] && isVisible ? styles.segmentOn : ''}`}></div>
-        <div className={`${styles.segment} ${styles.segmentF} ${digitSegments[5] && isVisible ? styles.segmentOn : ''}`}></div>
-        <div className={`${styles.segment} ${styles.segmentG} ${digitSegments[6] && isVisible ? styles.segmentOn : ''}`}></div>
-      </div>
-    );
-  };
-
-  const numberString = formatNumber(cumulativeSum);
+  const numberString = cumulativeSum.toString().padStart(4, '0');
 
   return (
     <div className={styles.asciiDemo}>
@@ -193,25 +141,25 @@ function ASCIIDemo() {
         <span className={styles.quote}>"</span>
       </div>
 
-      {/* 当前字符ASCII显示 */}
+      {/* Info Display */}
       <div className={styles.currentCharInfo}>
         {currentIndex === 0 ? (
           "./start.sh"
         ) : currentIndex <= text.length ? (
           `'${text[currentIndex - 1]}' → ASCII ${currentCharASCII}`
         ) : (
-          "./start.sh"
+          "./done"
         )}
       </div>
 
-      {/* 数码管显示 */}
-      <div className={styles.digitalContainer}>
-        <div className={styles.digitalDisplay}>
-          <DigitalDisplay digit={numberString[0]} isVisible={segmentStates[0]} />
-          <DigitalDisplay digit={numberString[1]} isVisible={segmentStates[1]} />
-          <DigitalDisplay digit={numberString[2]} isVisible={segmentStates[2]} />
-          <DigitalDisplay digit={numberString[3]} isVisible={segmentStates[3]} />
+      {/* Simple Font Based Counter */}
+      <div className={styles.counterContainer}>
+        <div className={styles.counterValue}>
+          {numberString.split('').map((digit, i) => (
+            <span key={i} className={styles.counterDigit}>{digit}</span>
+          ))}
         </div>
+        <div className={styles.counterLabel}>CUMULATIVE ASCII SUM</div>
       </div>
 
       <div className={styles.asciiComplete}>
@@ -219,11 +167,13 @@ function ASCIIDemo() {
         <div className={styles.messageContent}>
           {!isComplete ? (
             <div className={styles.interimMessage}>
-              Constructing understanding...
+              <span className={styles.blinkingCursor}>_</span> Calculating age...
             </div>
           ) : (
             <div className={styles.completeMessage}>
-              据考究，紫的真实年龄不小于◾️◾️◾️◾️数据删除
+              据考究，紫的真实年龄不小于 <span style={{ textDecoration: 'underline' }}>{cumulativeSum}</span> 岁
+              <br />
+              <span style={{ fontSize: '0.8rem', color: '#999' }}>(数据来源: ASCII Sum Check)</span>
             </div>
           )}
         </div>
