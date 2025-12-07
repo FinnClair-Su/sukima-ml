@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
@@ -46,6 +46,18 @@ export default function MagicGallery() {
   const [direction, setDirection] = useState(0); // Optional: tracking direction for smoother intent? Not strictly needed with simple layout
   const history = useHistory();
 
+  // --- Responsive Logic ---
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize(); // Init
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const getIndex = (index: number) => {
     const len = artworks.length;
     return ((index % len) + len) % len;
@@ -73,7 +85,7 @@ export default function MagicGallery() {
     setShowInfo(!showInfo);
   };
 
-  // Tuned variants for "Gallery Walk" - Pushed to edges
+  // Tuned variants for "Gallery Walk" - Responsive
   const cardVariants = {
     center: {
       x: 0,
@@ -85,21 +97,21 @@ export default function MagicGallery() {
       transition: { type: 'spring', stiffness: 300, damping: 30 },
     },
     left: {
-      x: '-45vw', // Push to screen edge (45% of viewport)
+      x: isMobile ? '-120%' : '-45vw', // Mobile: slide out of view. Desktop: partially visible
       scale: 0.8,
       opacity: 0.6,
       zIndex: 10,
       filter: 'brightness(0.5) blur(2px)',
-      rotateY: 30,
+      rotateY: isMobile ? 0 : 30, // No rotation on mobile to save rendering/complexity
       transition: { type: 'spring', stiffness: 300, damping: 30 },
     },
     right: {
-      x: '45vw', // Push to screen edge
+      x: isMobile ? '120%' : '45vw',
       scale: 0.8,
       opacity: 0.6,
       zIndex: 10,
       filter: 'brightness(0.5) blur(2px)',
-      rotateY: -30,
+      rotateY: isMobile ? 0 : -30,
       transition: { type: 'spring', stiffness: 300, damping: 30 },
     },
   };
@@ -110,7 +122,7 @@ export default function MagicGallery() {
       onClick={onClick}
       className={clsx(
         "relative bg-white transition-all duration-500",
-        "w-[500px] h-[675px]", // Increased Dimensions (~1.35 aspect ratio)
+        "w-[80vw] h-[108vw] md:w-[500px] md:h-[675px]", // Responsive Dimensions: Mobile (80vw width) vs Desktop (fixed 500px)
         isActive ? "cursor-pointer" : ""
       )}>
 
@@ -125,10 +137,10 @@ export default function MagicGallery() {
       />
 
       {/* 2. Black Aluminum Frame */}
-      <div className="w-full h-full bg-[#111] p-[10px] flex ring-1 ring-white/10 ring-inset">
+      <div className="w-full h-full bg-[#111] p-[2%] md:p-[10px] flex ring-1 ring-white/10 ring-inset">
 
-        {/* 3. The White Matting */}
-        <div className="w-full h-full bg-[#fdfbf7] p-[45px] shadow-[inset_0_1px_4px_rgba(0,0,0,0.4)] flex flex-col relative overflow-hidden">
+        {/* 3. The White Matting - Adaptive Padding */}
+        <div className="w-full h-full bg-[#fdfbf7] p-[8%] md:p-[45px] shadow-[inset_0_1px_4px_rgba(0,0,0,0.4)] flex flex-col relative overflow-hidden">
 
           {/* 4. The Artwork - Full height of container minus matting */}
           <div className="relative w-full h-full shadow-[inset_0_2px_6px_rgba(0,0,0,0.2)] bg-gray-200">
@@ -142,7 +154,7 @@ export default function MagicGallery() {
             {/* Click Hint Overlay (Only on Hover of Active) */}
             {isActive && (
               <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
-                <span className="bg-black/70 text-white px-4 py-2 rounded-full text-sm tracking-widest uppercase backdrop-blur-md">
+                <span className="bg-black/70 text-white px-4 py-2 rounded-full text-sm tracking-widest uppercase backdrop-blur-md hidden md:block">
                   View Details
                 </span>
               </div>
@@ -159,7 +171,7 @@ export default function MagicGallery() {
     <Layout title="Magic Gallery" description="Where Art Meets Magic">
       {/* Whiter background, less grey */}
       <main
-        className="relative w-full h-screen bg-[#fafafa] dark:bg-[#222] overflow-hidden flex flex-col items-center justify-center"
+        className="relative w-full h-[100dvh] bg-[#fafafa] dark:bg-[#222] overflow-hidden flex flex-col items-center justify-center"
         onClick={() => setShowInfo(false)} // Close info if clicking background
       >
 
@@ -230,7 +242,7 @@ export default function MagicGallery() {
              Updated Width: 750px (to support 500px artwork width)
              500px / 750px = 0.666 (2/3)
           */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none w-[750px] flex justify-center items-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none w-[150%] md:w-[750px] flex justify-center items-center">
 
             {/* Character Image - STATIC INTENT, CLICKS PASS THROUGH */}
             <img
@@ -246,7 +258,7 @@ export default function MagicGallery() {
             {/* INTERACTION HITBOX: Bottom Right 1/4 */}
             {/* This invisible box captures clicks for the explanation, allowing other clicks to pass through the rest of the image area. */}
             <div
-              className="absolute bottom-[0%] right-[15%] w-[35%] h-[45%] cursor-help z-50 hover:bg-white/10 transition-colors rounded-full"
+              className="absolute bottom-[0%] right-[10%] md:right-[15%] w-[40%] md:w-[35%] h-[40%] md:h-[45%] cursor-help z-50 hover:bg-white/10 transition-colors rounded-full"
               style={{ pointerEvents: 'auto' }}
               onClick={toggleInfo}
               title="Click for Commentary"
@@ -259,7 +271,7 @@ export default function MagicGallery() {
                   initial={{ opacity: 0, scale: 0.8, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                  className="absolute top-[20%] right-[5%] w-[320px] bg-white/90 backdrop-blur-xl p-6 rounded-none shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-black/5"
+                  className="absolute bottom-[20%] left-1/2 -translate-x-1/2 md:top-[20%] md:left-auto md:right-[5%] md:translate-x-0 w-[90vw] md:w-[320px] bg-white/95 backdrop-blur-xl p-6 rounded-xl md:rounded-none shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-black/5"
                   style={{ pointerEvents: 'auto' }}
                   onClick={(e) => e.stopPropagation()}
                 >
@@ -281,9 +293,6 @@ export default function MagicGallery() {
                       Artist: {centerItem.artist}
                     </div>
                   </div>
-
-                  {/* Tail of speech bubble (CSS Triangle) */}
-                  <div className="absolute top-[60%] -left-3 w-0 h-0 border-t-[10px] border-t-white/90 border-l-[10px] border-l-transparent border-b-[10px] border-b-transparent transform -rotate-90 drop-shadow-sm" />
                 </motion.div>
               )}
             </AnimatePresence>
