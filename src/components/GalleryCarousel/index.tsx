@@ -23,6 +23,30 @@ export interface GalleryCarouselProps {
   interval?: number;
 }
 
+// Reusable Frame Component
+const FramedImage = ({ src, alt, onError, isLoading = false }) => (
+  <div className="w-full h-full bg-[#111] p-[3%] flex ring-1 ring-white/10 ring-inset shadow-md">
+    <div className="w-full h-full bg-[#fdfbf7] p-[10%] shadow-[inset_0_1px_4px_rgba(0,0,0,0.4)] flex flex-col relative overflow-hidden">
+      <div className="relative w-full h-full shadow-[inset_0_2px_6px_rgba(0,0,0,0.2)] bg-gray-200">
+        {isLoading ? (
+          <div className="w-full h-full flex items-center justify-center text-gray-400">Loading...</div>
+        ) : (
+          <>
+            <img
+              src={src}
+              alt={alt}
+              className="w-full h-full object-cover block"
+              onError={onError}
+              loading="lazy"
+            />
+            <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.15)] pointer-events-none" />
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+);
+
 export default function GalleryCarousel(props: GalleryCarouselProps): ReactNode {
   const { artworks } = props;
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -148,11 +172,10 @@ function ArtworkComparisonCard({ artwork }: ArtworkComparisonCardProps): ReactNo
                 <p>原作图片加载失败</p>
               </div>
             ) : (
-              <img
+              <FramedImage
                 src={artwork.originalImagePath}
                 alt={`原作：${artwork.originalPainting}`}
                 onError={() => setOriginalError(true)}
-                loading="lazy"
               />
             )}
           </a>
@@ -163,11 +186,10 @@ function ArtworkComparisonCard({ artwork }: ArtworkComparisonCardProps): ReactNo
                 <p>原作图片加载失败</p>
               </div>
             ) : (
-              <img
+              <FramedImage
                 src={artwork.originalImagePath}
                 alt={`原作：${artwork.originalPainting}`}
                 onError={() => setOriginalError(true)}
-                loading="lazy"
               />
             )}
           </div>
@@ -196,11 +218,10 @@ function ArtworkComparisonCard({ artwork }: ArtworkComparisonCardProps): ReactNo
               </div>
             ) : (
               <>
-                <img
+                <FramedImage
                   src={artwork.imagePath}
                   alt={artwork.imageAlt}
                   onError={() => setFanartError(true)}
-                  loading="lazy"
                 />
                 {artwork.badge && (
                   <span className={styles.badgeOverlay}>{artwork.badge}</span>
@@ -216,11 +237,10 @@ function ArtworkComparisonCard({ artwork }: ArtworkComparisonCardProps): ReactNo
               </div>
             ) : (
               <>
-                <img
+                <FramedImage
                   src={artwork.imagePath}
                   alt={artwork.imageAlt}
                   onError={() => setFanartError(true)}
-                  loading="lazy"
                 />
                 {artwork.badge && (
                   <span className={styles.badgeOverlay}>{artwork.badge}</span>
