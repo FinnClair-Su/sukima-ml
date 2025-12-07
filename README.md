@@ -10,25 +10,32 @@
 
 ## ✨ 核心特性 | Features
 
-### 🎨 沉浸式作品展示
-- **轮播画廊**：首页采用独特的 ASCII 艺术动画与高清轮播图，展示最新创作。
-- **名画对比**：深度解析创作灵感，将原作（如维米尔、梵高）与东方同人作品并列展示，致敬经典。
+### 🎨 沉浸式 Magic Gallery (New!)
+- **3D 魔法画廊**：基于 Framer Motion 实现的 3D 景深轮播，模拟真实的画廊漫步体验。
+- **拟真装裱系统**：纯 CSS/Tailwind 实现的"博物馆级"装裱效果——黑色铝合金框、45mm 白色卡纸与内阴影细节。
+- **互动角色导览**：看板娘（八云紫）的互动图层——点击角色特定区域触发解说，点击画作穿透导航，打破第四面墙的交互体验。
+
+### 🎭 经典作品展示
+- **首页 ASCII 动态**：独特的代码风开场动画，展现极客精神。
+- **名画对比 (A/B Test)**：深度解析创作灵感，将原作（如维米尔、委拉斯开兹）与东方同人作品并列展示，致敬经典。
 - **细节鉴赏**：提供高分辨率的作品细节展示，还原画作的每一处笔触。
 
 ### 🛍️ 艺术品奉纳系统
-- **在线选购**：集成的购买页面 (`/buy`)，支持多种支付方式（支付宝/微信）。
+- **在线选购**：集成的购买页面 (`/buy`)，支持多种支付方式。
 - **规格定制**：提供多种尺寸（14寸-20寸）和材质（硫化钡艺术微喷）选择。
 - **订单追踪**：完善的邮件确认与订单反馈流程。
 
 ### 💬 社区互动
 - **Giscus 评论**：基于 GitHub Discussions 的评论系统，支持 Markdown 和表情互动。
 - **社团动态**：实时更新社团参展信息、新刊发布和幕后创作故事。
-- **多渠道联系**：集成 QQ 群二维码弹窗、Bilibili 链接等社交入口。
 
 ## 🛠️ 技术栈 | Tech Stack
 
-- **核心框架**: [Docusaurus 3.8](https://docusaurus.io/) (React 19, TypeScript)
-- **样式**: CSS Modules, Infima Design System
+- **核心框架**: [Docusaurus 3.x](https://docusaurus.io/) (React 19, TypeScript)
+- **UI 呈现**: 
+  - **Tailwind CSS**: 现代化的原子类样式系统。
+  - **Framer Motion**: 流畅的编排式动画库。
+  - **CSS Modules**: 传统的组件级样式隔离。
 - **评论系统**: [Giscus](https://giscus.app/)
 - **部署**: Cloudflare Pages / GitHub Pages
 
@@ -68,18 +75,20 @@
 sukima-ml/
 ├── blog/                  # 社团动态与文章
 ├── src/
-│   ├── components/        # React 组件 (Gallery, Comments, etc.)
-│   ├── css/               # 全局样式与变量
+│   ├── components/        # React 组件
+│   │   ├── GalleryCarousel/ # 首页名画对比轮播 (带拟真画框)
+│   │   └── ...
+│   ├── css/               # 全局样式 (Tailwind directives)
 │   ├── pages/             # 路由页面
-│   │   ├── index.tsx      # 首页 (ASCII 动画 + 轮播)
-│   │   ├── gallery.tsx    # 作品集概览
-│   │   ├── artwork-001.tsx# 作品详情页模板
-│   │   ├── buy.tsx        # 购买/奉纳页面
-│   │   └── contact.tsx    # 联系方式页面
+│   │   ├── gallery.tsx    # Magic Gallery (核心重构页面)
+│   │   ├── index.tsx      # 首页
+│   │   ├── artwork-*.tsx  # 作品详情页
+│   │   └── ...
 │   └── theme/             # Docusaurus 主题定制
 ├── static/
-│   └── img/               # 静态资源 (作品图, 二维码等)
+│   └── img/               # 静态资源 (作品图, Yukari Overlay等)
 ├── docusaurus.config.ts   # 网站核心配置
+├── tailwind.config.js     # Tailwind 配置
 └── package.json           # 项目依赖
 ```
 
