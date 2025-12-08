@@ -6,36 +6,7 @@ import clsx from 'clsx';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useHistory } from '@docusaurus/router';
 
-// --- Data ---
-const artworks = [
-  {
-    id: '001',
-    title: '戴珍珠耳环的17岁少女',
-    subtitle: 'YUKARI YAKUMO',
-    imagePath: '/img/artworks/yukari_v0.5.jpg',
-    link: '/artwork-001',
-    artist: 'Sukima-ML Official',
-    description: '“初次见面的外界人，您好！此乃我流落外界的真容。将我的肖像挂在你的墙上，时刻注视，便是在为我重塑神格。”'
-  },
-  {
-    id: '003',
-    title: '蓬莱宫娥',
-    subtitle: 'Las Meninas × Touhou',
-    imagePath: '/img/artworks/artwork-003.jpg',
-    link: '/artwork-003',
-    artist: 'amibazh (Pixiv: 1500528)',
-    description: '致敬委拉斯开兹名作《宫娥》。永远亭的辉夜姬与妹红、铃仙等人的日常。'
-  },
-  {
-    id: '002',
-    title: 'The Bookworm × Pachouli',
-    subtitle: 'Dual Version❤️',
-    imagePath: '/img/artworks/Variant_B.jpg',
-    link: '/artwork-002',
-    artist: '青未Q，pixiv 103691477',
-    description: 'The weight of Knowledge, or the forbidden Knowledge？'
-  },
-];
+import { artworks } from '../data/galleryData';
 
 // --- Constants ---
 const YUKARI_BASE_WIDTH_PX = 750; // Increased to match new artwork width (500px / 0.666)
