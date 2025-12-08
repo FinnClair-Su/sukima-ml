@@ -98,7 +98,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
             transition: { duration: 1, ease: "easeInOut" as const },
         },
         left: {
-            x: isMobile ? '-105%' : '-65vw', // Adjusted to be visible again
+            x: isMobile ? '-92%' : '-65vw', // Mobile peek
             scale: 0.8,
             opacity: 0.8,
             zIndex: 10,
@@ -107,7 +107,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
             transition: { duration: 1, ease: "easeInOut" as const },
         },
         right: {
-            x: isMobile ? '105%' : '65vw',
+            x: isMobile ? '92%' : '65vw',
             scale: 0.8,
             opacity: 0.8,
             zIndex: 10,
@@ -132,18 +132,19 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
             className={clsx(
                 "relative transition-all duration-500 flex items-center justify-center",
                 // The Container acts as the "Wall" - NOW TRANSPARENT
-                "w-[90vw] h-[60vw] md:w-[950px] md:h-[600px] bg-transparent",
+                // Mobile: Compact stacked. Desktop: Landscape.
+                "w-[75vw] h-[110vw] md:w-[950px] md:h-[600px] bg-transparent",
                 // Removed outer shadow to prevent "card" look.
             )}>
 
             {/* Removed Wall Texture/Gradient to ensure true transparency */}
             {/* <div className="absolute inset-0 bg-gradient-to-b from-black/5 to-transparent pointer-events-none" /> */}
 
-            <div className="flex gap-8 md:gap-16 items-center justify-center p-8 md:p-12 w-full h-full">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-16 items-center justify-center p-4 md:p-12 w-full h-full">
 
                 {/* LEFT: Original Painting Frame */}
                 <div className={clsx(
-                    "relative flex-1 h-full bg-[#1a1a1a] p-[8px] md:p-[12px] flex flex-col group transition-transform duration-300 hover:scale-[1.01]",
+                    "relative flex-1 w-full h-full bg-[#1a1a1a] p-[8px] md:p-[12px] flex flex-col group transition-transform duration-300 hover:scale-[1.01]",
                     isActive ? "shadow-[0_20px_50px_rgba(0,0,0,0.6)]" : "shadow-[0_5px_15px_rgba(0,0,0,0.5)]"
                 )}>
 
@@ -166,7 +167,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
 
                 {/* RIGHT: Touhou Version Frame */}
                 <div className={clsx(
-                    "relative flex-1 h-full bg-[#1a1a1a] p-[8px] md:p-[12px] flex flex-col group transition-transform duration-300 hover:scale-[1.01]",
+                    "relative flex-1 w-full h-full bg-[#1a1a1a] p-[8px] md:p-[12px] flex flex-col group transition-transform duration-300 hover:scale-[1.01]",
                     isActive ? "shadow-[0_20px_50px_rgba(0,0,0,0.6)]" : "shadow-[0_5px_15px_rgba(0,0,0,0.5)]"
                 )}>
 
@@ -244,26 +245,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
                     </AnimatePresence>
                 </div>
 
-                {/* LAYER 2: Yukari Overlay (Anchored Bottom) */}
-                {/* Using h-full items-end to anchor her feet to the bottom of the container */}
-                <div className="absolute inset-0 z-40 pointer-events-none flex items-end justify-center overflow-hidden">
-                    <img
-                        ref={imageRef}
-                        src="/img/yukari.png"
-                        alt="Yukari Yakumo"
-                        crossOrigin="anonymous"
-                        className={clsx(
-                            "w-auto h-[85vh] md:h-[95vh] object-contain transition-all duration-500 cursor-pointer origin-bottom", // Tall height to show waist
-                            dialogueStep !== 'idle' ? "brightness-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]" : "brightness-100"
-                        )}
-                        style={{
-                            filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.5))",
-                            transform: dialogueStep !== 'idle' ? "translateY(5px) scale(1.02)" : "translateY(15%)", // Hide legs slightly
-                            pointerEvents: 'auto',
-                        }}
-                        onClick={handleImageClick}
-                    />
-                </div>
+
 
                 {/* Navigation Buttons (Mobile) - Positioned higher now */}
                 <div className="absolute top-1/2 -translate-y-1/2 left-4 z-50 md:hidden">
@@ -274,6 +256,36 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
                 </div>
 
             </div>
+
+            {/* LAYER 2: Yukari Overlay (Anchored Bottom) - MOVED OUTSIDE SCALED STAGE */}
+            {/* Using h-full items-end to anchor her feet to the bottom of the container */}
+            <div className="absolute inset-0 z-40 pointer-events-none flex items-end justify-center overflow-hidden">
+                <img
+                    ref={imageRef}
+                    src="/img/yukari.png"
+                    alt="Yukari Yakumo"
+                    crossOrigin="anonymous"
+                    className={clsx(
+                        "w-auto h-[60vh] md:h-[95vh] object-contain transition-all duration-500 cursor-pointer origin-bottom",
+                        dialogueStep !== 'idle' ? "brightness-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]" : "brightness-100"
+                    )}
+                    style={{
+                        filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.5))",
+                        // Mobile: 0 (grounded). Desktop: 25% (lowered) -> 0 (revealed)
+                        transform: isMobile
+                            ? (dialogueStep !== 'idle' ? "translateY(5px) scale(1.02)" : "translateY(0)")
+                            : (dialogueStep !== 'idle' ? "translateY(0) scale(1.02)" : "translateY(25%)"),
+                        pointerEvents: isMobile ? 'none' : 'auto',
+                    }}
+                    onClick={!isMobile ? handleImageClick : undefined}
+                />
+            </div>
+
+            {/* Mobile Trigger Zone (Bottom 1/3) */}
+            <div
+                className="absolute bottom-0 left-0 right-0 h-[35%] z-40 cursor-pointer md:hidden"
+                onClick={handleImageClick}
+            />
 
             {/* LAYER 3: Galgame Dialogue Box - FIXED Bottom Overlay */}
             <AnimatePresence>
@@ -308,7 +320,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
                                     {dialogueStep === 'options' && (
                                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col gap-2">
                                             <p className="text-gray-300">接下来怎么做？</p>
-                                            <div className="flex flex-wrap gap-4 mt-2">
+                                            <div className="flex flex-col md:flex-row flex-wrap gap-4 mt-2">
                                                 <button className="flex-1 min-w-[200px] bg-white/10 hover:bg-[#b71c1c] border border-white/30 px-4 py-3 rounded text-left transition-colors flex items-center gap-3 group text-white"
                                                     onClick={() => history.push('/giclee')}>
                                                     <span className="bg-white/20 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">A</span>
