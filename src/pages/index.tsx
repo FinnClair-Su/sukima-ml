@@ -4,57 +4,12 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React, { useState, useEffect } from 'react';
-import GalleryCarousel, { type ArtworkItem } from '../components/GalleryCarousel';
+import MagicGalleryComponent from '../components/MagicGallery';
 
 
 import styles from './index.module.css';
 
-// 占位数据：作品展示
-const placeholderArtworks: ArtworkItem[] = [
-  {
-    id: 'artwork-1',
-    title: '戴珍珠耳环的少女 × 戴珍珠耳环的17岁少女',
-    description: '经典名画与东方角色的完美融合',
-    originalPainting: '戴珍珠耳环的少女',
-    touhouCharacter: '戴珍珠耳环的17岁少女(draft)',
-    originalImagePath: '/img/artworks/戴珍珠耳环的少女to戴猫眼石耳环的紫妈.jpg',
-    imagePath: '/img/artworks/yukari_v0.5.jpg',
-    imageAlt: '戴珍珠耳环的少女 × 戴珍珠耳环的17岁少女',
-  },
-  {
-    id: 'artwork-3',
-    title: 'The Bookworm × The Pachouli',
-    description: '书虫与知识的魔女',
-    originalPainting: 'The Bookworm',
-    touhouCharacter: 'The Forbidden Knowledge',
-    originalImagePath: '/img/artworks/The Bookworm to The Pachouli-sama.jpg',
-    imagePath: '/img/artworks/Variant_B.jpg',
-    imageAlt: 'The Bookworm × The Forbidden Knowledge',
-    link: '/artwork-002',
-    // badge: 'Visual Mockup',
-  },
-  {
-    id: 'artwork-4',
-    title: 'Las Meninas × 蓬莱宫娥',
-    description: '宫廷画作的幻想乡演绎',
-    originalPainting: 'Las Meninas',
-    touhouCharacter: '蓬莱宫娥',
-    originalImagePath: '/img/artworks/宫娥to辉夜&永远亭：我不是嫦娥.jpg',
-    imagePath: '/img/artworks/artwork-003.jpg',
-    imageAlt: '蓬莱宫娥',
-    link: '/artwork-003',
-  },
-  {
-    id: 'artwork-2',
-    title: '神奈川冲浪里 × baka的完美冻结',
-    description: '浮世绘与幻想乡的碰撞',
-    originalPainting: '神奈川冲浪里',
-    touhouCharacter: 'baka的完美冻结',
-    originalImagePath: '/img/artworks/神奈川冲浪里to baka的完美冻结.jpg',
-    imagePath: '/img/artworks/placeholder-in-progress.svg',
-    imageAlt: '神奈川冲浪里 × baka的完美冻结',
-  },
-];
+
 
 // 占位数据：导航按钮
 interface NavigationItem {
@@ -220,9 +175,6 @@ export default function Home() {
                 我们选择的工艺——艺术微喷
               </div>
             </Link>
-            <div className={styles.heroSubtitle}>
-              {siteConfig.tagline}
-            </div>
           </div>
 
           <div className={styles.heroRight}>
@@ -234,12 +186,9 @@ export default function Home() {
 
         {/* 2. Gallery Section: Full Width */}
         <div className={styles.gallerySection}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Featured Exhibitions</h2>
-            <div className={styles.sectionSubtitle}>Touhou Project × Classic Art</div>
-          </div>
           <div className={styles.galleryContainer}>
-            <GalleryCarousel artworks={placeholderArtworks} />
+            {/* Replaced old carousel with MagicGallery */}
+            <MagicGalleryComponent className="h-[80vh]" />
           </div>
         </div>
 

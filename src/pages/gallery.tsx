@@ -42,12 +42,14 @@ const YUKARI_BASE_WIDTH_PX = 750; // Increased to match new artwork width (500px
 
 export default function MagicGallery() {
   const [currentIndex, setCurrentIndex] = useState(1);
-  const [showInfo, setShowInfo] = useState(false); // State for Yukari's popup
-  const [direction, setDirection] = useState(0); // Optional: tracking direction for smoother intent? Not strictly needed with simple layout
-  const history = useHistory();
+  const [showInfo, setShowInfo] = useState(false);
+  const [direction, setDirection] = useState(0);
+  const [generations, setGenerations] = useState<Record<string, number>>({});
 
-  // --- Responsive Logic ---
+  const history = useHistory();
   const [isMobile, setIsMobile] = useState(false);
+  const imageRef = React.useRef<HTMLImageElement>(null);
+  const [bubblePosition, setBubblePosition] = useState<{ top: string | number, left: string | number } | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -58,18 +60,147 @@ export default function MagicGallery() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Pixel-perfect click detection & Dynamic Positioning
+  const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
+    const img = imageRef.current;
+    if (!img) return;
+
+    // Create a canvas to check pixel transparency
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Set canvas size to match the image's intrinsic size
+    const w = img.naturalWidth;
+    const h = img.naturalHeight;
+    canvas.width = w;
+    canvas.height = h;
+
+    // Draw the image onto the canvas
+    ctx.drawImage(img, 0, 0);
+
+    // Calculate click position relative to the image element
+    const rect = img.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Scale coordinates to match intrinsic size
+    const scaleX = w / rect.width;
+    const scaleY = h / rect.height;
+    const pixelX = Math.floor(x * scaleX);
+    const pixelY = Math.floor(y * scaleY);
+
+    try {
+      const pixelData = ctx.getImageData(0, 0, w, h).data;
+
+      // Check clicked pixel alpha
+      const clickedPixelIndex = (pixelY * w + pixelX) * 4;
+      const alpha = pixelData[clickedPixelIndex + 3];
+
+      // If opaque enough (e.g., > 10), trigger the info
+      if (alpha > 10) {
+        e.stopPropagation();
+
+        // --- Calculate Dynamic Bounding Box for "Top Right" ---
+        let minY = 0;
+        let maxX = w;
+
+        // Find Top-most opaque pixel (minY)
+        // Scan each row
+        topScan: for (let py = 0; py < h; py++) {
+          for (let px = 0; px < w; px++) {
+            if (pixelData[(py * w + px) * 4 + 3] > 10) {
+              minY = py;
+              break topScan;
+            }
+          }
+        }
+
+        // Find Right-most opaque pixel (maxX)
+        // Scan each col from right
+        rightScan: for (let px = w - 1; px >= 0; px--) {
+          for (let py = 0; py < h; py++) {
+            if (pixelData[(py * w + px) * 4 + 3] > 10) {
+              maxX = px;
+              break rightScan;
+            }
+          }
+        }
+
+        // Convert intrinsic coords back to CSS display coords
+        // The container is relative, img is inside.
+        // We want the bubble at (maxX, minY) relative to the container.
+
+        // CSS Coordinates
+        const cssTop = (minY / scaleY);
+        const cssLeft = (maxX / scaleX);
+
+        setBubblePosition({
+          top: cssTop + (rect.height * 0.1),
+          left: cssLeft + 20
+        });
+
+        setShowInfo(true);
+      } else {
+        // If transparent, forward the click to the element behind
+        img.style.pointerEvents = 'none';
+        const elementBelow = document.elementFromPoint(e.clientX, e.clientY);
+        img.style.pointerEvents = 'auto';
+
+        if (elementBelow && elementBelow instanceof HTMLElement) {
+          const clickEvent = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window,
+            clientX: e.clientX,
+            clientY: e.clientY
+          });
+          elementBelow.dispatchEvent(clickEvent);
+        }
+      }
+    } catch (err) {
+      console.error("Failed to get pixel data:", err);
+      e.stopPropagation();
+      setShowInfo(prev => !prev);
+    }
+  };
+
   const getIndex = (index: number) => {
     const len = artworks.length;
     return ((index % len) + len) % len;
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => prev + 1);
-    setShowInfo(false); // Close info on move
-  };
-  const handlePrev = () => {
-    setCurrentIndex((prev) => prev - 1);
+    setDirection(1);
     setShowInfo(false);
+
+    // Logic: Left item (index - 1) wraps to becoming Right.
+    // We increment its generation to force re-mount at new position.
+    const leftIndex = getIndex(currentIndex - 1);
+    const leftId = artworks[leftIndex].id;
+
+    setGenerations(prev => ({
+      ...prev,
+      [leftId]: (prev[leftId] || 0) + 1
+    }));
+
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setShowInfo(false);
+
+    // Logic: Right item (index + 1) wraps to becoming Left.
+    const rightIndex = getIndex(currentIndex + 1);
+    const rightId = artworks[rightIndex].id;
+
+    setGenerations(prev => ({
+      ...prev,
+      [rightId]: (prev[rightId] || 0) + 1
+    }));
+
+    setCurrentIndex((prev) => prev - 1);
   };
 
   const centerItem = artworks[getIndex(currentIndex)];
@@ -85,8 +216,20 @@ export default function MagicGallery() {
     setShowInfo(!showInfo);
   };
 
-  // Tuned variants for "Gallery Walk" - Responsive
+  // Helper to get key with generation
+  const getKey = (item: typeof centerItem) => `${item.id}-${generations[item.id] || 0}`;
+
+  // Tuned variants for "Gallery Walk" - Responsive & Spatial
   const cardVariants = {
+    // Hidden "waiting" state for entering items
+    enter: (dir: number) => ({
+      x: dir > 0 ? '100vw' : '-100vw', // If moving Next (1), enters from Right (100vw). If Prev (-1), enters from Left.
+      scale: 0.6,
+      opacity: 0,
+      zIndex: 5,
+      rotateY: dir > 0 ? -45 : 45,
+      transition: { duration: 1, ease: "easeInOut" as const }
+    }),
     center: {
       x: 0,
       scale: 1,
@@ -94,16 +237,16 @@ export default function MagicGallery() {
       zIndex: 30,
       filter: 'brightness(1)',
       rotateY: 0,
-      transition: { type: 'spring', stiffness: 300, damping: 30 },
+      transition: { duration: 1, ease: "easeInOut" as const },
     },
     left: {
-      x: isMobile ? '-120%' : '-45vw', // Mobile: slide out of view. Desktop: partially visible
+      x: isMobile ? '-120%' : '-45vw',
       scale: 0.8,
       opacity: 0.6,
       zIndex: 10,
       filter: 'brightness(0.5) blur(2px)',
-      rotateY: isMobile ? 0 : 30, // No rotation on mobile to save rendering/complexity
-      transition: { type: 'spring', stiffness: 300, damping: 30 },
+      rotateY: isMobile ? 0 : 30,
+      transition: { duration: 1, ease: "easeInOut" as const },
     },
     right: {
       x: isMobile ? '120%' : '45vw',
@@ -112,8 +255,17 @@ export default function MagicGallery() {
       zIndex: 10,
       filter: 'brightness(0.5) blur(2px)',
       rotateY: isMobile ? 0 : -30,
-      transition: { type: 'spring', stiffness: 300, damping: 30 },
+      transition: { duration: 1, ease: "easeInOut" as const },
     },
+    // Exiting state for wrapping items
+    exit: (dir: number) => ({
+      x: dir > 0 ? '-100vw' : '100vw', // If moving Next (1), exits to Left (-100vw). If Prev (-1), exits to Right.
+      scale: 0.6,
+      opacity: 0,
+      zIndex: 5,
+      rotateY: dir > 0 ? 45 : -45,
+      transition: { duration: 1, ease: "easeInOut" as const }
+    })
   };
 
   // --- Sub-Component: The Realistic Frame ---
@@ -122,7 +274,7 @@ export default function MagicGallery() {
       onClick={onClick}
       className={clsx(
         "relative bg-white transition-all duration-500",
-        "w-[80vw] h-[108vw] md:w-[500px] md:h-[675px]", // Responsive Dimensions: Mobile (80vw width) vs Desktop (fixed 500px)
+        "w-[80vw] h-[108vw] md:w-[500px] md:h-[675px]", // Responsive Dimensions
         isActive ? "cursor-pointer" : ""
       )}>
 
@@ -196,14 +348,15 @@ export default function MagicGallery() {
           {/* LAYER 1: The Carousel */}
           <div className="relative flex items-center justify-center">
 
-            <AnimatePresence initial={false} mode='popLayout'>
+            <AnimatePresence initial={false} mode='popLayout' custom={direction}>
 
               {/* LEFT */}
               <motion.div
-                key={`left-${leftItem.id}`}
+                key={getKey(leftItem)}
+                custom={direction}
                 className="absolute cursor-pointer"
                 variants={cardVariants}
-                initial="left" animate="left" exit="left"
+                initial="enter" animate="left" exit="exit"
                 onClick={(e) => { e.stopPropagation(); handlePrev(); }}
               >
                 <GalleryFrame artwork={leftItem} />
@@ -211,10 +364,11 @@ export default function MagicGallery() {
 
               {/* RIGHT */}
               <motion.div
-                key={`right-${rightItem.id}`}
+                key={getKey(rightItem)}
+                custom={direction}
                 className="absolute cursor-pointer"
                 variants={cardVariants}
-                initial="right" animate="right" exit="right"
+                initial="enter" animate="right" exit="exit"
                 onClick={(e) => { e.stopPropagation(); handleNext(); }}
               >
                 <GalleryFrame artwork={rightItem} />
@@ -222,10 +376,11 @@ export default function MagicGallery() {
 
               {/* CENTER */}
               <motion.div
-                key={`center-${centerItem.id}`}
+                key={getKey(centerItem)}
+                custom={direction}
                 className="absolute"
                 variants={cardVariants}
-                initial="center" animate="center"
+                initial="enter" animate="center" exit="exit"
               >
                 <GalleryFrame
                   artwork={centerItem}
@@ -237,6 +392,7 @@ export default function MagicGallery() {
             </AnimatePresence>
           </div>
 
+
           {/* LAYER 2: Yukari Overlay */}
           {/*
              Updated Width: 750px (to support 500px artwork width)
@@ -244,53 +400,62 @@ export default function MagicGallery() {
           */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none w-[150%] md:w-[750px] flex justify-center items-center">
 
-            {/* Character Image - STATIC INTENT, CLICKS PASS THROUGH */}
+            {/* Character Image - PIXEL PERFECT CLICK DETECTION */}
             <img
+              ref={imageRef}
               src="/img/yukari.png"
               alt="Yukari Yakumo"
-              className="w-full h-auto drop-shadow-2xl transition-transform"
+              crossOrigin="anonymous"
+              className="w-full h-auto drop-shadow-2xl transition-transform cursor-help"
               style={{
                 filter: "drop-shadow(5px 15px 25px rgba(0,0,0,0.4))",
                 transform: "translateY(10%)",
+                pointerEvents: 'auto', // Enable clicks on the image itself
               }}
+              onClick={handleImageClick}
             />
 
-            {/* INTERACTION HITBOX: Bottom Right 1/4 */}
-            {/* This invisible box captures clicks for the explanation, allowing other clicks to pass through the rest of the image area. */}
-            <div
-              className="absolute bottom-[0%] right-[10%] md:right-[15%] w-[40%] md:w-[35%] h-[40%] md:h-[45%] cursor-help z-50 hover:bg-white/10 transition-colors rounded-full"
-              style={{ pointerEvents: 'auto' }}
-              onClick={toggleInfo}
-              title="Click for Commentary"
-            />
-
-            {/* Info Pop-up (Speech Bubble Style) */}
+            {/* Info Pop-up (Elegant Speech Bubble) */}
             <AnimatePresence>
               {showInfo && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                  className="absolute bottom-[20%] left-1/2 -translate-x-1/2 md:top-[20%] md:left-auto md:right-[5%] md:translate-x-0 w-[90vw] md:w-[320px] bg-white/95 backdrop-blur-xl p-6 rounded-xl md:rounded-none shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-black/5"
-                  style={{ pointerEvents: 'auto' }}
+                  initial={{ opacity: 0, scale: 0.9, y: 10, x: -10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 5 }}
+                  className="absolute z-50 w-[260px] md:w-[280px] bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.1)] border border-white/40 skew-x-0"
+                  style={{
+                    pointerEvents: 'auto',
+                    top: bubblePosition ? bubblePosition.top : '15%',
+                    left: bubblePosition ? bubblePosition.left : undefined,
+                    right: bubblePosition ? undefined : '5%', // Fallback if no position calc (e.g. before first click or error)
+                  }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <div className="flex justify-between items-start mb-4 border-b border-black/10 pb-2">
-                    <div>
-                      <h3 className="font-serif font-bold text-lg text-black">{centerItem.title}</h3>
-                      <p className="text-xs text-black/50 uppercase tracking-widest">{centerItem.subtitle}</p>
-                    </div>
-                    <button onClick={() => setShowInfo(false)} className="text-black/40 hover:text-black">
-                      <X size={18} />
-                    </button>
-                  </div>
+                  {/* Bubble Tail (CSS Triangle) - Pointing towards Yukari's head (Left-ish) */}
+                  <div className="absolute top-[20px] -left-[12px] w-0 h-0 border-t-[10px] border-t-transparent border-r-[15px] border-r-white/90 border-b-[10px] border-b-transparent drop-shadow-[-2px_0_1px_rgba(0,0,0,0.05)]" />
 
-                  <div className="space-y-3">
-                    <p className="font-serif text-sm text-black/80 leading-relaxed italic">
-                      {centerItem.description}
+                  <div className="relative">
+                    <button
+                      onClick={() => setShowInfo(false)}
+                      className="absolute -top-1 -right-1 text-black/30 hover:text-black transition-colors"
+                      aria-label="Close"
+                    >
+                      <X size={16} />
+                    </button>
+
+                    <h3 className="font-serif font-bold text-lg text-gray-900 mb-1 leading-tight tracking-tight">
+                      {centerItem.title}
+                    </h3>
+                    <div className="text-[10px] font-mono text-gray-400 uppercase tracking-widest mb-3 border-b border-gray-100 pb-2">
+                      {centerItem.subtitle}
+                    </div>
+
+                    <p className="font-serif text-[0.95rem] text-gray-700 leading-relaxed italic">
+                      “{centerItem.description}”
                     </p>
-                    <div className="text-xs font-mono text-black/40 pt-2">
-                      Artist: {centerItem.artist}
+
+                    <div className="mt-3 text-[10px] text-gray-400 font-medium text-right font-sans">
+                      — {centerItem.artist}
                     </div>
                   </div>
                 </motion.div>
@@ -301,8 +466,8 @@ export default function MagicGallery() {
 
         </div>
 
-        {/* Navigation - Minimalist */}
-        <div className="absolute bottom-8 flex gap-20 z-50">
+        {/* Navigation - Minimalist (Hidden on Desktop) */}
+        <div className="absolute bottom-8 flex gap-20 z-50 md:hidden">
 
           <button onClick={handlePrev} className="group p-4 transition-all">
             <ChevronLeft className="w-8 h-8 text-black/40 group-hover:text-black dark:text-white/40 dark:group-hover:text-white transition-colors" />

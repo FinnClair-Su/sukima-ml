@@ -17,17 +17,19 @@
 .heroSection {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 85vh;
+  /* Fit content but keep it reasonably tight */
+  min-height: auto;
   width: 100%;
-  border-bottom: 1px solid #000;
+  border-bottom: none;
+  /* Removed border using 'none' instead of deleting property to be explicit, but deleting is cleaner. Let's delete it. */
 }
 
 .heroLeft {
-  padding: 80px 60px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   background-color: #f4f1ea;
   /* Beige background from artwork-002 */
   border-right: 1px solid #000;
@@ -39,7 +41,7 @@
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  padding: 40px;
+  padding: 30px;
   position: relative;
 }
 
@@ -51,7 +53,7 @@
   text-decoration: none;
   transition: transform 0.3s ease;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   width: 100%;
 }
 
@@ -61,10 +63,10 @@
 }
 
 .heroLogo {
-  width: 80%;
-  max-width: none;
+  width: 85%;
+  max-width: 500px;
   height: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   display: block;
   transition: filter 0.3s ease;
 }
@@ -75,7 +77,7 @@
 
 .heroLogoCaption {
   font-family: "Songti SC", serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #000;
   font-weight: bold;
   border-bottom: 1px solid transparent;
@@ -98,8 +100,8 @@
 }
 
 .asciiComplete {
-  margin-top: 24px;
-  min-height: 60px;
+  margin-top: 10px;
+  min-height: 40px;
   /* Reserve space for message */
   display: flex;
   justify-content: center;
@@ -119,8 +121,8 @@
 .interimMessage,
 .completeMessage {
   font-family: "Courier New", monospace;
-  font-size: 0.9rem;
-  padding: 8px 16px;
+  font-size: 0.8rem;
+  padding: 4px 10px;
   border: 1px solid transparent;
   /* Cleaner look */
   background: transparent;
@@ -134,38 +136,39 @@
 
 .heroSubtitle {
   font-family: "Courier New", monospace;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #666;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   max-width: 400px;
-  line-height: 1.6;
+  line-height: 1.4;
   border-left: 2px solid #b71c1c;
   /* Red accent */
-  padding-left: 15px;
+  padding-left: 10px;
+  text-align: left;
 }
 
 /* ASCII Container */
 .asciiContainer {
   width: 100%;
-  max-width: 600px;
-  padding: 40px;
+  max-width: 500px;
+  padding: 20px;
   border: 1px solid #000;
   /* Square border */
   background: #fff;
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* --- Gallery Section --- */
 .gallerySection {
   width: 100%;
-  padding: 80px 0;
+  padding: 0;
   background: #fff;
   border-bottom: 1px solid #000;
+  overflow: hidden;
 }
 
 .sectionHeader {
-  text-align: center;
-  margin-bottom: 60px;
+  display: none;
 }
 
 .sectionTitle {
@@ -186,9 +189,11 @@
 
 .galleryContainer {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
+  max-width: none;
+  /* No max width */
+  margin: 0;
+  padding: 0;
+  /* No padding */
 }
 
 /* --- Navigation Modules --- */

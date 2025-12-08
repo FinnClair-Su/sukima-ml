@@ -3,14 +3,24 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
+@import url("https://fonts.carolyn.sh/css2?family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&display=swap");
+@import url("https://fonts.carolyn.sh/css2?family=Noto+Color+Emoji&display=swap");
+@import url("https://fonts.carolyn.sh/css2?family=Noto+Sans+SC:wght@100..900&display=swap");
+@import url("https://fonts.carolyn.sh/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
+@import url("https://fonts.carolyn.sh/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.carolyn.sh/css2?family=Noto+Serif+SC:wght@200..900&display=swap");
+@import url("https://fonts.carolyn.sh/css2?family=Noto+Serif+TC&display=swap");
+@import url("https://fonts.carolyn.sh/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.carolyn.sh/css2?family=Material+Symbols+Outlined&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
-/* Elegant Art Gallery Theme */
+/* Elegant Art Gallery Theme - Updated Typography */
 :root {
-  /* Colors - Refined Palette */
+  /* Colors - Refined Palette (Kept from original) */
   --ifm-color-primary: #000000;
   --ifm-color-primary-dark: #1a1a1a;
   --ifm-color-primary-darker: #000000;
@@ -19,9 +29,8 @@
   --ifm-color-primary-lighter: #666666;
   --ifm-color-primary-lightest: #888888;
 
-  /* Secondary Colors */
+  /* Secondary Colors (Kept from original) */
   --ifm-color-secondary: #f4f1ea;
-  /* Canvas/Paper color */
   --ifm-color-secondary-dark: #e0ded5;
   --ifm-color-secondary-darker: #d0cec5;
   --ifm-color-secondary-darkest: #b0aea5;
@@ -29,35 +38,71 @@
   --ifm-color-secondary-lighter: #fdfcf8;
   --ifm-color-secondary-lightest: #ffffff;
 
-  /* Backgrounds and Text */
+  /* Backgrounds and Text (Kept from original) */
   --ifm-background-color: #ffffff;
   --ifm-background-surface-color: #f9f9f9;
   --ifm-color-content: #1a1a1a;
   --ifm-color-content-secondary: #555555;
 
-  /* Typography - Elegant Serif Stack */
-  --ifm-font-family-base: "Times New Roman", "Songti SC", "SimSun", serif;
-  --ifm-heading-font-family: "Times New Roman", "Songti SC", serif;
-  --ifm-font-family-monospace: "Courier New", Courier, monospace;
+  /* Typography - New Noto Stack */
+  --ifm-heading-h1-font-size: 1.75rem;
+  --ifm-heading-h2-font-size: 1.7rem;
+  --ifm-heading-h3-font-size: 1.25rem;
+  --ifm-heading-h4-font-size: 1.1rem;
+  --ifm-heading-h5-font-size: 1rem;
+  --ifm-heading-h6-font-size: 0.9rem;
 
-  --ifm-font-size-base: 16px;
+  --ifm-font-family-base:
+    "Noto Sans SC", "Noto Sans HK", "Noto Sans TC", "Noto Sans", system-ui,
+    -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, sans-serif,
+    BlinkMacSystemFont, Helvetica, Arial, "Apple Color Emoji",
+    "Noto Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-sans: var(--ifm-font-family-base);
+
+  --ifm-heading-font-family:
+    "Noto Sans SC", "Noto Sans HK", "Noto Sans TC", "Noto Sans", system-ui,
+    -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, sans-serif,
+    BlinkMacSystemFont, Helvetica, Arial, "Apple Color Emoji",
+    "Noto Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  --ifm-font-family-monospace:
+    "Intel One Mono", SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace, "Apple Color Emoji",
+    "Noto Color Emoji";
+  --font-family-mono: var(--ifm-font-family-monospace);
+
+  --ifm-font-family-serif:
+    "Noto Serif SC", "Noto Serif HK", "Noto Serif TC", serif, sans-serif,
+    "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  --ifm-font-size-base: 100%;
+  --ifm-font-weight-light: 350;
+  --ifm-font-weight-normal: 450;
+  --ifm-font-weight-medium: 540;
+  --ifm-font-weight-semibold: 630;
+  --ifm-font-weight-bold: 720;
+  font-weight: var(--ifm-font-weight-normal);
+
+  --light-font-color: #1c1e21;
+  --font-color: #1c1e21;
+
   --ifm-line-height-base: 1.7;
+  /* Kept */
 
-  /* Borders and Radius - Sharp and Clean */
+  /* Borders and Radius (Kept) */
   --ifm-global-radius: 0px;
-  /* Sharp corners for artistic feel */
   --ifm-button-border-radius: 0px;
   --ifm-card-border-radius: 0px;
 
-  /* Spacing */
+  /* Spacing (Kept) */
   --ifm-spacing-horizontal: 1.5rem;
   --ifm-spacing-vertical: 1.5rem;
 
-  /* Borders */
+  /* Borders (Kept) */
   --ifm-border-color: #e0e0e0;
 }
 
-/* Dark Mode - Gallery Dark Room */
+/* Dark Mode */
 [data-theme='dark'] {
   --ifm-color-primary: #ffffff;
   --ifm-color-primary-dark: #e0e0e0;
@@ -73,22 +118,232 @@
   --ifm-color-content-secondary: #a0a0a0;
 
   --ifm-border-color: #333333;
+
+  /* Typography Overrides for Dark Mode */
+  --ifm-font-weight-light: 330;
+  --ifm-font-weight-normal: 430;
+  --ifm-font-weight-medium: 520;
+  --ifm-font-weight-semibold: 610;
+  --ifm-font-weight-bold: 700;
+  font-weight: var(--ifm-font-weight-normal);
+
+  --dark-font-color: #e3e3e3;
+  --font-color: #e3e3e3;
 }
 
-/* Typography Overrides */
-h1,
+/* New User Provided Styles */
+
+.blog-post-page .markdown h1 {
+  font-size: var(--ifm-heading-h1-font-size);
+}
+
+.blog-post-page .markdown h2 {
+  font-size: var(--ifm-heading-h2-font-size);
+}
+
+.blog-post-page .markdown h3 {
+  font-size: var(--ifm-heading-h3-font-size);
+}
+
+.blog-post-page .markdown h4 {
+  font-size: var(--ifm-heading-h4-font-size);
+}
+
+.blog-post-page .markdown h5 {
+  font-size: var(--ifm-heading-h5-font-size);
+}
+
+.blog-post-page .markdown h6 {
+  font-size: var(--ifm-heading-h6-font-size);
+}
+
+.blog-post-page article header h1 {
+  font-size: var(--ifm-heading-h1-font-size);
+}
+
+.blog-list-page article h2,
+.blog-list-page article h3,
+.blog-tags-post-list-page article h2,
+.blog-tags-post-list-page article h3 {
+  font-size: var(--ifm-heading-h1-font-size);
+  margin-bottom: 0;
+}
+
+h1 {
+  font-family: var(--ifm-font-family-serif), serif;
+  font-weight: var(--ifm-font-weight-bold);
+  line-height: 1.18;
+  letter-spacing: -0.006em;
+}
+
 h2,
-h3,
+h3 {
+  font-family: var(--ifm-font-family-serif), serif;
+  font-weight: var(--ifm-font-weight-semibold);
+  line-height: 1.22;
+  letter-spacing: -0.004em;
+}
+
 h4,
 h5,
 h6 {
-  font-family: var(--ifm-heading-font-family);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-family: var(--ifm-font-family-serif), serif;
+  font-weight: var(--ifm-font-weight-medium);
+  line-height: 1.28;
 }
 
+.normal-font-weight {
+  font-weight: var(--ifm-font-weight-normal) !important;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  font-smooth: always;
+  text-rendering: optimizeLegibility;
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1,
+    "calt" 1;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Typography optimizations */
+:lang(zh-CN) {
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1,
+    "calt" 1,
+    "halt" 1;
+}
+
+p,
+div,
+span,
+li {
+  font-variant-east-asian: proportional-width;
+}
+
+:is(p, div, span, li, h1, h2, h3, h4, h5, h6):lang(en) {
+  quotes: '"' '"' "'" "'";
+}
+
+:is(p, div, span, li, h1, h2, h3, h4, h5, h6):lang(zh-CN) {
+  quotes: "\201c" "\201d" "\2018" "\2019";
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1,
+    "calt" 1,
+    "halt" 1,
+    "vhal" 1;
+}
+
+:is(p, div, span, li, h1, h2, h3, h4, h5, h6):lang(zh-TW) {
+  quotes: "\300c" "\300d" "\300e" "\300f";
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1,
+    "calt" 1,
+    "halt" 1,
+    "vhal" 1;
+}
+
+.material-symbols-outlined {
+  color: var(--font-color);
+}
+
+[data-theme="dark"] .material-symbols-outlined {
+  color: var(--font-color);
+}
+
+.button .material-symbols-outlined {
+  color: inherit;
+}
+
+/* Mobile typography optimizations */
+@media (max-width: 996px) {
+  :root {
+    --ifm-font-size-base: 106%;
+    --ifm-heading-h1-font-size: 1.85rem;
+    --ifm-heading-h2-font-size: 1.8rem;
+    --ifm-heading-h3-font-size: 1.35rem;
+    --ifm-heading-h4-font-size: 1.18rem;
+    --ifm-heading-h5-font-size: 1.05rem;
+    --ifm-heading-h6-font-size: 0.95rem;
+    --ifm-blockquote-font-size: 1rem;
+  }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .blog-post-page .markdown {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .blog-post-page .markdown p {
+    margin-bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --ifm-font-size-base: 110%;
+    --ifm-heading-h1-font-size: 1.95rem;
+    --ifm-heading-h2-font-size: 1.85rem;
+    --ifm-heading-h3-font-size: 1.4rem;
+    --ifm-heading-h4-font-size: 1.22rem;
+    --ifm-blockquote-font-size: 1.03rem;
+  }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .blog-post-page .markdown {
+    font-size: 1.08rem;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --ifm-font-size-base: 110%;
+    --ifm-heading-h1-font-size: 1.6rem;
+    --ifm-heading-h2-font-size: 1.5rem;
+    --ifm-blockquote-font-size: 1rem;
+  }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .blog-post-page .markdown {
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+/* ================================================================= */
+/* Existing Component Styles (Adapted for new fonts) */
+/* ================================================================= */
+
 .markdown h1 {
-  font-size: 2.5rem;
+  /* Using new variables where applicable or keeping overrides compatible */
+  font-size: var(--ifm-heading-h1-font-size, 2.5rem);
   border-bottom: 1px solid var(--ifm-border-color);
   padding-bottom: 0.5rem;
 }
@@ -99,7 +354,7 @@ h6 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: none;
   backdrop-filter: blur(10px);
-  font-family: "Times New Roman", "Songti SC", serif;
+  /* font-family: "Times New Roman", "Songti SC", serif; -> Removed to use base */
 }
 
 [data-theme='dark'] .navbar {
@@ -108,14 +363,14 @@ h6 {
 }
 
 .navbar__title {
-  font-family: "Times New Roman", "Songti SC", serif;
+  /* font-family: "Times New Roman", "Songti SC", serif; -> Removed */
   font-weight: 400;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .navbar__item {
-  font-family: "Times New Roman", "Songti SC", serif;
+  /* font-family: "Times New Roman", "Songti SC", serif; -> Removed */
   font-size: 1rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -125,9 +380,8 @@ h6 {
 .footer {
   background: #f4f1ea;
   color: #000000;
-  /* Changed to pure black */
-  font-family: "Times New Roman", "Songti SC", serif;
   border-top: none;
+  /* font-family: "Times New Roman", "Songti SC", serif; -> Removed */
 }
 
 [data-theme='dark'] .footer {
@@ -136,14 +390,12 @@ h6 {
 }
 
 .footer__title {
-  font-family: "Times New Roman", "Songti SC", serif;
+  /* font-family: "Times New Roman", "Songti SC", serif; -> Removed */
   font-weight: 600;
-  /* Increased weight for visibility */
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 1rem;
   color: #000000;
-  /* Ensure title is black */
 }
 
 [data-theme='dark'] .footer__title {
@@ -151,10 +403,9 @@ h6 {
 }
 
 .footer__link-item {
-  font-family: "Courier New", monospace;
+  /* font-family: "Courier New", monospace; -> REMOVED per request */
   font-size: 0.9rem;
   color: #000000;
-  /* Ensure links are black */
   font-weight: 500;
 }
 
@@ -173,7 +424,7 @@ h6 {
 
 /* Button Styling - Sharp & Elegant */
 .button {
-  font-family: "Courier New", monospace;
+  /* font-family: "Courier New", monospace; -> Removed */
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 0;
@@ -219,13 +470,13 @@ h6 {
 
 /* Blog & Markdown Content */
 .markdown {
-  font-family: "Times New Roman", "Songti SC", serif;
+  /* font-family definition removed to use global base */
   font-size: 1.1rem;
   line-height: 1.8;
 }
 
 .markdown code {
-  font-family: "Courier New", monospace;
+  /* font-family: "Courier New", monospace; -> Removed, let it use default code font */
   background: rgba(0, 0, 0, 0.05);
   border: none;
 }
@@ -233,12 +484,13 @@ h6 {
 /* Hero Section Override */
 .hero {
   background: transparent;
-  font-family: "Times New Roman", "Songti SC", serif;
+  /* font-family removed */
 }
 
 .hero__title {
-  font-family: "Times New Roman", "Songti SC", serif;
-  font-weight: 400;
+  /* font-family removed */
+  font-weight: 700;
+  /* Increased weight slightly for new font */
   letter-spacing: -0.02em;
 }
 
