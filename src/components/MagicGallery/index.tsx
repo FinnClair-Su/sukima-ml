@@ -81,12 +81,43 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
     // Tuned variants for "Gallery Walk"
     // Desktop: Frame width is 950px, so we offset by ~(50vw - 475px) + 45% of frame width to peek
     // This ensures adjacent cards peek regardless of viewport width
-    // Flat Gallery Logic:
-    // Center: 50vw width. 
-    // Side Peeking: 10vw visible (1/5 of 50vw).
-    // Offsets:
-    // Left Right Edge = -50vw + 10vw = -40vw. Center = -40vw - 25vw = -65vw.
-    // Right Left Edge = 50vw - 10vw = 40vw. Center = 40vw + 25vw = 65vw.
+    // Unified Proportional Gallery Frame
+    // Physical Ratio: 30(w) x 35(h) Canvas + 4 Mat + 1 Frame
+    // Total: 40(w) x 45(h). Ratio: 40/45 (~0.888)
+    // CSS Paddings (relative to container width):
+    // Frame: 1/40 = 2.5%
+    // Mat: 4/40 = 10%
+    const GalleryFrame = ({ src, label, color = "bg-[#1a1a1a]" }: { src: string, label: string, color?: string }) => (
+        <div className={clsx(
+            "relative w-full aspect-[40/45] flex items-center justify-center transition-transform duration-300 hover:scale-[1.01] shadow-2xl",
+            color,
+            "p-[2.5%]" // The Frame
+        )}>
+            {/* Label Tag */}
+            <div className={clsx(
+                "absolute -top-[5%] left-1/2 -translate-x-1/2 text-white text-[2.5cqw] md:text-[0.6vw] font-serif uppercase tracking-widest px-[4%] py-[1%] shadow-sm opacity-60 group-hover:opacity-100 transition-opacity z-20",
+                label === "原作名画" ? "bg-white/90 text-black" : "bg-[#b71c1c]/90"
+            )}>
+                {label}
+            </div>
+
+            {/* Matting */}
+            <div className="relative w-full h-full bg-[#fdfbf7] p-[10%] shadow-[inset_0_0_10px_rgba(0,0,0,0.2)]">
+                {/* Inner Bevel Shadow */}
+                <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.15)]" />
+
+                {/* The Art */}
+                <div className="relative z-10 w-full h-full flex items-center justify-center bg-white overflow-hidden">
+                    <img
+                        src={src}
+                        alt="Artwork"
+                        className="w-full h-full object-cover" // Crop to fit 30:35 ratio
+                    />
+                </div>
+            </div>
+        </div>
+    );
+
     const cardVariants = {
         enter: (dir: number) => ({
             x: dir > 0 ? '130vw' : '-130vw',
@@ -103,7 +134,10 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
             transition: { duration: 0.8, ease: "easeInOut" as const },
         },
         left: {
-            x: isMobile ? '-92%' : '-65vw',
+            // Mobile: Hide/Exit to left? Actually user said "Don't show original".
+            // Implementation: Mobile only shows ONE item (center). Previous/Next are logic only.
+            // But if we want sliding animation on mobile, we need left/right to exist off-screen.
+            x: isMobile ? '-100vw' : '-65vw',
             scale: 1,
             opacity: 1,
             zIndex: 10,
@@ -112,7 +146,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
             transition: { duration: 0.8, ease: "easeInOut" as const },
         },
         right: {
-            x: isMobile ? '92%' : '65vw',
+            x: isMobile ? '100vw' : '65vw',
             scale: 1,
             opacity: 1,
             zIndex: 10,
@@ -127,69 +161,30 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
         })
     };
 
-    // --- Sub-Component: Dual Frame ---
-    // Represents a section of a white wall with two distinct framed paintings hung on it.
-    const DualGalleryFrame = ({ artwork, isActive = false }: { artwork: any, isActive?: boolean }) => (
-        <div
-            className={clsx(
-                "relative transition-all duration-500 flex items-center justify-center",
-                // The Container acts as the "Wall" - NOW TRANSPARENT
-                // Mobile: Compact stacked. 
-                // Desktop: 50vw width. Height maintained at roughly 5/8 ratio (31.25vw).
-                "w-[75vw] h-[110vw] md:w-[50vw] md:h-[31.25vw] bg-transparent",
-                // Removed outer shadow to prevent "card" look.
-            )}>
-
-            {/* Removed Wall Texture/Gradient to ensure true transparency */}
-            {/* <div className="absolute inset-0 bg-gradient-to-b from-black/5 to-transparent pointer-events-none" /> */}
-
-            <div className="flex flex-col md:flex-row gap-4 md:gap-16 items-center justify-center p-4 md:p-12 w-full h-full">
-
-                {/* LEFT: Original Painting Frame */}
-                <div className={clsx(
-                    "relative flex-1 w-full h-full bg-[#1a1a1a] p-[8px] md:p-[12px] flex flex-col group transition-transform duration-300 hover:scale-[1.01]",
-                    isActive ? "shadow-[0_20px_50px_rgba(0,0,0,0.6)]" : "shadow-[0_5px_15px_rgba(0,0,0,0.5)]"
-                )}>
-
-                    {/* Label */}
-                    <div className="absolute -top-8 md:-top-10 left-1/2 -translate-x-1/2 bg-white/90 text-black text-[10px] md:text-xs font-serif uppercase tracking-widest px-3 py-1 shadow-sm opacity-60 group-hover:opacity-100 transition-opacity">
-                        原作名画
-                    </div>
-
-                    {/* Matting (The white paper part of a frame) */}
-                    <div className="relative w-full h-full bg-[#fdfbf7] flex items-center justify-center overflow-hidden shadow-[inset_0_0_10px_rgba(0,0,0,0.2)]">
-                        {/* Inner Shadow for depth (sits on top of image) */}
-                        <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.15)] rounded-[2px]" />
-
-                        {/* The Art */}
-                        <div className="relative z-10 w-full h-full p-4 md:p-6 flex items-center justify-center">
-                            <img src={artwork.originalImagePath} alt="Original" className="max-w-full max-h-full object-contain drop-shadow-md" />
-                        </div>
-                    </div>
+    // --- Sub-Component: Art Group ---
+    // Adapts to Mobile (Single) vs Desktop (Dual)
+    const ArtGroup = ({ artwork, isActive = false }: { artwork: any, isActive?: boolean }) => {
+        if (isMobile) {
+            // Mobile: Single Touhou Frame, 90vw total width
+            return (
+                <div className="w-[90vw] flex items-center justify-center">
+                    <GalleryFrame src={artwork.imagePath} label="东方Project同人" />
                 </div>
+            );
+        }
 
-                {/* RIGHT: Touhou Version Frame */}
-                <div className={clsx(
-                    "relative flex-1 w-full h-full bg-[#1a1a1a] p-[8px] md:p-[12px] flex flex-col group transition-transform duration-300 hover:scale-[1.01]",
-                    isActive ? "shadow-[0_20px_50px_rgba(0,0,0,0.6)]" : "shadow-[0_5px_15px_rgba(0,0,0,0.5)]"
-                )}>
-
-                    <div className="absolute -top-8 md:-top-10 left-1/2 -translate-x-1/2 bg-[#b71c1c]/90 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest px-3 py-1 shadow-sm opacity-60 group-hover:opacity-100 transition-opacity">
-                        东方Project同人
-                    </div>
-
-                    <div className="relative w-full h-full bg-[#fdfbf7] flex items-center justify-center overflow-hidden shadow-[inset_0_0_10px_rgba(0,0,0,0.2)]">
-                        <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.15)] rounded-[2px]" />
-
-                        <div className="relative z-10 w-full h-full p-4 md:p-6 flex items-center justify-center">
-                            <img src={artwork.imagePath} alt="Touhou" className="max-w-full max-h-full object-contain drop-shadow-md" />
-                        </div>
-                    </div>
+        // Desktop: Dual Frame, 50vw total width
+        return (
+            <div className="w-[50vw] flex items-center justify-between gap-4 md:gap-8 px-4 md:px-0">
+                <div className="flex-1">
+                    <GalleryFrame src={artwork.originalImagePath} label="原作名画" />
                 </div>
-
+                <div className="flex-1">
+                    <GalleryFrame src={artwork.imagePath} label="东方Project同人" />
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
 
     return (
         <div
@@ -222,7 +217,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
                             initial="enter" animate="left" exit="exit"
                             onClick={(e) => { e.stopPropagation(); handlePrev(); }}
                         >
-                            <DualGalleryFrame artwork={leftItem} />
+                            <ArtGroup artwork={leftItem} />
                         </motion.div>
 
                         {/* RIGHT */}
@@ -233,7 +228,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
                             initial="enter" animate="right" exit="exit"
                             onClick={(e) => { e.stopPropagation(); handleNext(); }}
                         >
-                            <DualGalleryFrame artwork={rightItem} />
+                            <ArtGroup artwork={rightItem} />
                         </motion.div>
 
                         {/* CENTER */}
@@ -243,7 +238,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
                             variants={cardVariants}
                             initial="enter" animate="center" exit="exit"
                         >
-                            <DualGalleryFrame artwork={centerItem} isActive={true} />
+                            <ArtGroup artwork={centerItem} isActive={true} />
                         </motion.div>
                     </AnimatePresence>
                 </div>
