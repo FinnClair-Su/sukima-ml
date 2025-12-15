@@ -37,7 +37,7 @@ export default function BuyPage() {
                             </div>
                             <div className={styles.qrCard}>
                                 <img
-                                    src="/img/wechat_receiveMoney.png"
+                                    src="/img/IMG_0944.jpg"
                                     alt="WeChat Pay"
                                     className={styles.qrImage}
                                 />

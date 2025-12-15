@@ -79,49 +79,51 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
     const getKey = (item: typeof centerItem) => `${item.id}-${generations[item.id] || 0}`;
 
     // Tuned variants for "Gallery Walk"
+    // Desktop: Frame width is 950px, so we offset by ~(50vw - 475px) + 45% of frame width to peek
+    // This ensures adjacent cards peek regardless of viewport width
+    // Flat Gallery Logic:
+    // Center: 50vw width. 
+    // Side Peeking: 10vw visible (1/5 of 50vw).
+    // Offsets:
+    // Left Right Edge = -50vw + 10vw = -40vw. Center = -40vw - 25vw = -65vw.
+    // Right Left Edge = 50vw - 10vw = 40vw. Center = 40vw + 25vw = 65vw.
     const cardVariants = {
         enter: (dir: number) => ({
-            x: dir > 0 ? '100vw' : '-100vw',
-            scale: 0.6,
-            opacity: 0,
+            x: dir > 0 ? '130vw' : '-130vw',
             zIndex: 5,
-            rotateY: dir > 0 ? -45 : 45,
-            transition: { duration: 1, ease: "easeInOut" as const }
+            transition: { duration: 0.8, ease: "easeInOut" as const }
         }),
         center: {
             x: 0,
             scale: 1,
             opacity: 1,
             zIndex: 30,
-            filter: 'brightness(1)',
+            filter: 'none',
             rotateY: 0,
-            transition: { duration: 1, ease: "easeInOut" as const },
+            transition: { duration: 0.8, ease: "easeInOut" as const },
         },
         left: {
-            x: isMobile ? '-92%' : '-65vw', // Mobile peek
-            scale: 0.8,
-            opacity: 0.8,
+            x: isMobile ? '-92%' : '-65vw',
+            scale: 1,
+            opacity: 1,
             zIndex: 10,
-            filter: 'brightness(0.5) blur(2px)',
-            rotateY: isMobile ? 0 : 25,
-            transition: { duration: 1, ease: "easeInOut" as const },
+            filter: 'none',
+            rotateY: 0,
+            transition: { duration: 0.8, ease: "easeInOut" as const },
         },
         right: {
             x: isMobile ? '92%' : '65vw',
-            scale: 0.8,
-            opacity: 0.8,
+            scale: 1,
+            opacity: 1,
             zIndex: 10,
-            filter: 'brightness(0.5) blur(2px)',
-            rotateY: isMobile ? 0 : -25,
-            transition: { duration: 1, ease: "easeInOut" as const },
+            filter: 'none',
+            rotateY: 0,
+            transition: { duration: 0.8, ease: "easeInOut" as const },
         },
         exit: (dir: number) => ({
-            x: dir > 0 ? '-100vw' : '100vw',
-            scale: 0.6,
-            opacity: 0,
+            x: dir > 0 ? '-130vw' : '130vw',
             zIndex: 5,
-            rotateY: dir > 0 ? 45 : -45,
-            transition: { duration: 1, ease: "easeInOut" as const }
+            transition: { duration: 0.8, ease: "easeInOut" as const }
         })
     };
 
@@ -132,8 +134,9 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
             className={clsx(
                 "relative transition-all duration-500 flex items-center justify-center",
                 // The Container acts as the "Wall" - NOW TRANSPARENT
-                // Mobile: Compact stacked. Desktop: Landscape.
-                "w-[75vw] h-[110vw] md:w-[950px] md:h-[600px] bg-transparent",
+                // Mobile: Compact stacked. 
+                // Desktop: 50vw width. Height maintained at roughly 5/8 ratio (31.25vw).
+                "w-[75vw] h-[110vw] md:w-[50vw] md:h-[31.25vw] bg-transparent",
                 // Removed outer shadow to prevent "card" look.
             )}>
 
