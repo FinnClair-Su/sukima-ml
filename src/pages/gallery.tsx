@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import clsx from 'clsx';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { useHistory } from '@docusaurus/router';
+import { useHistory, useLocation } from '@docusaurus/router';
 
 import { artworks } from '../data/galleryData';
 
@@ -18,6 +18,7 @@ export default function MagicGallery() {
   const [generations, setGenerations] = useState<Record<string, number>>({});
 
   const history = useHistory();
+  const location = useLocation();
   const [isMobile, setIsMobile] = useState(false);
   const imageRef = React.useRef<HTMLImageElement>(null);
   const [bubblePosition, setBubblePosition] = useState<{ top: string | number, left: string | number } | null>(null);
@@ -30,6 +31,20 @@ export default function MagicGallery() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Handle Redirection from Test
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const featuredId = params.get('featured');
+    if (featuredId) {
+      const index = artworks.findIndex(a => a.id === featuredId);
+      if (index !== -1) {
+        setCurrentIndex(index);
+        // Optional: clean up URL
+        history.replace(location.pathname);
+      }
+    }
+  }, [location, history]);
 
   // Pixel-perfect click detection & Dynamic Positioning
   const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
