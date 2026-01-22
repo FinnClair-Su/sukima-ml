@@ -259,7 +259,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
             <div className="absolute inset-0 z-40 pointer-events-none flex items-end justify-center overflow-hidden">
                 <img
                     ref={imageRef}
-                    src="/img/yukari.png"
+                    src="/img/yukari.webp"
                     alt="Yukari Yakumo"
                     crossOrigin="anonymous"
                     className={clsx(
