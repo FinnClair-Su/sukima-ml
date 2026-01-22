@@ -550,7 +550,7 @@ export default function Phantasm() {
                                 overflow: 'hidden',
                             }}>
                                 <img
-                                    src={useBaseUrl("/photography/2026/01/DSCF0139_web.jpg")}
+                                    src={useBaseUrl("/photography/2026/01/DSCF0139_web.webp")}
                                     alt="朝阳² 系列"
                                     style={{
                                         width: '100%',

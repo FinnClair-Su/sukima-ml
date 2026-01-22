@@ -99,10 +99,12 @@ export default function GicleePage() {
 
                         <div className={styles.imageWrapper}>
                             <img
-                                src={useBaseUrl("/img/epson9580_web.png")}
+                                src={useBaseUrl("/img/epson9580_web.webp")}
                                 alt="Epson SureColor P9580"
                                 className={styles.image}
-                                onClick={() => openImage(useBaseUrl("/img/epson9580_web.png"))}
+                                width={1200}
+                                height={809}
+                                onClick={() => openImage(useBaseUrl("/img/epson9580_web.webp"))}
                             />
                             <div className={styles.caption}><Translate id="giclee.sec1.image.caption">Epson SureColor P9580 旗舰级大幅面打印机</Translate></div>
                         </div>
@@ -146,10 +148,12 @@ export default function GicleePage() {
 
                         <div className={styles.imageWrapper}>
                             <img
-                                src={useBaseUrl("/img/datasheet-PhotoRag308.png")}
+                                src={useBaseUrl("/img/datasheet-PhotoRag308.webp")}
                                 alt={translate({ id: 'giclee.sec2.image.alt', message: 'Hahnemühle Photo Rag 308g' })}
                                 className={styles.image}
-                                onClick={() => openImage(useBaseUrl("/img/datasheet-PhotoRag308.png"))}
+                                width={1200}
+                                height={1697}
+                                onClick={() => openImage(useBaseUrl("/img/datasheet-PhotoRag308.webp"))}
                             />
                             <div className={styles.caption}><Translate id="giclee.sec2.image.caption">Hahnemühle Photo Rag® 308g 数据表</Translate></div>
                         </div>
@@ -194,9 +198,9 @@ export default function GicleePage() {
                             <Translate id="giclee.sec2.detailHint">为了让大家更直观地感受差异，我们拍摄了实际成品的细节图：</Translate>
                         </p>
                         <div className={styles.photoGrid}>
-                            <img src={useBaseUrl("/img/BaS-huaxin.PNG")} alt={translate({ id: 'giclee.sec2.detail1.alt', message: 'Detail Shot 1' })} className={styles.gridImage} onClick={() => openImage(useBaseUrl("/img/BaS-huaxin.PNG"))} />
-                            <img src={useBaseUrl("/img/IMG_0199.jpg")} alt={translate({ id: 'giclee.sec2.detail2.alt', message: 'Detail Shot 2' })} className={styles.gridImage} onClick={() => openImage(useBaseUrl("/img/IMG_0199.jpg"))} />
-                            <img src={useBaseUrl("/img/IMG_0202.jpg")} alt={translate({ id: 'giclee.sec2.detail3.alt', message: 'Detail Shot 3' })} className={styles.gridImage} onClick={() => openImage(useBaseUrl("/img/IMG_0202.jpg"))} />
+                            <img src={useBaseUrl("/img/BaS-huaxin.webp")} alt={translate({ id: 'giclee.sec2.detail1.alt', message: 'Detail Shot 1' })} className={styles.gridImage} width={1200} height={1490} onClick={() => openImage(useBaseUrl("/img/BaS-huaxin.webp"))} />
+                            <img src={useBaseUrl("/img/IMG_0199.webp")} alt={translate({ id: 'giclee.sec2.detail2.alt', message: 'Detail Shot 2' })} className={styles.gridImage} width={1200} height={900} onClick={() => openImage(useBaseUrl("/img/IMG_0199.webp"))} />
+                            <img src={useBaseUrl("/img/IMG_0202.webp")} alt={translate({ id: 'giclee.sec2.detail3.alt', message: 'Detail Shot 3' })} className={styles.gridImage} width={1200} height={900} onClick={() => openImage(useBaseUrl("/img/IMG_0202.webp"))} />
 
                         </div>
                     </section>
@@ -223,10 +227,10 @@ export default function GicleePage() {
                         </ul>
 
                         <div className={styles.photoGrid}>
-                            <img src={useBaseUrl("/img/F253B61EBC19D9DF60101EEC6BAF2242.PNG")} alt={translate({ id: 'giclee.sec3.detail1.alt', message: 'Framing Detail 1' })} className={styles.gridImage} onClick={() => openImage(useBaseUrl("/img/F253B61EBC19D9DF60101EEC6BAF2242.PNG"))} />
-                            <img src={useBaseUrl("/img/IMG_0195.jpg")} alt={translate({ id: 'giclee.sec3.detail2.alt', message: 'Framing Detail 2' })} className={styles.gridImage} onClick={() => openImage(useBaseUrl("/img/IMG_0195.jpg"))} />
-                            <img src={useBaseUrl("/img/IMG_0196.jpg")} alt={translate({ id: 'giclee.sec3.detail3.alt', message: 'Framing Detail 3' })} className={styles.gridImage} onClick={() => openImage(useBaseUrl("/img/IMG_0196.jpg"))} />
-                            <img src={useBaseUrl("/img/IMG_0197.jpg")} alt={translate({ id: 'giclee.sec3.detail4.alt', message: 'Framing Detail 4' })} className={styles.gridImage} onClick={() => openImage(useBaseUrl("/img/IMG_0197.jpg"))} />
+                            <img src={useBaseUrl("/img/F253B61EBC19D9DF60101EEC6BAF2242.webp")} alt={translate({ id: 'giclee.sec3.detail1.alt', message: 'Framing Detail 1' })} className={styles.gridImage} width={1200} height={675} onClick={() => openImage(useBaseUrl("/img/F253B61EBC19D9DF60101EEC6BAF2242.webp"))} />
+                            <img src={useBaseUrl("/img/IMG_0195.webp")} alt={translate({ id: 'giclee.sec3.detail2.alt', message: 'Framing Detail 2' })} className={styles.gridImage} width={1200} height={900} onClick={() => openImage(useBaseUrl("/img/IMG_0195.webp"))} />
+                            <img src={useBaseUrl("/img/IMG_0196.webp")} alt={translate({ id: 'giclee.sec3.detail3.alt', message: 'Framing Detail 3' })} className={styles.gridImage} width={1200} height={900} onClick={() => openImage(useBaseUrl("/img/IMG_0196.webp"))} />
+                            <img src={useBaseUrl("/img/IMG_0197.webp")} alt={translate({ id: 'giclee.sec3.detail4.alt', message: 'Framing Detail 4' })} className={styles.gridImage} width={1200} height={900} onClick={() => openImage(useBaseUrl("/img/IMG_0197.webp"))} />
                         </div>
                     </section>
 

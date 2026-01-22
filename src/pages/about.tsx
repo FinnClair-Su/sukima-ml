@@ -16,9 +16,11 @@ export default function About() {
                     <div className={styles.visualColumn}>
                         <div className={styles.frameWrapper}>
                             <img
-                                src={useBaseUrl("/img/authors/xinxian.jpg")}
+                                src={useBaseUrl("/img/authors/xinxian.webp")}
                                 alt="Su Xinxian"
                                 className={styles.profileImage}
+                                width={1000}
+                                height={1000}
                             />
                         </div>
                         <div className={styles.captionText}>
