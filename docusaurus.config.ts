@@ -98,6 +98,10 @@ const config: Config = {
       { name: 'author', content: 'Fischer Su (苏心贤)' },
       { name: 'description', content: '隙间月影 (Sukima Moonlight) - Where Classic Art Meets Touhou. Discover high-quality Gicleè art prints combining world masterpieces with characters from the Touhou Project.' },
       { name: 'license', content: 'Copyright © 2026 Fischer Su. All Rights Reserved.' },
+      { property: 'og:title', content: '隙间月影 | Sukima Moonlight' },
+      { property: 'og:description', content: '隙间月影 (Sukima Moonlight) - Where Classic Art Meets Touhou. Discover high-quality Gicleè art prints combining world masterpieces with characters from the Touhou Project.' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: 'img/social-card.jpg' },
     ],
     navbar: {
       title: '隙间月影 | Sukima Moonlight',

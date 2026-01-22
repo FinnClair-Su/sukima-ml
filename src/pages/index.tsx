@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Translate, { translate } from '@docusaurus/Translate';
+import Head from '@docusaurus/Head';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import React, { useState, useEffect } from 'react';
 import MagicGalleryComponent from '../components/MagicGallery';
@@ -236,7 +237,23 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Science of Learning and Cognition；The Art of LLM and Tech Tools">
+      description="Gap of the Moon - Touhou Project x Classic Art Giclée Prints. Discover the fusion of world masterpieces and Touhou characters.">
+      <Head>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "隙间月影 | Sukima Moonlight",
+            "url": "https://sukima-ml.club",
+            "description": "Where Classic Art Meets Touhou. High-quality Gicleè art prints.",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://sukima-ml.club/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })}
+        </script>
+      </Head>
 
       <main className={styles.mainContainer}>
 

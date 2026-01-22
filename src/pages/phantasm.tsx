@@ -33,6 +33,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
+import Head from '@docusaurus/Head';
 import Translate, { translate } from '@docusaurus/Translate';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -405,6 +406,22 @@ export default function Phantasm() {
             title={translate({ id: 'phantasm.title', message: 'Phantasm | 幻象阶段' })}
             description="GFX100S 中画幅摄影作品集 - Photography Gallery by Sukima Moonlight"
         >
+            <Head>
+                <meta name="keywords" content="photography, GFX100S, medium format, fine art photography, phantasm" />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "ImageGallery",
+                        "name": "Phantasm Photography Gallery",
+                        "description": "Medium format photography collection exploring the boundary between reality and illusion.",
+                        "author": {
+                            "@type": "Person",
+                            "name": "Fischer Su"
+                        },
+                        "camera": "Fujifilm GFX100S"
+                    })}
+                </script>
+            </Head>
             <main className={styles.mainContainer}>
 
                 {/* 1. Hero Section: 词典 + 设备介绍 */}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 import Translate, { translate } from '@docusaurus/Translate';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
@@ -309,8 +310,22 @@ export default function MagicGallery() {
   return (
     <Layout
       title={translate({ id: 'gallery.title', message: 'Magic Gallery' })}
-      description={translate({ id: 'gallery.description', message: 'Where Art Meets Magic' })}
+      description={translate({ id: 'gallery.description', message: 'Explore our collection of Touhou Project characters merged with classic art masterpieces.' })}
     >
+      <Head>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ImageGallery",
+            "name": "Magic Gallery",
+            "description": "A collection of Giclée art prints combining Touhou Project characters with classic masterpieces.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Sukima Moonlight"
+            }
+          })}
+        </script>
+      </Head>
       {/* Whiter background, less grey */}
       <main
         className="relative w-full h-[100dvh] bg-[#fafafa] dark:bg-[#222] overflow-hidden flex flex-col items-center justify-center"
