@@ -4,3 +4,6 @@ build/
 ref.html
 .docusaurus
 东方Project知识问答与推荐.md
+
+# 高分辨率原始照片备份 (太大无法部署到 Cloudflare)
+static/photography/2026/01/*_original.JPG
