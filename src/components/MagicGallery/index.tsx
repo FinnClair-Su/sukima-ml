@@ -88,7 +88,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
     // CSS Paddings (relative to container width):
     // Frame: 1/40 = 2.5%
     // Mat: 4/40 = 10%
-    const GalleryFrame = ({ src, label, color = "bg-[#1a1a1a]" }: { src: string, label: string, color?: string }) => (
+    const GalleryFrame = ({ src, label, width, height, color = "bg-[#1a1a1a]" }: { src: string, label: string, width?: number, height?: number, color?: string }) => (
         <div className={clsx(
             "relative w-full aspect-[40/45] flex items-center justify-center transition-transform duration-300 hover:scale-[1.01] shadow-2xl",
             color,
@@ -112,6 +112,8 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
                     <img
                         src={src}
                         alt="Artwork"
+                        width={width}
+                        height={height}
                         className="w-full h-full object-cover" // Crop to fit 30:35 ratio
                     />
                 </div>
@@ -169,7 +171,12 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
             // Mobile: Single Touhou Frame, 90vw total width
             return (
                 <div className="w-[90vw] flex items-center justify-center">
-                    <GalleryFrame src={useBaseUrl(artwork.imagePath)} label="东方Project同人" />
+                    <GalleryFrame
+                        src={useBaseUrl(artwork.imagePath)}
+                        label="东方Project同人"
+                        width={artwork.imageWidth}
+                        height={artwork.imageHeight}
+                    />
                 </div>
             );
         }
@@ -178,10 +185,20 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
         return (
             <div className="w-[50vw] flex items-center justify-between gap-4 md:gap-8 px-4 md:px-0">
                 <div className="flex-1">
-                    <GalleryFrame src={useBaseUrl(artwork.originalImagePath)} label="原作名画" />
+                    <GalleryFrame
+                        src={useBaseUrl(artwork.originalImagePath)}
+                        label="原作名画"
+                        width={artwork.originalImageWidth}
+                        height={artwork.originalImageHeight}
+                    />
                 </div>
                 <div className="flex-1">
-                    <GalleryFrame src={useBaseUrl(artwork.imagePath)} label="东方Project同人" />
+                    <GalleryFrame
+                        src={useBaseUrl(artwork.imagePath)}
+                        label="东方Project同人"
+                        width={artwork.imageWidth}
+                        height={artwork.imageHeight}
+                    />
                 </div>
             </div>
         );
