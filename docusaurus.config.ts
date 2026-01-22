@@ -68,7 +68,22 @@ const config: Config = {
   ],
 
   plugins: [
-    // Removed learning and life blog plugins - not needed for art showcase site
+    // Redirect short URLs to /phantasm
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/ph',
+            to: '/phantasm',
+          },
+          {
+            from: '/photograph',
+            to: '/phantasm',
+          },
+        ],
+      },
+    ],
   ],
 
   themeConfig: {
@@ -178,7 +193,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} 隙间月影 Sukima Moonlight. Built with ❤️ and Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} 隙间月影 Sukima Moonlight. 依据《中华人民共和国著作权法》保护 | All Rights Reserved.`,
     },
     prism: {
       theme: prismThemes.github,

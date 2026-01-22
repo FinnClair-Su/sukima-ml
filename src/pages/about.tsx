@@ -39,7 +39,7 @@ export default function About() {
                             </h1>
 
                             <div className={styles.artistMeta}>
-                                Founder & Chief Developer · Sukima Moonlight
+                                Founder & Chief Developer · Photographer
                             </div>
 
                             <div className={styles.dividerShort}></div>

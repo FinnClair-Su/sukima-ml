@@ -16,10 +16,12 @@
   },
   "dependencies": {
     "@docusaurus/core": "3.8.1",
+    "@docusaurus/plugin-client-redirects": "^3.8.1",
     "@docusaurus/plugin-content-blog": "3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.1.1",
+    "exifreader": "^4.36.0",
     "framer-motion": "^12.23.25",
     "jimp": "^1.6.0",
     "lucide-react": "^0.556.0",
