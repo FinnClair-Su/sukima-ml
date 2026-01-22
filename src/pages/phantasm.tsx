@@ -30,118 +30,335 @@
  * =============================================================================
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import clsx from 'clsx';
+import { useExif, formatExifSettings } from '../hooks/useExif';
 import styles from './index.module.css';
 
-// Placeholder photo data - replace with your actual GFX100S shots
-const photos = [
+// 词典释义数据
+const definitions = [
     {
-        id: 'ph-1',
-        title: '即将上线',
-        subtitle: 'Coming Soon',
-        description: '富士GFX100S 中画幅摄影作品即将在此展出',
-        camera: 'Fujifilm GFX100S',
-        lens: 'GF 45mm f/2.8',
-        settings: 'f/5.6 · 1/250s · ISO 100',
-        imagePath: '/img/placeholder-photo.jpg',
-        date: '2026-01-17',
+        term: '幻象',
+        subtitle: '物理层面 / Physical Level',
+        explanation: '数码照片自存储介质中，经由算法排列，在屏幕上伪装成物质世界的全息投影。',
+    },
+    {
+        term: '幽灵',
+        subtitle: '描绘层面 / Depictive Level',
+        explanation: '照片是逝去的时刻被快门剥离，在静态边框中徘徊不去的“此曾在”。',
+    },
+    {
+        term: '心像',
+        subtitle: '心理层面 / Mental Level',
+        explanation: '超越物理层面的单薄，它在意识深处搭建起一座比现实更坚固的记忆宫殿。',
     },
 ];
 
-// Photo Counter Component (similar to ASCII Counter)
-function PhotoCounter({ total }: { total: number }) {
-    const [count, setCount] = useState(0);
+
+
+// 词典式释义组件 - 修复同步问题
+function PhantasmDictionary() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-        if (count < total) {
-            const timer = setTimeout(() => setCount(count + 1), 100);
-            return () => clearTimeout(timer);
-        }
-    }, [count, total]);
+        intervalRef.current = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % definitions.length);
+        }, 5000);
+        return () => {
+            if (intervalRef.current) clearInterval(intervalRef.current);
+        };
+    }, []);
 
-    const numberString = count.toString().padStart(4, '0');
+    const currentDef = definitions[currentIndex];
 
     return (
-        <div className={styles.counterContainer}>
-            <div className={styles.counterValue}>
-                {numberString.split('').map((digit, i) => (
-                    <span key={i} className={styles.counterDigit}>{digit}</span>
+        <div className={styles.heroLogoWrapper} style={{ cursor: 'default' }}>
+            {/* 标题 */}
+            <div style={{
+                fontFamily: '"Times New Roman", serif',
+                fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+                letterSpacing: '0.15em',
+                fontWeight: 300,
+                marginBottom: '1.5rem',
+            }}>
+                phantasm
+            </div>
+
+            {/* 音标 */}
+            <div style={{
+                fontFamily: '"Courier New", monospace',
+                fontSize: '0.9rem',
+                color: '#666',
+                marginBottom: '1rem',
+            }}>
+                /ˈfæn.tæz.əm/
+            </div>
+
+            {/* 释义列表 - 点击可切换 */}
+            <div style={{
+                display: 'flex',
+                gap: '1.5rem',
+                marginBottom: '1.5rem',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+            }}>
+                {definitions.map((def, index) => (
+                    <span
+                        key={index}
+                        onClick={() => {
+                            setCurrentIndex(index);
+                            // 重置定时器
+                            if (intervalRef.current) clearInterval(intervalRef.current);
+                            intervalRef.current = setInterval(() => {
+                                setCurrentIndex((prev) => (prev + 1) % definitions.length);
+                            }, 5000);
+                        }}
+                        style={{
+                            fontFamily: '"Songti SC", serif',
+                            fontSize: '1rem',
+                            color: index === currentIndex ? '#b71c1c' : '#666',
+                            fontWeight: index === currentIndex ? 600 : 400,
+                            transition: 'all 0.3s ease',
+                            cursor: 'pointer',
+                            borderBottom: index === currentIndex ? '2px solid #b71c1c' : '2px solid transparent',
+                            paddingBottom: '4px',
+                        }}
+                    >
+                        {`${index + 1}. ${def.term}`}
+                    </span>
                 ))}
             </div>
-            <div className={styles.counterLabel}>TOTAL PHOTOGRAPHS</div>
+
+            {/* 当前释义的详细解释 - 使用同步的 currentDef */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={currentIndex}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    style={{
+                        textAlign: 'center',
+                        maxWidth: '500px',
+                    }}
+                >
+                    <div style={{
+                        fontFamily: '"Courier New", monospace',
+                        fontSize: '0.85rem',
+                        color: '#b71c1c',
+                        marginBottom: '0.75rem',
+                        letterSpacing: '0.05em',
+                    }}>
+                        {currentDef.subtitle}
+                    </div>
+                    <div
+                        className={styles.heroSubtitle}
+                        style={{
+                            fontFamily: '"Songti SC", serif',
+                            fontSize: '1rem',
+                            lineHeight: 1.8,
+                            textAlign: 'center',
+                        }}
+                    >
+                        {currentDef.explanation}
+                    </div>
+                </motion.div>
+            </AnimatePresence>
+
+            {/* 进度指示器 */}
+            <div style={{
+                display: 'flex',
+                gap: '0.5rem',
+                marginTop: '1.5rem',
+                justifyContent: 'center',
+            }}>
+                {definitions.map((_, index) => (
+                    <div
+                        key={index}
+                        onClick={() => setCurrentIndex(index)}
+                        style={{
+                            width: '8px',
+                            height: '8px',
+                            borderRadius: '50%',
+                            background: index === currentIndex ? '#b71c1c' : '#ddd',
+                            transition: 'background 0.3s ease',
+                            cursor: 'pointer',
+                        }}
+                    />
+                ))}
+            </div>
         </div>
     );
 }
 
-// Unified Gallery Frame (matching MagicGallery style)
-const GalleryFrame = ({ src, label, aspectRatio = "3/4" }: { src: string, label?: string, aspectRatio?: string }) => (
-    <div className={clsx(
-        "relative w-full flex items-center justify-center transition-transform duration-300 hover:scale-[1.01] shadow-2xl bg-[#1a1a1a] p-[2.5%]"
-    )}
-        style={{ aspectRatio }}
-    >
-        {/* Label Tag */}
-        {label && (
-            <div className="absolute -top-[5%] left-1/2 -translate-x-1/2 text-white text-xs font-serif uppercase tracking-widest px-4 py-1 shadow-sm bg-[#b71c1c]/90 z-20">
-                {label}
-            </div>
-        )}
 
-        {/* Matting */}
-        <div className="relative w-full h-full bg-[#fdfbf7] p-[10%] shadow-[inset_0_0_10px_rgba(0,0,0,0.2)]">
-            <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.15)]" />
-            <div className="relative z-10 w-full h-full flex items-center justify-center bg-white overflow-hidden">
-                <img
-                    src={src}
-                    alt="Photograph"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                        // Show placeholder on error
-                        (e.target as HTMLImageElement).src = 'data:image/svg+xml,' + encodeURIComponent(`
-              <svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
-                <rect fill="#f5f5f5" width="400" height="500"/>
-                <text x="200" y="250" text-anchor="middle" fill="#999" font-family="serif" font-size="16">Coming Soon</text>
-              </svg>
-            `);
+// Why Medium Format Modal 组件
+function WhyMediumFormatModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+    if (!isOpen) return null;
+
+    return (
+        <div
+            style={{
+                position: 'fixed',
+                inset: 0,
+                zIndex: 9999,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'rgba(0,0,0,0.7)',
+            }}
+            onClick={onClose}
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                style={{
+                    background: '#fff',
+                    maxWidth: '600px',
+                    width: '90%',
+                    maxHeight: '80vh',
+                    overflow: 'auto',
+                    padding: '2.5rem',
+                    position: 'relative',
+                }}
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* 关闭按钮 */}
+                <button
+                    onClick={onClose}
+                    style={{
+                        position: 'absolute',
+                        top: '1rem',
+                        right: '1rem',
+                        background: 'transparent',
+                        border: 'none',
+                        fontSize: '1.5rem',
+                        cursor: 'pointer',
+                        color: '#999',
                     }}
-                />
-            </div>
-        </div>
-    </div>
-);
+                >
+                    ×
+                </button>
 
-// Navigation items for the bottom modules
+                <h2 style={{
+                    fontFamily: '"Times New Roman", serif',
+                    fontSize: '1.8rem',
+                    fontWeight: 400,
+                    marginBottom: '1.5rem',
+                    borderBottom: '2px solid #b71c1c',
+                    paddingBottom: '0.5rem',
+                }}>
+                    Why Medium Format?
+                </h2>
+
+                {/* 画幅比较 SVG - 所有画幅左下角对齐 */}
+                <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
+                    <svg viewBox="0 0 450 300" style={{ width: '100%', maxWidth: '500px', height: 'auto' }}>
+                        {/* 基准点：左下角 (50, 250) */}
+
+                        {/* M43: 17.3×13mm - 比例约为 8.65:6.5 -> 使用 87:65 */}
+                        <rect x="50" y="185" width="87" height="65" fill="none" stroke="#ccc" strokeWidth="1.5" />
+                        <text x="93" y="265" textAnchor="middle" fontSize="10" fill="#999">
+                            M43 17×13mm
+                        </text>
+
+                        {/* APS-C: 23.6×15.6mm - 比例约为 11.8:7.8 -> 使用 118:78 */}
+                        <rect x="50" y="172" width="118" height="78" fill="none" stroke="#888" strokeWidth="2" />
+                        <text x="109" y="265" textAnchor="middle" fontSize="11" fill="#777">
+                            APS-C 24×16mm
+                        </text>
+
+                        {/* 全画幅: 36×24mm - 比例 3:2 -> 使用 180:120 */}
+                        <rect x="50" y="130" width="180" height="120" fill="none" stroke="#444" strokeWidth="2" />
+                        <text x="140" y="265" textAnchor="middle" fontSize="12" fill="#555">
+                            全画幅 36×24mm
+                        </text>
+
+                        {/* 中画幅 GFX100S: 44×33mm - 比例 4:3 -> 使用 220:165 */}
+                        <rect x="50" y="85" width="220" height="165" fill="none" stroke="#b71c1c" strokeWidth="3" />
+                        <text x="160" y="75" textAnchor="middle" fontSize="14" fill="#b71c1c" fontWeight="600">
+                            中画幅 44×33mm
+                        </text>
+
+                        {/* 面积标注 */}
+                        <g>
+                            <line x1="300" y1="250" x2="300" y2="85" stroke="#b71c1c" strokeWidth="1" strokeDasharray="3,3" />
+                            <text x="320" y="165" fontSize="16" fill="#b71c1c" fontWeight="600">
+                                1.7×
+                            </text>
+                            <text x="320" y="182" fontSize="10" fill="#666">
+                                vs 全画幅
+                            </text>
+                        </g>
+                    </svg>
+                </div>
+
+                <div style={{
+                    fontFamily: '"Songti SC", serif',
+                    fontSize: '1rem',
+                    lineHeight: 1.8,
+                    color: '#333',
+                }}>
+                    <h3 style={{ fontWeight: 500, marginBottom: '0.5rem', color: '#b71c1c' }}>4:3 画幅比例</h3>
+                    <p style={{ marginBottom: '1.5rem' }}>
+                        相比全画幅的 3:2，中画幅 4:3 的画幅比例可以框选更多的天空或大地。
+                    </p>
+
+                    <h3 style={{ fontWeight: 500, marginBottom: '0.5rem', color: '#b71c1c' }}>等效 36mm 焦段</h3>
+                    <p style={{ marginBottom: '1.5rem' }}>
+                        GF45mm f/2.8 在中画幅上等效约 36mm 全画幅焦距，提供了近似人眼的温和视角。
+                        既不夸张也不局促，是记录真实世界的理想选择。
+                    </p>
+
+                    <h3 style={{ fontWeight: 500, marginBottom: '0.5rem', color: '#b71c1c' }}>Ultimate Truth</h3>
+                    <p>
+                        1.02 亿像素与中画幅传感器的优秀动态范围、色彩深度一起，
+                        记录下终极的真实——不仅是画面中可见的细节，更是现实与记忆之间的情感联结。
+                        但照片总归是假的吧，现实与幻想的界线何在，这是个问题。
+                    </p>
+                </div>
+
+                <button
+                    onClick={onClose}
+                    style={{
+                        marginTop: '2rem',
+                        width: '100%',
+                        padding: '0.75rem',
+                        background: '#b71c1c',
+                        color: '#fff',
+                        border: 'none',
+                        fontFamily: '"Courier New", monospace',
+                        fontSize: '0.9rem',
+                        cursor: 'pointer',
+                    }}
+                >
+                    GOT IT
+                </button>
+            </motion.div>
+        </div>
+    );
+}
+
+// Navigation items
 const navigationItems = [
-    {
-        title: 'GALLERY',
-        link: '/gallery',
-        description: '东方Project × 名画同人作品集',
-    },
-    {
-        title: 'GICLEE',
-        link: '/giclee',
-        description: '了解艺术微喷的"再现"魔法',
-    },
-    {
-        title: 'ABOUT',
-        link: '/about',
-        description: '关于隙间月影社团',
-    },
-    {
-        title: 'BLOG',
-        link: '/blog',
-        description: '社团动态与创作手记',
-    },
+    { title: 'GALLERY', link: '/gallery', description: '东方Project × 名画同人作品集' },
+    { title: 'GICLEE', link: '/giclee', description: '了解艺术微喷的"再现"魔法' },
+    { title: 'ABOUT', link: '/about', description: '关于隙间月影社团' },
+    { title: 'BLOG', link: '/blog', description: '社团动态与创作手记' },
 ];
 
-function ModuleBlock({ title, description, link, index }) {
+function ModuleBlock({ title, description, link, index }: {
+    title: string;
+    description: string;
+    link: string;
+    index: number;
+}) {
     const formattedIndex = (index + 1).toString().padStart(2, '0');
-
     return (
         <Link to={link} className={styles.moduleBlock}>
             <div className={styles.moduleNumber}>{formattedIndex}</div>
@@ -153,20 +370,7 @@ function ModuleBlock({ title, description, link, index }) {
 }
 
 export default function Phantasm() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [direction, setDirection] = useState(0);
-
-    const currentPhoto = photos[currentIndex];
-
-    const handleNext = () => {
-        setDirection(1);
-        setCurrentIndex((prev) => (prev + 1) % photos.length);
-    };
-
-    const handlePrev = () => {
-        setDirection(-1);
-        setCurrentIndex((prev) => (prev - 1 + photos.length) % photos.length);
-    };
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <Layout
@@ -175,48 +379,80 @@ export default function Phantasm() {
         >
             <main className={styles.mainContainer}>
 
-                {/* 1. Hero Section: Split Screen (matching homepage) */}
+                {/* 1. Hero Section: 词典 + 设备介绍 */}
                 <div className={styles.heroSection}>
                     <div className={styles.heroLeft}>
-                        {/* Logo/Title area */}
-                        <div className={styles.heroLogoWrapper} style={{ cursor: 'default' }}>
-                            <div style={{
-                                fontFamily: '"Times New Roman", serif',
-                                fontSize: 'clamp(2rem, 5vw, 4rem)',
-                                letterSpacing: '0.2em',
-                                fontWeight: 300,
-                                color: 'inherit',
-                                marginBottom: '1rem'
-                            }}>
-                                PHANTASM
-                            </div>
-                            <div className={styles.heroLogoCaption}>
-                                幻象阶段 · 中画幅摄影
-                            </div>
-                        </div>
-
-                        <div className={styles.heroSubtitle}>
-                            Where Classic Art Meets Photography<br />
-                            Captured with Fujifilm GFX100S · 44×33mm
-                        </div>
+                        <PhantasmDictionary />
                     </div>
 
                     <div className={styles.heroRight}>
                         <div className={styles.asciiContainer}>
                             <div className={styles.asciiDemo}>
-                                <div className={styles.asciiText} style={{ fontSize: '1.2rem' }}>
-                                    "The boundary between reality and illusion..."
+                                <div style={{
+                                    fontFamily: '"Courier New", monospace',
+                                    fontSize: '0.75rem',
+                                    color: '#999',
+                                    letterSpacing: '0.2em',
+                                    marginBottom: '1rem',
+                                }}>
+                                    MY GEAR
                                 </div>
+
+                                <div style={{
+                                    fontFamily: '"Times New Roman", serif',
+                                    fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
+                                    fontWeight: 400,
+                                    marginBottom: '0.5rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '0.75rem',
+                                }}>
+                                    <span>GFX100S</span>
+                                    <span style={{ color: '#b71c1c', fontWeight: 300 }}>|</span>
+                                    <span>GF45mm f/2.8</span>
+                                </div>
+
                                 <div className={styles.currentCharInfo}>
-                                    102MP · 4433 SENSOR · MEDIUM FORMAT
+                                    102MP · 44×33mm · MEDIUM FORMAT
                                 </div>
-                                <PhotoCounter total={photos.length} />
+
+                                <div className={styles.counterContainer}>
+                                    <button
+                                        onClick={() => setShowModal(true)}
+                                        style={{
+                                            background: 'transparent',
+                                            border: '1px solid #b71c1c',
+                                            color: '#b71c1c',
+                                            padding: '0.75rem 1.5rem',
+                                            fontFamily: '"Courier New", monospace',
+                                            fontSize: '0.85rem',
+                                            letterSpacing: '0.1em',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s ease',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.background = '#b71c1c';
+                                            e.currentTarget.style.color = 'white';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.background = 'transparent';
+                                            e.currentTarget.style.color = '#b71c1c';
+                                        }}
+                                    >
+                                        Why Medium Format?
+                                    </button>
+                                </div>
+
                                 <div className={styles.asciiComplete}>
                                     <div className={styles.messageContent}>
-                                        <div className={styles.completeMessage}>
-                                            Perfect Cherry Blossom · Extra Stage
-                                            <br />
-                                            <span style={{ fontSize: '0.8rem', color: '#999' }}>(妖々夢 · 幻象阶段)</span>
+                                        <div style={{
+                                            fontFamily: '"Songti SC", serif',
+                                            fontSize: '0.9rem',
+                                            color: '#666',
+                                            fontStyle: 'italic',
+                                        }}>
+                                            "The boundary between reality and illusion..."
                                         </div>
                                     </div>
                                 </div>
@@ -225,84 +461,117 @@ export default function Phantasm() {
                     </div>
                 </div>
 
-                {/* 2. Gallery Section: Photo Display */}
-                <div className={styles.gallerySection}>
-                    <div className="relative w-full h-[80vh] bg-[#fafafa] dark:bg-[#222] overflow-hidden flex items-center justify-center">
+                {/* 2. Gallery Section - 系列展示卡片 */}
+                <div className={styles.gallerySection} style={{ padding: '4rem 2rem' }}>
+                    <div style={{
+                        maxWidth: '1000px',
+                        margin: '0 auto',
+                        textAlign: 'center',
+                    }}>
+                        <h2 style={{
+                            fontFamily: '"Times New Roman", serif',
+                            fontSize: '2rem',
+                            fontWeight: 300,
+                            marginBottom: '3rem',
+                            letterSpacing: '0.1em',
+                        }}>
+                            FEATURED SERIES
+                        </h2>
 
-                        {/* Background texture */}
-                        <div className="absolute inset-0 pointer-events-none opacity-[0.1] mix-blend-multiply"
-                            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E")` }}
-                        />
-
-                        {/* Photo Frame - centered */}
-                        <div className="relative w-[90vw] md:w-[50vw] max-w-[600px]">
-                            <AnimatePresence mode="wait" custom={direction}>
-                                <motion.div
-                                    key={currentPhoto.id}
-                                    initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <GalleryFrame
-                                        src={currentPhoto.imagePath}
-                                        label="PHOTOGRAPHY"
-                                        aspectRatio="3/4"
-                                    />
-
-                                    {/* Photo Info - Below the frame */}
-                                    <div className="mt-6 text-center">
+                        {/* 朝阳² 系列卡片 */}
+                        <Link
+                            to="/chaoyang2"
+                            style={{
+                                display: 'block',
+                                textDecoration: 'none',
+                                color: 'inherit',
+                                width: '80%',
+                                margin: '0 auto',
+                                border: '1px solid #e0e0e0',
+                                transition: 'all 0.3s ease',
+                                boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.15)';
+                                e.currentTarget.style.transform = 'translateY(-4px)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.08)';
+                                e.currentTarget.style.transform = 'translateY(0)';
+                            }}
+                        >
+                            <div style={{
+                                position: 'relative',
+                                overflow: 'hidden',
+                            }}>
+                                <img
+                                    src="/photography/2026/01/DSCF0139_web.jpg"
+                                    alt="朝阳² 系列"
+                                    style={{
+                                        width: '100%',
+                                        height: 'auto',
+                                        aspectRatio: '4/3',
+                                        objectFit: 'cover',
+                                        display: 'block',
+                                        transition: 'transform 0.6s ease',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.transform = 'scale(1.05)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.transform = 'scale(1)';
+                                    }}
+                                />
+                                {/* 覆盖层 */}
+                                <div style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)',
+                                    display: 'flex',
+                                    alignItems: 'flex-end',
+                                    padding: '2rem',
+                                }}>
+                                    <div style={{ color: '#fff' }}>
                                         <h3 style={{
-                                            fontFamily: '"Times New Roman", "Songti SC", serif',
-                                            fontSize: '1.5rem',
-                                            fontWeight: 400,
-                                            marginBottom: '0.5rem'
+                                            fontFamily: '"Times New Roman", serif',
+                                            fontSize: '2.5rem',
+                                            fontWeight: 300,
+                                            margin: 0,
+                                            marginBottom: '0.5rem',
                                         }}>
-                                            {currentPhoto.title}
+                                            朝阳²
                                         </h3>
                                         <p style={{
-                                            fontFamily: '"Courier New", monospace',
-                                            fontSize: '0.85rem',
-                                            color: '#666'
-                                        }}>
-                                            {currentPhoto.settings}
-                                        </p>
-                                        <p style={{
                                             fontFamily: '"Songti SC", serif',
-                                            fontSize: '0.9rem',
-                                            color: '#888',
-                                            marginTop: '0.5rem'
+                                            fontSize: '1rem',
+                                            margin: 0,
+                                            opacity: 0.9,
                                         }}>
-                                            {currentPhoto.description}
+                                            从北京朝阳到辽宁朝阳市 · 3 张照片
                                         </p>
                                     </div>
-                                </motion.div>
-                            </AnimatePresence>
+                                </div>
+                            </div>
 
-                            {/* Navigation arrows */}
-                            {photos.length > 1 && (
-                                <>
-                                    <button
-                                        onClick={handlePrev}
-                                        className="absolute left-[-60px] top-1/2 -translate-y-1/2 p-3 border border-black/10 hover:bg-black/5 transition-colors"
-                                        style={{ background: 'rgba(255,255,255,0.9)' }}
-                                    >
-                                        <ChevronLeft className="w-6 h-6" />
-                                    </button>
-                                    <button
-                                        onClick={handleNext}
-                                        className="absolute right-[-60px] top-1/2 -translate-y-1/2 p-3 border border-black/10 hover:bg-black/5 transition-colors"
-                                        style={{ background: 'rgba(255,255,255,0.9)' }}
-                                    >
-                                        <ChevronRight className="w-6 h-6" />
-                                    </button>
-                                </>
-                            )}
-                        </div>
+                            <div style={{
+                                padding: '1.5rem',
+                                background: '#fafafa',
+                                borderTop: '1px solid #e0e0e0',
+                            }}>
+                                <div style={{
+                                    fontFamily: '"Courier New", monospace',
+                                    fontSize: '0.85rem',
+                                    color: '#b71c1c',
+                                    letterSpacing: '0.15em',
+                                }}>
+                                    CLICK TO VIEW SERIES →
+                                </div>
+                            </div>
+                        </Link>
                     </div>
                 </div>
 
-                {/* 3. Navigation Modules: Grid (matching homepage) */}
+                {/* 3. Navigation Modules */}
                 <div className={styles.modulesSection}>
                     {navigationItems.map((item, index) => (
                         <ModuleBlock
@@ -315,7 +584,7 @@ export default function Phantasm() {
                     ))}
                 </div>
 
-                {/* 4. Footer (matching homepage) */}
+                {/* 4. Footer */}
                 <footer className={styles.homeFooter}>
                     <div className={styles.footerContent}>
                         <p className={styles.footerText}>
@@ -328,6 +597,9 @@ export default function Phantasm() {
                         </div>
                     </div>
                 </footer>
+
+                {/* Why Medium Format Modal */}
+                <WhyMediumFormatModal isOpen={showModal} onClose={() => setShowModal(false)} />
 
             </main>
         </Layout>

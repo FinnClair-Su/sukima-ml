@@ -86,7 +86,7 @@ export function useExif(
                 }
 
                 const buffer = await response.arrayBuffer();
-                const tags = ExifReader.load(buffer, { expanded: true });
+                const tags = ExifReader.load(buffer, { expanded: true }) as any;
 
                 if (cancelled) return;
 

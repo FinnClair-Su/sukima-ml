@@ -9,7 +9,7 @@ interface LiquidCardProps {
 const LiquidCard: React.FC<LiquidCardProps> = ({ children, className }) => {
     const filterId = useRef(`liquid-filter-${Math.random().toString(36).substr(2, 9)}`).current;
     const turbulenceRef = useRef<SVGFETurbulenceElement>(null);
-    const requestRef = useRef<number>();
+    const requestRef = useRef<number | undefined>(undefined);
     const [isHovered, setIsHovered] = useState(false);
     const timeRef = useRef(0);
 
