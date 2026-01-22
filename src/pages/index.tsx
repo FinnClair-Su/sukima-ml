@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import Translate, { translate } from '@docusaurus/Translate';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import React, { useState, useEffect } from 'react';
 import MagicGalleryComponent from '../components/MagicGallery';
 
@@ -14,7 +16,7 @@ import styles from './index.module.css';
 // 占位数据：导航按钮
 interface NavigationItem {
   title: string;
-  description: string;
+  description: ReactNode;
   link: string;
 }
 
@@ -22,22 +24,22 @@ const navigationItems: NavigationItem[] = [
   {
     title: 'GALLERY',
     link: '/gallery',
-    description: 'Browse our collection of Touhou Project × Classic Art mashups.',
+    description: <Translate id="home.module.gallery.desc">Browse our collection of Touhou Project × Classic Art mashups.</Translate>,
   },
   {
     title: 'ABOUT',
     link: '/about',
-    description: 'Learn about the Sukima Moonlight circle and our philosophy.',
+    description: <Translate id="home.module.about.desc">Learn about the Sukima Moonlight circle and our philosophy.</Translate>,
   },
   {
     title: 'BLOG',
     link: '/blog',
-    description: 'Read about our creative process, updates, and thoughts.',
+    description: <Translate id="home.module.blog.desc">Read about our creative process, updates, and thoughts.</Translate>,
   },
   {
     title: 'PHANTASM',
     link: '/phantasm',
-    description: 'Medium format photography with Fujifilm GFX100S.',
+    description: <Translate id="home.module.phantasm.desc">Medium format photography with Fujifilm GFX100S.</Translate>,
   },
 ];
 
@@ -186,7 +188,7 @@ function ASCIIDemo() {
           letterSpacing: '0.1em',
           textTransform: 'uppercase'
         }}>
-          [ Click to See ]
+          [ <Translate id="home.ascii.clickToSee">Click to See</Translate> ]
         </div>
         <div style={{
           fontFamily: '"Times New Roman", serif',
@@ -198,7 +200,7 @@ function ASCIIDemo() {
           marginBottom: '1rem',
           color: '#b71c1c',
         }}>
-          State Phantasm
+          <Translate id="home.ascii.statePhantasm">State Phantasm</Translate>
         </div>
         <div style={{
           fontFamily: '"Courier New", monospace',
@@ -206,7 +208,7 @@ function ASCIIDemo() {
           color: '#999',
           letterSpacing: '0.1em',
         }}>
-          Photography by Organizer
+          <Translate id="home.ascii.photographyBy">Photography by Organizer</Translate>
         </div>
       </Link>
     </div>
@@ -243,12 +245,12 @@ export default function Home() {
           <div className={styles.heroLeft}>
             <Link to="/giclee" className={styles.heroLogoWrapper}>
               <img
-                src="/img/sukima-ml.svg"
+                src={useBaseUrl("/img/sukima-ml.svg")}
                 alt="Gap of the Moon"
                 className={styles.heroLogo}
               />
               <div className={styles.heroLogoCaption}>
-                我们选择的工艺——艺术微喷
+                <Translate id="home.hero.caption">我们选择的工艺——艺术微喷</Translate>
               </div>
             </Link>
           </div>
@@ -285,7 +287,7 @@ export default function Home() {
         <footer className={styles.homeFooter}>
           <div className={styles.footerContent}>
             <p className={styles.footerText}>
-              🌟 隙间月影 Sukima Moonlight - 为东方带来更有文化底蕴的制品
+              🌟 <Translate id="footer.text">隙间月影 Sukima Moonlight - 为东方带来更有文化底蕴的制品</Translate>
             </p>
             <div className={styles.socialLinks}>
               <Link to="https://fcsu.dev">Leader's Site</Link>

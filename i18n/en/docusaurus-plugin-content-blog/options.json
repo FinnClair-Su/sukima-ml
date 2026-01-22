@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "社团动态",
+    "description": "The title for the blog used in SEO"
+  },
+  "description": {
+    "message": "隙间月影社团的最新活动和创作进展",
+    "description": "The description for the blog used in SEO"
+  },
+  "sidebar.title": {
+    "message": "所有文章",
+    "description": "The label for the left sidebar"
+  }
+}

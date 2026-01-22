@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import clsx from 'clsx';
 import { useHistory } from '@docusaurus/router';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import { artworks } from '../../data/galleryData'; // Import shared data
 
 interface MagicGalleryProps {
@@ -168,7 +169,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
             // Mobile: Single Touhou Frame, 90vw total width
             return (
                 <div className="w-[90vw] flex items-center justify-center">
-                    <GalleryFrame src={artwork.imagePath} label="东方Project同人" />
+                    <GalleryFrame src={useBaseUrl(artwork.imagePath)} label="东方Project同人" />
                 </div>
             );
         }
@@ -177,10 +178,10 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
         return (
             <div className="w-[50vw] flex items-center justify-between gap-4 md:gap-8 px-4 md:px-0">
                 <div className="flex-1">
-                    <GalleryFrame src={artwork.originalImagePath} label="原作名画" />
+                    <GalleryFrame src={useBaseUrl(artwork.originalImagePath)} label="原作名画" />
                 </div>
                 <div className="flex-1">
-                    <GalleryFrame src={artwork.imagePath} label="东方Project同人" />
+                    <GalleryFrame src={useBaseUrl(artwork.imagePath)} label="东方Project同人" />
                 </div>
             </div>
         );
@@ -259,7 +260,7 @@ export default function MagicGallery({ className }: MagicGalleryProps) {
             <div className="absolute inset-0 z-40 pointer-events-none flex items-end justify-center overflow-hidden">
                 <img
                     ref={imageRef}
-                    src="/img/yukari.webp"
+                    src={useBaseUrl("/img/yukari.webp")}
                     alt="Yukari Yakumo"
                     crossOrigin="anonymous"
                     className={clsx(

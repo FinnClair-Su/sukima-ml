@@ -5,6 +5,9 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
+import Head from '@docusaurus/Head';
+import Translate, { translate } from '@docusaurus/Translate';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import styles from './index.module.css';
@@ -13,8 +16,8 @@ import styles from './index.module.css';
 const photos = [
     {
         id: 'dscf0139',
-        camera: 'GFX100S',
-        lens: 'GF45mm f/2.8',
+        camera: 'Fujifilm GFX100S',
+        lens: 'Fujinon GF45mm f/2.8 R WR',
         aperture: 'f/5.6',
         shutter: '1/250s',
         iso: 'ISO 100',
@@ -22,11 +25,13 @@ const photos = [
         hiResImage: '/photography/2026/01/DSCF0139.JPG',
         aspectRatio: '4/3',
         date: '2026-01-21',
+        title: 'Chaoyang, Liaoning',
+        location: 'Chaoyang',
     },
     {
         id: 'dscf0111',
-        camera: 'GFX100S',
-        lens: 'GF45mm f/2.8',
+        camera: 'Fujifilm GFX100S',
+        lens: 'Fujinon GF45mm f/2.8 R WR',
         aperture: 'f/5.6',
         shutter: '1/500s',
         iso: 'ISO 100',
@@ -34,11 +39,13 @@ const photos = [
         hiResImage: '/photography/2026/01/DSCF0111.JPG',
         aspectRatio: '4/3',
         date: '2026-01-21',
+        title: 'Train G3691',
+        location: 'On the way',
     },
     {
         id: 'dscf0144',
-        camera: 'GFX100S',
-        lens: 'GF45mm f/2.8',
+        camera: 'Fujifilm GFX100S',
+        lens: 'Fujinon GF45mm f/2.8 R WR',
         aperture: 'f/8.0',
         shutter: '1/125s',
         iso: 'ISO 200',
@@ -46,6 +53,8 @@ const photos = [
         hiResImage: '/photography/2026/01/DSCF0144.JPG',
         aspectRatio: '4/3',
         date: '2026-01-21',
+        title: 'Chaoyang Streets',
+        location: 'Chaoyang',
     },
 ];
 
@@ -88,8 +97,8 @@ function PhotoItem({ photo, onClick, isFirst }: PhotoItemProps) {
                 onMouseLeave={handleMouseLeave}
             >
                 <img
-                    src={photo.webImage}
-                    alt={`Photo ${photo.id}`}
+                    src={useBaseUrl(photo.webImage)}
+                    alt={photo.title}
                     style={{
                         width: '100%',
                         height: 'auto',
@@ -123,7 +132,7 @@ function PhotoItem({ photo, onClick, isFirst }: PhotoItemProps) {
                                 backdropFilter: 'blur(4px)',
                             }}
                         >
-                            Click to see
+                            <Translate id="gallery.clickToSee">Click to see</Translate>
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -228,10 +237,10 @@ function PhotoDetailModal({ photo, onClose, onPrev, onNext }: PhotoDetailModalPr
             >
                 {/* 照片 */}
                 <div style={{ flex: '1 1 auto', maxWidth: '70vw' }}>
-                    <a href={photo.hiResImage} target="_blank" rel="noopener noreferrer">
+                    <a href={useBaseUrl(photo.hiResImage)} target="_blank" rel="noopener noreferrer">
                         <img
-                            src={photo.webImage}
-                            alt={`Photo ${photo.id}`}
+                            src={useBaseUrl(photo.webImage)}
+                            alt={photo.title}
                             style={{
                                 width: '100%',
                                 height: 'auto',
@@ -318,11 +327,53 @@ export default function Chaoyang2() {
         setSelectedPhoto(photos[nextIndex]);
     };
 
+    // 生成 JSON-LD
+    const jsonLd = {
+        "@context": "https://schema.org/",
+        "@type": "ImageGallery",
+        "name": "Chaoyang² - Photography by Fischer Su",
+        "description": "A photography series capturing the journey from Chaoyang District, Beijing to Chaoyang City, Liaoning.",
+        "author": {
+            "@type": "Person",
+            "name": "Fischer Su"
+        },
+        "image": photos.map(photo => ({
+            "@type": "Photograph",
+            "name": photo.title,
+            "creator": {
+                "@type": "Person",
+                "name": "Fischer Su"
+            },
+            "contentLocation": {
+                "@type": "Place",
+                "name": photo.location
+            },
+            "dateCreated": photo.date,
+            "image": `https://sukima-ml.club${photo.hiResImage}`,
+            "thumbnailUrl": `https://sukima-ml.club${photo.webImage}`,
+            "copyrightNotice": "Copyright © Fischer Su. All rights reserved.",
+            "license": "https://sukima-ml.club/copyright",
+            "acquireLicensePage": "https://sukima-ml.club/copyright",
+            "creditText": "Fischer Su | Studio Phantasm",
+            "camera": photo.camera,
+            "lens": photo.lens,
+            "iso": photo.iso.replace('ISO ', ''),
+            "shutterSpeed": photo.shutter,
+            "fStop": photo.aperture
+        }))
+    };
+
+
     return (
         <Layout
-            title="朝阳² | Phantasm"
+            title={translate({ id: 'chaoyang.title', message: '朝阳² | Phantasm' })}
             description="从北京朝阳到辽宁朝阳市 - GFX100S 摄影系列"
         >
+            <Head>
+                <script type="application/ld+json">
+                    {JSON.stringify(jsonLd)}
+                </script>
+            </Head>
             <main className={styles.mainContainer}>
                 {/* Header */}
                 <div style={{
@@ -337,7 +388,7 @@ export default function Chaoyang2() {
                         margin: 0,
                         marginBottom: '0.5rem',
                     }}>
-                        朝阳²
+                        <Translate id="chaoyang.heading">朝阳²</Translate>
                     </h1>
                     <p style={{
                         fontFamily: '"Songti SC", serif',
@@ -347,9 +398,11 @@ export default function Chaoyang2() {
                         margin: '0 auto 1rem auto',
                         lineHeight: 1.9,
                     }}>
-                        从北京朝阳到辽宁朝阳，虽然顾名思义一下就是双重的朝向太阳，
-                        但从时间的维度上，我所乘坐的 G3691 其实是开往暮色的。
-                        我所见的风景也是多褐色的大地与暗淡的天空，朝阳²，或许是正正得负吧。
+                        <Translate id="chaoyang.intro">
+                            从北京朝阳到辽宁朝阳，虽然顾名思义一下就是双重的朝向太阳，
+                            但从时间的维度上，我所乘坐的 G3691 其实是开往暮色的。
+                            我所见的风景也是多褐色的大地与暗淡的天空，朝阳²，或许是正正得负吧。
+                        </Translate>
                     </p>
                     <style>{`
                         .mobile-hint {
@@ -369,7 +422,7 @@ export default function Chaoyang2() {
                         marginTop: '0.75rem',
                     }}>
                         <span style={{ display: 'inline-block' }}>💡 </span>
-                        此页面更适合在桌面端查看
+                        <Translate id="chaoyang.mobileHint">此页面更适合在桌面端查看</Translate>
                     </p>
                     <Link
                         to="/phantasm"
@@ -394,7 +447,7 @@ export default function Chaoyang2() {
                             e.currentTarget.style.color = '#b71c1c';
                         }}
                     >
-                        ← BACK TO PHANTASM
+                        ← <Translate id="chaoyang.back">BACK TO PHANTASM</Translate>
                     </Link>
                 </div>
 

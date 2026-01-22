@@ -1,0 +1,839 @@
+{
+  "gallery.clickToSee": {
+    "message": "Click to see"
+  },
+  "chaoyang.title": {
+    "message": "Chaoyang² | Phantasm"
+  },
+  "chaoyang.heading": {
+    "message": "Chaoyang²"
+  },
+  "chaoyang.intro": {
+    "message": "From Chaoyang, Beijing to Chaoyang City, Liaoning. Although the name suggests facing the sun twice, from a temporal dimension, the G3691 I took was actually heading towards the dusk. The scenery I saw was mostly brown earth and dim skies. Chaoyang², perhaps it's a case of two positives making a negative."
+  },
+  "chaoyang.mobileHint": {
+    "message": "This page is best viewed on desktop."
+  },
+  "chaoyang.back": {
+    "message": "BACK TO PHANTASM"
+  },
+  "copyright.title": {
+    "message": "Copyright Declaration",
+    "description": "The title of the copyright page"
+  },
+  "copyright.header": {
+    "message": "Copyright Declaration"
+  },
+  "copyright.lastUpdated": {
+    "message": "Last Updated: January 2026"
+  },
+  "copyright.ownership": {
+    "message": "Ownership"
+  },
+  "copyright.ownership.text1": {
+    "message": "All content published on this website (sukima-ml.club), unless otherwise noted, is copyrighted by Fischer Su. The specific attributions are as follows:"
+  },
+  "copyright.artworks": {
+    "message": "Artworks"
+  },
+  "copyright.artworks.owner": {
+    "message": "Sukima Moonlight"
+  },
+  "copyright.photography": {
+    "message": "Photography"
+  },
+  "copyright.photography.owner": {
+    "message": "Studio Phantasm"
+  },
+  "copyright.ownership.photodetail": {
+    "message": "All photography works are embedded with EXIF metadata and digital fingerprints, which are 'Rights Management Information' as defined in Article 49 of the Copyright Law. Any act of deleting or tampering with this information is illegal."
+  },
+  "copyright.declaration": {
+    "message": "Declaration"
+  },
+  "copyright.declaration.text1": {
+    "message": "In accordance with the Copyright Law of the PRC and the Regulations on the Protection of the Right to Network Dissemination of Information, no unit or individual may use the aforementioned content in any way (including but not limited to reproduction, screenshots, deep linking, mirroring, or as AI training material) without the written permission of the copyright holder."
+  },
+  "copyright.declaration.text2": {
+    "message": "This website reserves the right to pursue legal liability for acts that infringe on the right to network dissemination of information and the right of authorship."
+  },
+  "copyright.declaration.english": {
+    "message": "All photography works on this site are protected under the Copyright Law of the PRC. Unauthorized use is strictly prohibited."
+  },
+  "copyright.back": {
+    "message": "Back to Home"
+  },
+  "home.module.gallery.desc": {
+    "message": "Browse our collection of Touhou Project × Classic Art mashups."
+  },
+  "home.module.about.desc": {
+    "message": "Learn about the Sukima Moonlight circle and our philosophy."
+  },
+  "home.module.blog.desc": {
+    "message": "Read about our creative process, updates, and thoughts."
+  },
+  "home.module.phantasm.desc": {
+    "message": "Medium format photography with Fujifilm GFX100S."
+  },
+  "home.ascii.clickToSee": {
+    "message": "Click to See"
+  },
+  "home.ascii.statePhantasm": {
+    "message": "State Phantasm"
+  },
+  "home.ascii.photographyBy": {
+    "message": "Photography by Organizer"
+  },
+  "home.hero.caption": {
+    "message": "Our Chosen Craft — Giclée"
+  },
+  "footer.text": {
+    "message": "Sukima Moonlight - Bringing more cultural depth to Touhou products"
+  },
+  "phantasm.term.phantom": {
+    "message": "Phantom"
+  },
+  "phantasm.subtitle.physical": {
+    "message": "Physical Level"
+  },
+  "phantasm.explanation.phantom": {
+    "message": "Digital photos, arranged by algorithms from storage media, disguised as holographic projections of the material world on a screen."
+  },
+  "phantasm.term.ghost": {
+    "message": "Ghost"
+  },
+  "phantasm.subtitle.depictive": {
+    "message": "Depictive Level"
+  },
+  "phantasm.explanation.ghost": {
+    "message": "A photo is a 'this-has-been' where the passing moment is stripped away by the shutter and lingers in a static frame."
+  },
+  "phantasm.term.mental": {
+    "message": "Mental Image"
+  },
+  "phantasm.subtitle.mental": {
+    "message": "Mental Level"
+  },
+  "phantasm.explanation.mental": {
+    "message": "Surpassing the thinness of the physical level, it builds a memory palace deep in consciousness that is more solid than reality."
+  },
+  "modal.fullFrame": {
+    "message": "Full Frame 36×24mm"
+  },
+  "modal.mediumFormat": {
+    "message": "Medium Format 44×33mm"
+  },
+  "modal.vsFullFrame": {
+    "message": "vs Full Frame"
+  },
+  "modal.aspectRatio.title": {
+    "message": "4:3 Aspect Ratio"
+  },
+  "modal.aspectRatio.text": {
+    "message": "Compared to the 3:2 of full frame, the 4:3 aspect ratio of medium format allows for framing more of the sky or the ground."
+  },
+  "modal.focalLength.title": {
+    "message": "Equivalent 36mm Focal Length"
+  },
+  "modal.focalLength.text": {
+    "message": "GF45mm f/2.8 is equivalent to approximately a 36mm full-frame focal length on medium format, providing a gentle perspective similar to the human eye. Neither exaggerated nor cramped, it is an ideal choice for recording the real world."
+  },
+  "modal.ultimateTruth.text": {
+    "message": "102 million pixels, combined with the excellent dynamic range and color depth of the medium format sensor, record the ultimate truth—not just the visible details in the frame, but the emotional connection between reality and memory. But photos are fake after all, where is the boundary between reality and illusion? That is the question."
+  },
+  "module.gallery.desc": {
+    "message": "Touhou Project × Masterpiece Fanart Collection"
+  },
+  "module.giclee.desc": {
+    "message": "Learn about the 'reproduction' magic of Giclée"
+  },
+  "module.about.desc": {
+    "message": "About Sukima Moonlight Circle"
+  },
+  "module.blog.desc": {
+    "message": "Circle updates and creative notes"
+  },
+  "phantasm.title": {
+    "message": "Phantasm | Stage Phantasm"
+  },
+  "gallery.series.chaoyang2.title": {
+    "message": "Chaoyang²"
+  },
+  "gallery.series.chaoyang2.desc": {
+    "message": "From Chaoyang, Beijing to Chaoyang City · 3 Photos"
+  },
+  "gallery.clickToView": {
+    "message": "CLICK TO VIEW SERIES →"
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "This page crashed.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Scroll back to top",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "Archive",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "Archive",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Blog list page navigation",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Newer entries",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Older entries",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Blog post page navigation",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Newer post",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Older post",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "View all tags",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "system mode",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "light mode",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "dark mode",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Switch between dark and light mode (currently {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Breadcrumbs",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 item|{count} items",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Docs pages",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Previous",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Next",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "One doc tagged|{count} docs tagged",
+    "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} with \"{tagName}\"",
+    "description": "The title of the page for a docs tag"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Version: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "This is unreleased documentation for {siteTitle} {versionLabel} version.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "This is documentation for {siteTitle} {versionLabel}, which is no longer actively maintained.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "For up-to-date documentation, see the {latestVersionLink} ({versionLabel}).",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "latest version",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.common.editThisPage": {
+    "message": "Edit this page",
+    "description": "The link label to edit the current page"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " on {date}",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " by {user}",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Last updated{atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Direct link to {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versions",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.NotFound.title": {
+    "message": "Page Not Found",
+    "description": "The title of the 404 page"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Tags:",
+    "description": "The label alongside a tag list"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Close",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "Blog recent posts navigation",
+    "description": "The ARIA label for recent posts in the blog sidebar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Expand sidebar category '{label}'",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Collapse sidebar category '{label}'",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.admonition.caution": {
+    "message": "caution",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "danger",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "info",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "note",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "tip",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "warning",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Main",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Languages",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.NotFound.p1": {
+    "message": "We could not find what you were looking for.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Please contact the owner of the site that linked you to the original URL and let them know their link is broken.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "On this page",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Read more",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "Read more about {title}",
+    "description": "The ARIA label for the link to full blog posts from excerpts"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "One min read|{readingTime} min read",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Copy",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Copied",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Copy code to clipboard",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Toggle word wrap",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Home page",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Docs sidebar",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Close navigation bar",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Back to main menu",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Toggle navigation bar",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Expand the dropdown",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Collapse the dropdown",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.blog.post.plurals": {
+    "message": "One post|{count} posts",
+    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} tagged with \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "The title of the page for a blog author"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Authors",
+    "description": "The title of the authors page"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "View all authors",
+    "description": "The label of the link targeting the blog authors page"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "This author has not written any posts yet.",
+    "description": "The text for authors with 0 blog post"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Unlisted page",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Draft page",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
+    "description": "The draft content banner message"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Try again",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Skip to main content",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+  },
+  "about.title": {
+    "message": "About Us"
+  },
+  "about.description": {
+    "message": "About Sukima Moonlight"
+  },
+  "about.creator.caption": {
+    "message": "Fig 1. The Creator, 2025."
+  },
+  "about.link.giclee": {
+    "message": "Our Chosen Craft — Giclée"
+  },
+  "about.organizer.title": {
+    "message": "About the Organizer｜关于主催"
+  },
+  "about.organizer.name": {
+    "message": "Su Xinxian (Fischer)"
+  },
+  "about.organizer.role": {
+    "message": "Founder & Chief Developer · Photographer"
+  },
+  "about.profile.title": {
+    "message": "Profile"
+  },
+  "about.profile.site": {
+    "message": "Organizer's Personal Site"
+  },
+  "about.profile.bio": {
+    "message": "BJTU Incoming PhD Student, Computer Science ➡️ Cybersecurity. I study software supply chain vulnerabilities and constitutional AI in multicultural contexts. I care deeply about learning science and cognitive security."
+  },
+  "about.recently.title": {
+    "message": "Recently"
+  },
+  "about.recently.agent": {
+    "message": "Software Supply Chain Vulnerability Detection Agent"
+  },
+  "about.recently.products": {
+    "message": "Touhou Project Product Preparation"
+  },
+  "about.recently.thoughts": {
+    "message": "Reflections on self-optimization and relationships"
+  },
+  "about.recently.reading": {
+    "message": "Reading"
+  },
+  "about.quote.ml": {
+    "message": "\"sukima-ml stands for Sukima Moonlight, but Machine Learning? I can do that too 😉\""
+  },
+  "about.quote.vision": {
+    "message": "Bringing more cultural depth to Touhou products. School is draining; in my next life, I'd like to be a lovable, wealthy genius girl."
+  },
+  "about.solo.notice": {
+    "message": "* Currently, this circle is just me working solo, but I'm excited about what we'll create together!"
+  },
+  "contact.title": {
+    "message": "Creative Exchange"
+  },
+  "contact.description": {
+    "message": "Connect with Sukima Moonlight and share your creativity"
+  },
+  "contact.header": {
+    "message": "Contact & Connect"
+  },
+  "contact.header.sub": {
+    "message": "Creative Exchange & Contact"
+  },
+  "contact.channels.title": {
+    "message": "Official Channels"
+  },
+  "contact.channels.qq": {
+    "message": "QQ Group"
+  },
+  "contact.channels.qq.join": {
+    "message": "Click to Join"
+  },
+  "contact.channels.email": {
+    "message": "Email"
+  },
+  "contact.channels.bilibili": {
+    "message": "Bilibili"
+  },
+  "contact.channels.pixiv": {
+    "message": "Pixiv"
+  },
+  "contact.channels.pixiv.coming": {
+    "message": "Coming Soon"
+  },
+  "contact.quote": {
+    "message": "\"We are always looking for new ideas and collaborations. Whether you are an artist, a developer, or just a fan of Touhou Project, we'd love to hear from you.\""
+  },
+  "contact.feedback.title": {
+    "message": "Community Feedback"
+  },
+  "contact.feedback.sub": {
+    "message": "Idea Submission Area"
+  },
+  "contact.feedback.desc": {
+    "message": "Feel free to share your ideas, product suggestions, or anything interesting in the comments below!"
+  },
+  "contact.feedback.tip": {
+    "message": "💡 Tip: Supports Markdown; you can use image hosting links to insert images"
+  },
+  "contact.feedback.imageHost": {
+    "message": "📷 推荐图床："
+  },
+  "contact.feedback.imageHost.detail": {
+    "message": "(Free and no registration required)"
+  },
+  "contact.modal.title": {
+    "message": "Scan to Join QQ Group"
+  },
+  "gallery.viewDetails": {
+    "message": "View Details"
+  },
+  "gallery.title": {
+    "message": "Magic Gallery"
+  },
+  "gallery.description": {
+    "message": "Where Art Meets Magic"
+  },
+  "giclee.title": {
+    "message": "Introduction to Giclée Process"
+  },
+  "giclee.description": {
+    "message": "More than just merch; it's a 'true trace' leading to Gensokyo"
+  },
+  "giclee.logo.alt": {
+    "message": "Sukima Moonlight"
+  },
+  "giclee.header.part1": {
+    "message": "More than just merch,"
+  },
+  "giclee.header.part2": {
+    "message": "this is the 'true trace' leading to"
+  },
+  "giclee.header.part3": {
+    "message": "Gensokyo"
+  },
+  "giclee.intro.p1.line1": {
+    "message": "We've always been thinking: when those magnificent world-famous paintings are dipped into the vat of fantasy and return to reality, how should they arrive by our side?"
+  },
+  "giclee.intro.p1.line2": {
+    "message": "As common, glare-heavy posters? Or rough-surfaced plastic sheets that curl and fade after hanging for a while?"
+  },
+  "giclee.intro.no": {
+    "message": "No."
+  },
+  "giclee.intro.vision": {
+    "message": "The girls of Gensokyo deserve the highest level of treatment."
+  },
+  "giclee.intro.p2": {
+    "message": "To perfectly replicate the gorgeous world under the artist's brush, we follow {standard} to create all our 'Giclée' products."
+  },
+  "giclee.intro.standard": {
+    "message": "collector-grade art reproduction standards"
+  },
+  "giclee.intro.p3": {
+    "message": "This is not just a picture, but a piece of physical collection that can be passed down."
+  },
+  "giclee.sec1.title": {
+    "message": "🎨 Only 12 Colors can capture the depth of the 'Gap'"
+  },
+  "giclee.sec1.model": {
+    "message": "【Epson SureColor P9580 · Flagship Output】"
+  },
+  "giclee.sec1.desc1": {
+    "message": "Ordinary printing only has 4 CMYK colors, failing to match {purple} or restore {red}."
+  },
+  "giclee.sec1.purple": {
+    "message": "the deep purple in Yakumo Yukari's gaps"
+  },
+  "giclee.sec1.red": {
+    "message": "the vibrant red of the Hakurei Shrine Torii"
+  },
+  "giclee.sec1.desc2": {
+    "message": "So, we deployed Epson's flagship beast — {model}."
+  },
+  "giclee.sec1.image.caption": {
+    "message": "Epson SureColor P9580 Flagship Large Format Printer"
+  },
+  "giclee.sec1.item1.title": {
+    "message": "12-Color Ink System"
+  },
+  "giclee.sec1.item1.desc": {
+    "message": "It features {colors} inks that ordinary printers lack. Those brilliant lights and shadows can only be accurately restored by it."
+  },
+  "giclee.sec1.colors": {
+    "message": "exclusive orange, green, and violet"
+  },
+  "giclee.sec1.item2.title": {
+    "message": "极致的黑"
+  },
+  "giclee.sec1.item2.desc": {
+    "message": "拥有4种不同浓度的黑色墨水。它印出的黑色不是死黑，而是像夜空一样有层次、有质感的黑。"
+  },
+  "giclee.sec1.item3.title": {
+    "message": "微米级精度"
+  },
+  "giclee.sec1.item3.desc": {
+    "message": "2400dpi 分辨率 + 3.5pl 极微墨滴。你需要拿着放大镜，才能惊叹于角色的睫毛和发丝竟如此清晰，肉眼完全看不到任何噪点。"
+  },
+  "giclee.sec2.title": {
+    "message": "📜 'Masterpiece' Touch within Reach"
+  },
+  "giclee.sec2.model": {
+    "message": "【Hahnemühle Photo Rag® 308g · Premium Paper】"
+  },
+  "giclee.sec2.desc1": {
+    "message": "If ink is the soul, then paper is the body. We refused cheap photo paper and chose Hahnemühle from Germany — a legendary brand that has been making paper since 1584."
+  },
+  "giclee.sec2.image.alt": {
+    "message": "Hahnemühle Photo Rag 308g"
+  },
+  "giclee.sec2.image.caption": {
+    "message": "Hahnemühle Photo Rag® 308g 数据表"
+  },
+  "giclee.sec2.desc2": {
+    "message": "我们使用的是他们最经典的 {model}{purpleNote}："
+  },
+  "giclee.sec2.purpleNote": {
+    "message": "（紫妈那幅比较特殊，因为黑色面积太大选用了更贵的硫化钡纯棉纸）"
+  },
+  "giclee.sec2.item1.title": {
+    "message": "100% 纯棉制造"
+  },
+  "giclee.sec2.item1.desc": {
+    "message": "指尖划过，你能感受到如同古籍、水彩纸那样的温润棉质纹理，绝非普通纸浆可比。"
+  },
+  "giclee.sec2.item2.title": {
+    "message": "厚重 308gsm"
+  },
+  "giclee.sec2.item2.desc": {
+    "message": "拿在手里沉甸甸的分量感，挺括厚实，不会像普通海报那样软塌塌。"
+  },
+  "giclee.sec2.item3.title": {
+    "message": "高级哑光面"
+  },
+  "giclee.sec2.item3.desc": {
+    "message": "{focus} 它完全不反光。无论你宿舍或房间的灯光如何照射，任何角度都能完美欣赏画面，没有刺眼的白斑。"
+  },
+  "giclee.sec2.focus": {
+    "message": "这是重点！"
+  },
+  "giclee.sec2.detailHint": {
+    "message": "为了让大家更直观地感受差异，我们拍摄了实际成品的细节图："
+  },
+  "giclee.sec2.detail1.alt": {
+    "message": "Detail Shot 1"
+  },
+  "giclee.sec2.detail2.alt": {
+    "message": "Detail Shot 2"
+  },
+  "giclee.sec2.detail3.alt": {
+    "message": "Detail Shot 3"
+  },
+  "giclee.sec3.title": {
+    "message": "🖼️ 最后的加冕：画廊级装裱"
+  },
+  "giclee.sec3.desc": {
+    "message": "好马配好鞍。为了保护这幅作品，我们在装裱上也近乎强迫症："
+  },
+  "giclee.sec3.item1.title": {
+    "message": "影像级高透亚克力"
+  },
+  "giclee.sec3.item1.desc": {
+    "message": "比玻璃更透、更轻、更安全。"
+  },
+  "giclee.sec3.item2.title": {
+    "message": "铝合金画框 & 铝皮背板"
+  },
+  "giclee.sec3.item2.desc": {
+    "message": "防潮防变形，给画作最坚实的支撑。"
+  },
+  "giclee.sec3.item3.title": {
+    "message": "博物馆级无酸卡纸"
+  },
+  "giclee.sec3.item3.desc": {
+    "message": "确保画芯不会因为接触酸性物质而发黄。"
+  },
+  "giclee.sec3.detail1.alt": {
+    "message": "Framing Detail 1"
+  },
+  "giclee.sec3.detail2.alt": {
+    "message": "Framing Detail 2"
+  },
+  "giclee.sec3.detail3.alt": {
+    "message": "Framing Detail 3"
+  },
+  "giclee.sec3.detail4.alt": {
+    "message": "Framing Detail 4"
+  },
+  "giclee.sec4.title": {
+    "message": "⏳ 时间的礼物"
+  },
+  "giclee.sec4.q": {
+    "message": "为什么要选择艺术微喷？"
+  },
+  "giclee.sec4.desc1.part1": {
+    "message": "普通的印刷品，挂一年就会在阳光下褪色。"
+  },
+  "giclee.sec4.desc1.part2": {
+    "message": "但得益于{paper}与{ink}的结合，这幅作品达到了{standard}。"
+  },
+  "giclee.sec4.paper": {
+    "message": "无酸纯棉纸张"
+  },
+  "giclee.sec4.ink": {
+    "message": "颜料墨水"
+  },
+  "giclee.sec4.standard": {
+    "message": "“收藏级”标准"
+  },
+  "giclee.sec4.desc2": {
+    "message": "它可以陪伴你读完高中、大学，甚至当你步入社会、组建家庭，回头看时，墙上的她们依然一如初见。"
+  },
+  "giclee.conclusion": {
+    "message": "We hope that what we sell is not just a print, but a piece of love that can transcend time and is worth cherishing."
+  },
+  "giclee.lightbox.alt": {
+    "message": "Full size"
+  },
+  "gallery.art-001.title": {
+    "message": "Yakumo Yukari · Masterpiece in the Gap"
+  },
+  "gallery.art-001.subtitle": {
+    "message": "Yakumo Yukari × Classic Art"
+  },
+  "gallery.art-001.desc": {
+    "message": "A world-class masterpiece manifesting within the gap."
+  },
+  "gallery.art-002.title": {
+    "message": "Hakurei Reimu · Shrine Maiden of Paradise"
+  },
+  "gallery.art-002.subtitle": {
+    "message": "Hakurei Reimu × Classic Art"
+  },
+  "gallery.art-002.desc": {
+    "message": "The guardian of Gensokyo, harmonized with classical aesthetics."
+  },
+  "gallery.art-003.title": {
+    "message": "Kirisame Marisa · Ordinary Magician"
+  },
+  "gallery.art-003.subtitle": {
+    "message": "Kirisame Marisa × Classic Art"
+  },
+  "gallery.art-003.desc": {
+    "message": "The ordinary magician, surrounded by the echoes of master painters."
+  }
+}

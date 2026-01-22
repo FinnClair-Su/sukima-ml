@@ -1,25 +1,4 @@
-# robots.txt for sukima-ml.club
-# 隙间月影 | Sukima Moonlight
-# 东方Project 名画同人社团 + 中画幅摄影画廊
-
 User-agent: *
 Allow: /
 
-# 封锁内部搜索结果页（如有）
-Disallow: /search/
-Disallow: /search
-
-# 封锁标签聚合页（薄内容，消耗抓取配额）
-Disallow: /blog/tags/
-Disallow: /blog/tags
-
-# 封锁博客归档页
-Disallow: /blog/archive
-Disallow: /blog/archive/
-
-# 封锁作者列表聚合页
-Disallow: /blog/authors
-Disallow: /blog/authors/
-
-# Sitemap 位置
 Sitemap: https://sukima-ml.club/sitemap.xml

@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "隙间月影 | Sukima Moonlight",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Sukima Moonlight Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.作品集": {
+    "message": "Gallery",
+    "description": "Navbar item with label 作品集"
+  },
+  "item.label.关于我们": {
+    "message": "About",
+    "description": "Navbar item with label 关于我们"
+  },
+  "item.label.社团动态": {
+    "message": "Blog",
+    "description": "Navbar item with label 社团动态"
+  },
+  "item.label.联系方式": {
+    "message": "Contact",
+    "description": "Navbar item with label 联系方式"
+  }
+}

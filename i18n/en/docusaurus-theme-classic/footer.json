@@ -1,0 +1,58 @@
+{
+  "link.title.导航": {
+    "message": "Navigation",
+    "description": "The title of the footer links column with title=导航 in the footer"
+  },
+  "link.title.社交媒体": {
+    "message": "Social Media",
+    "description": "The title of the footer links column with title=社交媒体 in the footer"
+  },
+  "link.title.社团资源": {
+    "message": "Resources",
+    "description": "The title of the footer links column with title=社团资源 in the footer"
+  },
+  "link.item.label.作品集": {
+    "message": "Gallery",
+    "description": "The label of footer link with label=作品集 linking to /gallery"
+  },
+  "link.item.label.关于我们": {
+    "message": "About",
+    "description": "The label of footer link with label=关于我们 linking to /about"
+  },
+  "link.item.label.社团动态": {
+    "message": "Blog",
+    "description": "The label of footer link with label=社团动态 linking to /blog"
+  },
+  "link.item.label.联系方式": {
+    "message": "Contact",
+    "description": "The label of footer link with label=联系方式 linking to /contact"
+  },
+  "link.item.label.Bilibili": {
+    "message": "Bilibili",
+    "description": "The label of footer link with label=Bilibili linking to https://space.bilibili.com/368984327"
+  },
+  "link.item.label.Pixiv": {
+    "message": "Pixiv",
+    "description": "The label of footer link with label=Pixiv linking to https://www.pixiv.net/users/placeholder"
+  },
+  "link.item.label.QQ群": {
+    "message": "QQ Group",
+    "description": "The label of footer link with label=QQ群 linking to /qq-group"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/FinnClair-Su"
+  },
+  "link.item.label.创作者主页": {
+    "message": "Organizer's Site",
+    "description": "The label of footer link with label=创作者主页 linking to https://fcsu.dev"
+  },
+  "link.item.label.Email": {
+    "message": "Email",
+    "description": "The label of footer link with label=Email linking to mailto:kanade271828@gmail.com"
+  },
+  "copyright": {
+    "message": "© 2026 Sukima Moonlight. Protected under the Copyright Law of the PRC | All Rights Reserved.",
+    "description": "The footer copyright"
+  }
+}

@@ -31,10 +31,14 @@ const config: Config = {
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
-  /* i18n: {
+  i18n: {
     defaultLocale: 'zh-Hans',
     locales: ['zh-Hans', 'en'],
-  }, */
+    localeConfigs: {
+      'zh-Hans': { label: 'CN' },
+      'en': { label: 'EN' },
+    },
+  },
 
   presets: [
     [
@@ -90,8 +94,10 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/social-card.jpg',
     metadata: [
-      { name: 'keywords', content: '隙间月影, 东方Project, 名画同人, Touhou, 同人创作' },
-      { name: 'description', content: '隙间月影 - 名画与东方的邂逅，展示经典名画与东方Project角色的同人创作' },
+      { name: 'keywords', content: '隙间月影, 东方Project, 名画同人, Touhou, Touhou Project, Classic Art, Gicleè, Art Prints, Fischer Su' },
+      { name: 'author', content: 'Fischer Su (苏心贤)' },
+      { name: 'description', content: '隙间月影 (Sukima Moonlight) - Where Classic Art Meets Touhou. Discover high-quality Gicleè art prints combining world masterpieces with characters from the Touhou Project.' },
+      { name: 'license', content: 'Copyright © 2026 Fischer Su. All Rights Reserved.' },
     ],
     navbar: {
       title: '隙间月影 | Sukima Moonlight',
@@ -132,6 +138,10 @@ const config: Config = {
         //   position: 'left',
         //   label: '文档',
         // },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
       ],
     },
     footer: {

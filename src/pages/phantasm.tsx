@@ -33,6 +33,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
+import Translate, { translate } from '@docusaurus/Translate';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useExif, formatExifSettings } from '../hooks/useExif';
@@ -41,19 +43,19 @@ import styles from './index.module.css';
 // 词典释义数据
 const definitions = [
     {
-        term: '幻象',
-        subtitle: '物理层面 / Physical Level',
-        explanation: '数码照片自存储介质中，经由算法排列，在屏幕上伪装成物质世界的全息投影。',
+        term: <Translate id="phantasm.term.phantom">幻象</Translate>,
+        subtitle: <Translate id="phantasm.subtitle.physical">物理层面 / Physical Level</Translate>,
+        explanation: <Translate id="phantasm.explanation.phantom">数码照片自存储介质中，经由算法排列，在屏幕上伪装成物质世界的全息投影。</Translate>,
     },
     {
-        term: '幽灵',
-        subtitle: '描绘层面 / Depictive Level',
-        explanation: '照片是逝去的时刻被快门剥离，在静态边框中徘徊不去的“此曾在”。',
+        term: <Translate id="phantasm.term.ghost">幽灵</Translate>,
+        subtitle: <Translate id="phantasm.subtitle.depictive">描绘层面 / Depictive Level</Translate>,
+        explanation: <Translate id="phantasm.explanation.ghost">照片是逝去的时刻被快门剥离，在静态边框中徘徊不去的“此曾在”。</Translate>,
     },
     {
-        term: '心像',
-        subtitle: '心理层面 / Mental Level',
-        explanation: '超越物理层面的单薄，它在意识深处搭建起一座比现实更坚固的记忆宫殿。',
+        term: <Translate id="phantasm.term.mental">心像</Translate>,
+        subtitle: <Translate id="phantasm.subtitle.mental">心理层面 / Mental Level</Translate>,
+        explanation: <Translate id="phantasm.explanation.mental">超越物理层面的单薄，它在意识深处搭建起一座比现实更坚固的记忆宫殿。</Translate>,
     },
 ];
 
@@ -128,7 +130,7 @@ function PhantasmDictionary() {
                             paddingBottom: '4px',
                         }}
                     >
-                        {`${index + 1}. ${def.term}`}
+                        {`${index + 1}. `}{def.term}
                     </span>
                 ))}
             </div>
@@ -276,13 +278,13 @@ function WhyMediumFormatModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
                         {/* 全画幅: 36×24mm - 比例 3:2 -> 使用 180:120 */}
                         <rect x="50" y="130" width="180" height="120" fill="none" stroke="#444" strokeWidth="2" />
                         <text x="140" y="265" textAnchor="middle" fontSize="12" fill="#555">
-                            全画幅 36×24mm
+                            <Translate id="modal.fullFrame">全画幅 36×24mm</Translate>
                         </text>
 
                         {/* 中画幅 GFX100S: 44×33mm - 比例 4:3 -> 使用 220:165 */}
                         <rect x="50" y="85" width="220" height="165" fill="none" stroke="#b71c1c" strokeWidth="3" />
                         <text x="160" y="75" textAnchor="middle" fontSize="14" fill="#b71c1c" fontWeight="600">
-                            中画幅 44×33mm
+                            <Translate id="modal.mediumFormat">中画幅 44×33mm</Translate>
                         </text>
 
                         {/* 面积标注 */}
@@ -292,7 +294,7 @@ function WhyMediumFormatModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
                                 1.7×
                             </text>
                             <text x="320" y="182" fontSize="10" fill="#666">
-                                vs 全画幅
+                                <Translate id="modal.vsFullFrame">vs 全画幅</Translate>
                             </text>
                         </g>
                     </svg>
@@ -304,22 +306,32 @@ function WhyMediumFormatModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
                     lineHeight: 1.8,
                     color: '#333',
                 }}>
-                    <h3 style={{ fontWeight: 500, marginBottom: '0.5rem', color: '#b71c1c' }}>4:3 画幅比例</h3>
+                    <h3 style={{ fontWeight: 500, marginBottom: '0.5rem', color: '#b71c1c' }}>
+                        <Translate id="modal.aspectRatio.title">4:3 画幅比例</Translate>
+                    </h3>
                     <p style={{ marginBottom: '1.5rem' }}>
-                        相比全画幅的 3:2，中画幅 4:3 的画幅比例可以框选更多的天空或大地。
+                        <Translate id="modal.aspectRatio.text">
+                            相比全画幅的 3:2，中画幅 4:3 的画幅比例可以框选更多的天空或大地。
+                        </Translate>
                     </p>
 
-                    <h3 style={{ fontWeight: 500, marginBottom: '0.5rem', color: '#b71c1c' }}>等效 36mm 焦段</h3>
+                    <h3 style={{ fontWeight: 500, marginBottom: '0.5rem', color: '#b71c1c' }}>
+                        <Translate id="modal.focalLength.title">等效 36mm 焦段</Translate>
+                    </h3>
                     <p style={{ marginBottom: '1.5rem' }}>
-                        GF45mm f/2.8 在中画幅上等效约 36mm 全画幅焦距，提供了近似人眼的温和视角。
-                        既不夸张也不局促，是记录真实世界的理想选择。
+                        <Translate id="modal.focalLength.text">
+                            GF45mm f/2.8 在中画幅上等效约 36mm 全画幅焦距，提供了近似人眼的温和视角。
+                            既不夸张也不局促，是记录真实世界的理想选择。
+                        </Translate>
                     </p>
 
                     <h3 style={{ fontWeight: 500, marginBottom: '0.5rem', color: '#b71c1c' }}>Ultimate Truth</h3>
                     <p>
-                        1.02 亿像素与中画幅传感器的优秀动态范围、色彩深度一起，
-                        记录下终极的真实——不仅是画面中可见的细节，更是现实与记忆之间的情感联结。
-                        但照片总归是假的吧，现实与幻想的界线何在，这是个问题。
+                        <Translate id="modal.ultimateTruth.text">
+                            1.02 亿像素与中画幅传感器的优秀动态范围、色彩深度一起，
+                            记录下终极的真实——不仅是画面中可见的细节，更是现实与记忆之间的情感联结。
+                            但照片总归是假的吧，现实与幻想的界线何在，这是个问题。
+                        </Translate>
                     </p>
                 </div>
 
@@ -346,15 +358,31 @@ function WhyMediumFormatModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
 
 // Navigation items
 const navigationItems = [
-    { title: 'GALLERY', link: '/gallery', description: '东方Project × 名画同人作品集' },
-    { title: 'GICLEE', link: '/giclee', description: '了解艺术微喷的"再现"魔法' },
-    { title: 'ABOUT', link: '/about', description: '关于隙间月影社团' },
-    { title: 'BLOG', link: '/blog', description: '社团动态与创作手记' },
+    {
+        title: 'GALLERY',
+        link: '/gallery',
+        description: <Translate id="module.gallery.desc">东方Project × 名画同人作品集</Translate>
+    },
+    {
+        title: 'GICLEE',
+        link: '/giclee',
+        description: <Translate id="module.giclee.desc">了解艺术微喷的"再现"魔法</Translate>
+    },
+    {
+        title: 'ABOUT',
+        link: '/about',
+        description: <Translate id="module.about.desc">关于隙间月影社团</Translate>
+    },
+    {
+        title: 'BLOG',
+        link: '/blog',
+        description: <Translate id="module.blog.desc">社团动态与创作手记</Translate>
+    },
 ];
 
 function ModuleBlock({ title, description, link, index }: {
     title: string;
-    description: string;
+    description: React.ReactNode;
     link: string;
     index: number;
 }) {
@@ -374,7 +402,7 @@ export default function Phantasm() {
 
     return (
         <Layout
-            title="Phantasm | 幻象阶段"
+            title={translate({ id: 'phantasm.title', message: 'Phantasm | 幻象阶段' })}
             description="GFX100S 中画幅摄影作品集 - Photography Gallery by Sukima Moonlight"
         >
             <main className={styles.mainContainer}>
@@ -505,7 +533,7 @@ export default function Phantasm() {
                                 overflow: 'hidden',
                             }}>
                                 <img
-                                    src="/photography/2026/01/DSCF0139_web.jpg"
+                                    src={useBaseUrl("/photography/2026/01/DSCF0139_web.jpg")}
                                     alt="朝阳² 系列"
                                     style={{
                                         width: '100%',
@@ -539,7 +567,7 @@ export default function Phantasm() {
                                             margin: 0,
                                             marginBottom: '0.5rem',
                                         }}>
-                                            朝阳²
+                                            <Translate id="gallery.series.chaoyang2.title">朝阳²</Translate>
                                         </h3>
                                         <p style={{
                                             fontFamily: '"Songti SC", serif',
@@ -547,7 +575,7 @@ export default function Phantasm() {
                                             margin: 0,
                                             opacity: 0.9,
                                         }}>
-                                            从北京朝阳到辽宁朝阳市 · 3 张照片
+                                            <Translate id="gallery.series.chaoyang2.desc">从北京朝阳到辽宁朝阳市 · 3 张照片</Translate>
                                         </p>
                                     </div>
                                 </div>
@@ -564,7 +592,7 @@ export default function Phantasm() {
                                     color: '#b71c1c',
                                     letterSpacing: '0.15em',
                                 }}>
-                                    CLICK TO VIEW SERIES →
+                                    <Translate id="gallery.clickToView">CLICK TO VIEW SERIES →</Translate>
                                 </div>
                             </div>
                         </Link>
@@ -588,7 +616,7 @@ export default function Phantasm() {
                 <footer className={styles.homeFooter}>
                     <div className={styles.footerContent}>
                         <p className={styles.footerText}>
-                            🌟 隙间月影 Sukima Moonlight - 为东方带来更有文化底蕴的制品
+                            🌟 <Translate id="footer.text">隙间月影 Sukima Moonlight - 为东方带来更有文化底蕴的制品</Translate>
                         </p>
                         <div className={styles.socialLinks}>
                             <Link to="https://fcsu.dev">Leader's Site</Link>
@@ -605,3 +633,4 @@ export default function Phantasm() {
         </Layout>
     );
 }
+

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
+import Translate, { translate } from '@docusaurus/Translate';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import clsx from 'clsx';
@@ -283,7 +284,7 @@ export default function MagicGallery() {
           {/* 4. The Artwork - Full height of container minus matting */}
           <div className="relative w-full h-full shadow-[inset_0_2px_6px_rgba(0,0,0,0.2)] bg-gray-200">
             <img
-              src={artwork.imagePath}
+              src={useBaseUrl(artwork.imagePath)}
               alt={artwork.title}
               className="w-full h-full object-cover block"
             />
@@ -293,7 +294,7 @@ export default function MagicGallery() {
             {isActive && (
               <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
                 <span className="bg-black/70 text-white px-4 py-2 rounded-full text-sm tracking-widest uppercase backdrop-blur-md hidden md:block">
-                  View Details
+                  <Translate id="gallery.viewDetails">View Details</Translate>
                 </span>
               </div>
             )}
@@ -306,7 +307,10 @@ export default function MagicGallery() {
   );
 
   return (
-    <Layout title="Magic Gallery" description="Where Art Meets Magic">
+    <Layout
+      title={translate({ id: 'gallery.title', message: 'Magic Gallery' })}
+      description={translate({ id: 'gallery.description', message: 'Where Art Meets Magic' })}
+    >
       {/* Whiter background, less grey */}
       <main
         className="relative w-full h-[100dvh] bg-[#fafafa] dark:bg-[#222] overflow-hidden flex flex-col items-center justify-center"
@@ -389,7 +393,7 @@ export default function MagicGallery() {
             {/* Character Image - PIXEL PERFECT CLICK DETECTION */}
             <img
               ref={imageRef}
-              src="/img/yukari.png"
+              src={useBaseUrl("/img/yukari.png")}
               alt="Yukari Yakumo"
               crossOrigin="anonymous"
               className="w-full h-auto drop-shadow-2xl transition-transform cursor-help"
@@ -430,14 +434,14 @@ export default function MagicGallery() {
                     </button>
 
                     <h3 className="font-serif font-bold text-lg text-gray-900 mb-1 leading-tight tracking-tight">
-                      {centerItem.title}
+                      {translate({ id: centerItem.titleId, message: centerItem.title })}
                     </h3>
                     <div className="text-[10px] font-mono text-gray-400 uppercase tracking-widest mb-3 border-b border-gray-100 pb-2">
-                      {centerItem.subtitle}
+                      {translate({ id: centerItem.subtitleId, message: centerItem.subtitle })}
                     </div>
 
                     <p className="font-serif text-[0.95rem] text-gray-700 leading-relaxed italic">
-                      “{centerItem.description}”
+                      “{translate({ id: centerItem.descId, message: centerItem.description })}”
                     </p>
 
                     <div className="mt-3 text-[10px] text-gray-400 font-medium text-right font-sans">
