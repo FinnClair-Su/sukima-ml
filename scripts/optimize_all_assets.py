@@ -11,7 +11,7 @@ Batch optimize all assets in static/img and static/photography:
 """
 
 import os
-from PIL import Image
+from PIL import Image, ImageOps
 from pathlib import Path
 
 # Config
@@ -48,7 +48,7 @@ def optimize_assets():
             # Photography or typically large images -> 1920
             # Else -> 1200
             if "photography" in str(file_path):
-                max_width = 1920
+                max_width = 2912
             elif "hero" in file_path.name.lower() or "banner" in file_path.name.lower():
                 max_width = 1920
             else:
@@ -56,6 +56,9 @@ def optimize_assets():
                 
             try:
                 with Image.open(file_path) as img:
+                    # Fix orientation
+                    img = ImageOps.exif_transpose(img)
+                    
                     # Calculate new size
                     w, h = img.size
                     if w > max_width:

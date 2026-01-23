@@ -14,8 +14,10 @@ from PIL import Image, ImageOps
 from pathlib import Path
 
 # Standard Configuration
-MAX_JPG_SIZE_MB = 18.5
-TARGET_JPG_SIZE_MB = 18.0
+# Standard Configuration
+MIN_JPG_SIZE_MB = 20.0
+MAX_JPG_SIZE_MB = 24.0
+TARGET_JPG_SIZE_MB = 22.0
 TARGET_JPG_BYTES = int(TARGET_JPG_SIZE_MB * 1024 * 1024)
 
 WEBP_MAX_WIDTH = 2912
