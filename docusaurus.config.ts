@@ -113,7 +113,7 @@ const config: Config = {
       },
       items: [
         {
-          to: '/gallery',
+          to: '/sukima-ml',
           label: '作品集',
           position: 'left',
           className: 'navbar-sukima-item',
@@ -156,7 +156,7 @@ const config: Config = {
           items: [
             {
               label: '作品集',
-              to: '/gallery',
+              to: '/sukima-ml',
             },
             {
               label: '关于我们',

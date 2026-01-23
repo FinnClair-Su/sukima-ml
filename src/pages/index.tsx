@@ -24,7 +24,7 @@ interface NavigationItem {
 const navigationItems: NavigationItem[] = [
   {
     title: 'GALLERY',
-    link: '/gallery',
+    link: '/sukima-ml',
     description: <Translate id="home.module.gallery.desc">Browse our collection of Touhou Project × Classic Art mashups.</Translate>,
   },
   {
