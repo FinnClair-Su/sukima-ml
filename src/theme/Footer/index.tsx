@@ -27,7 +27,7 @@ export default function FooterWrapper(props) {
       <QRCodeModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        imageSrc="/img/groupQRcode.JPG"
+        imageSrc="/img/groupQRcode.webp"
         title="扫码加入QQ群"
       />
     </>

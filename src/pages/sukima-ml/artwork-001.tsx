@@ -80,7 +80,7 @@ export default function Artwork001() {
           <div className={styles.visualColumn}>
             <div className={styles.frameWrapper}>
               <img
-                src="/img/artworks/yukari_v0.5.jpg"
+                src="/img/artworks/yukari_v0.5.webp"
                 alt="戴珍珠耳环的八云紫"
                 className={styles.artworkImage}
               />

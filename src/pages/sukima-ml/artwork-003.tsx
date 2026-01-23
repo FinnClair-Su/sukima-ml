@@ -68,7 +68,7 @@ export default function Artwork003() {
     };
 
     const currentPrice = selectedProduct.price;
-    const currentImage = '/img/artworks/artwork-003.jpg';
+    const currentImage = '/img/artworks/artwork-003.webp';
 
     // Construct buy page URL with query parameters
     const buyPageUrl = `/buy?product=${encodeURIComponent('蓬莱宫娥')}&variant=${encodeURIComponent('Standard')}&spec=${encodeURIComponent(selectedProduct.name + (selectedProduct.spec ? ` (${selectedProduct.spec})` : ''))}&price=${currentPrice}`;

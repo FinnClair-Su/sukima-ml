@@ -29,7 +29,7 @@ export default function BuyPage() {
                         <div className={styles.paymentMethods}>
                             <div className={styles.qrCard}>
                                 <img
-                                    src="/img/alipay_receiveMoney.png"
+                                    src="/img/alipay_receiveMoney.webp"
                                     alt="Alipay"
                                     className={styles.qrImage}
                                 />
@@ -37,7 +37,7 @@ export default function BuyPage() {
                             </div>
                             <div className={styles.qrCard}>
                                 <img
-                                    src="/img/IMG_0944.jpg"
+                                    src="/img/IMG_0944.webp"
                                     alt="WeChat Pay"
                                     className={styles.qrImage}
                                 />

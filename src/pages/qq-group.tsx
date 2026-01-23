@@ -20,7 +20,7 @@ export default function QQGroup() {
       <QRCodeModal 
         isOpen={isModalOpen}
         onClose={handleClose}
-        imageSrc="/img/groupQRcode.JPG"
+        imageSrc="/img/groupQRcode.webp"
         title="扫码加入QQ群"
       />
     </Layout>

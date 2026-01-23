@@ -408,7 +408,7 @@ export default function MagicGallery() {
             {/* Character Image - PIXEL PERFECT CLICK DETECTION */}
             <img
               ref={imageRef}
-              src={useBaseUrl("/img/yukari.png")}
+              src={useBaseUrl("/img/yukari.webp")}
               alt="Yukari Yakumo"
               crossOrigin="anonymous"
               className="w-full h-auto drop-shadow-2xl transition-transform cursor-help"

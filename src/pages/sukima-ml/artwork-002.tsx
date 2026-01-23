@@ -87,7 +87,7 @@ export default function Artwork002() {
 
     const currentPrice = activeVariant === 'A' ? selectedProduct.priceA : selectedProduct.priceB;
     const variantName = activeVariant === 'A' ? 'The Weight of Knowledge' : 'The Forbidden Knowledge';
-    const variantImage = activeVariant === 'A' ? '/img/artworks/Variant_A.jpg' : '/img/artworks/Variant_B.jpg';
+    const variantImage = activeVariant === 'A' ? '/img/artworks/Variant_A.webp' : '/img/artworks/Variant_B.webp';
 
     const handlePurchaseClick = () => {
         if (isDigital) {
@@ -108,7 +108,7 @@ export default function Artwork002() {
 
     // Determine the effective variant B name and image based on special state
     const variantBName = isSpecial ? 'The Forbidden Knowledge (Special)' : 'The Forbidden Knowledge';
-    const variantBImage = isSpecial ? '/img/artworks/Variant_special.jpg' : '/img/artworks/Variant_B.jpg';
+    const variantBImage = isSpecial ? '/img/artworks/Variant_special.webp' : '/img/artworks/Variant_B.webp';
 
     // If it's the set, we display a combined name or logic
     // Note: Set currently assumes standard B. If special is allowed in set, logic needs adjustment.
@@ -121,7 +121,7 @@ export default function Artwork002() {
         ? (isDigital ? 'Digital Collection' : (isSpecial ? 'Set (A + Special)' : 'Set (A + B)'))
         : (activeVariant === 'A' ? 'A' : (isSpecial ? 'Special' : 'B'));
 
-    const currentImage = activeVariant === 'A' ? '/img/artworks/Variant_A.jpg' : variantBImage;
+    const currentImage = activeVariant === 'A' ? '/img/artworks/Variant_A.webp' : variantBImage;
 
     // Construct buy page URL with query parameters
     const buyPageUrl = `/buy?product=The Bookworm&variant=${encodeURIComponent(displayVariantCode)}&spec=${encodeURIComponent(selectedProduct.name + (selectedProduct.spec ? ` (${selectedProduct.spec})` : ''))}&price=${currentPrice}`;
@@ -145,7 +145,7 @@ export default function Artwork002() {
                             >
                                 <div className={styles.frameWrapper}>
                                     <img
-                                        src="/img/artworks/Variant_A.jpg"
+                                        src="/img/artworks/Variant_A.webp"
                                         alt="The Weight of Knowledge"
                                         className={styles.artworkImage}
                                     />
@@ -302,7 +302,7 @@ export default function Artwork002() {
                                 <div className={styles.modalImageSection}>
                                     {isSet ? (
                                         <div style={{ display: 'flex', gap: '10px' }}>
-                                            <img src="/img/artworks/Variant_A.jpg" alt="Variant A" className={styles.modalImage} style={{ width: '50%' }} />
+                                            <img src="/img/artworks/Variant_A.webp" alt="Variant A" className={styles.modalImage} style={{ width: '50%' }} />
                                             <img src={variantBImage} alt="Variant B" className={styles.modalImage} style={{ width: '50%' }} />
                                         </div>
                                     ) : (

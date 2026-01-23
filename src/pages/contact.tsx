@@ -98,7 +98,7 @@ export default function Contact() {
       <QRCodeModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        imageSrc="/img/groupQRcode.JPG"
+        imageSrc="/img/groupQRcode.webp"
         title={translate({ id: 'contact.modal.title', message: '扫码加入QQ群' })}
       />
     </Layout>
