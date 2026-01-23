@@ -3,15 +3,8 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-@import url("https://fonts.carolyn.sh/css2?family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&display=swap");
-@import url("https://fonts.carolyn.sh/css2?family=Noto+Color+Emoji&display=swap");
-@import url("https://fonts.carolyn.sh/css2?family=Noto+Sans+SC:wght@100..900&display=swap");
-@import url("https://fonts.carolyn.sh/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
-@import url("https://fonts.carolyn.sh/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.carolyn.sh/css2?family=Noto+Serif+SC:wght@200..900&display=swap");
-@import url("https://fonts.carolyn.sh/css2?family=Noto+Serif+TC&display=swap");
-@import url("https://fonts.carolyn.sh/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.carolyn.sh/css2?family=Material+Symbols+Outlined&display=swap");
+/* 合并所有字体请求为单一 URL，减少 render-blocking 请求 */
+@import url("https://fonts.carolyn.sh/css2?family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Noto+Color+Emoji&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+SC:wght@200..900&family=Noto+Serif+TC&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Material+Symbols+Outlined&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -517,4 +510,33 @@ li {
 
 [data-theme='dark'] .navbar-sukima-item .navbar__link:hover {
   background: rgba(255, 255, 255, 0.1);
+}
+
+/* Phantasm nav item - 摄影作品 */
+.navbar-phantasm-item .navbar__link {
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #666 !important;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.navbar-phantasm-item .navbar__link:hover {
+  background: rgba(183, 28, 28, 0.08);
+  color: #b71c1c !important;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .navbar-phantasm-item .navbar__link {
+  color: #999 !important;
+}
+
+[data-theme='dark'] .navbar-phantasm-item .navbar__link:hover {
+  background: rgba(239, 83, 80, 0.15);
+  color: #ef5350 !important;
 }

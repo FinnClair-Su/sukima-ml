@@ -1,12 +1,12 @@
 /**
- * useExif Hook - 从图片 URL 异步提取 EXIF 元数据
+ * useExif Hook - 从预构建的 JSON 读取 EXIF 元数据
  * 
  * 专为 Fujifilm GFX100S + GF45mm f/2.8 设计
- * 使用 Range Request 仅下载头部数据，避免加载完整大图
+ * EXIF 数据在本地上传时通过 scripts/extract_exif.py 提取并保存为 JSON
+ * 客户端仅读取预构建的 JSON，不进行任何图片请求
  */
 
 import { useState, useEffect } from 'react';
-import ExifReader from 'exifreader';
 
 export interface ExifData {
     // 相机信息
@@ -25,12 +25,8 @@ export interface ExifData {
     iso?: string;              // ISO
     exposureCompensation?: string; // 曝光补偿
 
-    // 时间与位置
+    // 时间
     dateTime?: string;         // 拍摄时间
-    gps?: {
-        latitude?: number;
-        longitude?: number;
-    };
 
     // 版权信息
     artist?: string;           // 创作者
@@ -45,17 +41,50 @@ export interface ExifData {
 }
 
 export interface UseExifOptions {
-    /** 下载的字节数，默认 128KB 足以覆盖大多数 EXIF */
-    rangeBytes?: number;
     /** 是否启用，可用于条件加载 */
     enabled?: boolean;
 }
 
+/**
+ * 全局 EXIF 缓存 - 存储预构建的 EXIF 数据
+ */
+let prebuiltExifCache: Record<string, ExifData> | null = null;
+let cacheLoadPromise: Promise<void> | null = null;
+
+async function loadPrebuiltCache(): Promise<void> {
+    if (prebuiltExifCache !== null) return;
+    if (cacheLoadPromise) {
+        await cacheLoadPromise;
+        return;
+    }
+
+    cacheLoadPromise = (async () => {
+        try {
+            const response = await fetch('/photography/exif.json');
+            if (response.ok) {
+                prebuiltExifCache = await response.json();
+            } else {
+                prebuiltExifCache = {};
+            }
+        } catch {
+            prebuiltExifCache = {};
+        }
+    })();
+
+    await cacheLoadPromise;
+}
+
+/**
+ * 从预构建 JSON 读取 EXIF 数据的 Hook
+ * 
+ * @param imageUrl 图片 URL（必须在 /photography/ 目录下）
+ * @param options 配置选项
+ */
 export function useExif(
     imageUrl: string | undefined,
     options: UseExifOptions = {}
 ) {
-    const { rangeBytes = 131072, enabled = true } = options;
+    const { enabled = true } = options;
 
     const [exif, setExif] = useState<ExifData | null>(null);
     const [loading, setLoading] = useState(false);
@@ -74,78 +103,27 @@ export function useExif(
             setError(null);
 
             try {
-                // 使用 Range Request 仅下载头部
-                const response = await fetch(imageUrl, {
-                    headers: {
-                        'Range': `bytes=0-${rangeBytes - 1}`
+                await loadPrebuiltCache();
+
+                // 从 URL 提取相对路径作为 key (e.g., "/photography/xxx/yyy.JPG" -> "/xxx/yyy.JPG")
+                const urlPath = new URL(imageUrl, window.location.origin).pathname;
+                const photographyMatch = urlPath.match(/\/photography(\/.*)/);
+                const cacheKey = photographyMatch ? photographyMatch[1] : null;
+
+                if (cacheKey && prebuiltExifCache && prebuiltExifCache[cacheKey]) {
+                    if (!cancelled) {
+                        setExif(prebuiltExifCache[cacheKey]);
                     }
-                });
-
-                if (!response.ok && response.status !== 206) {
-                    throw new Error(`Failed to fetch: ${response.status}`);
+                } else {
+                    // 没有找到预构建数据，设置为空
+                    if (!cancelled) {
+                        setExif(null);
+                    }
                 }
-
-                const buffer = await response.arrayBuffer();
-                const tags = ExifReader.load(buffer, { expanded: true }) as any;
-
-                if (cancelled) return;
-
-                // 解析标准 EXIF 字段
-                const exifData: ExifData = {};
-
-                // 相机信息
-                exifData.make = tags.exif?.Make?.description;
-                exifData.camera = tags.exif?.Model?.description;
-                exifData.lens = tags.exif?.LensModel?.description;
-
-                // 设备序列号（可能在 MakerNotes 中）
-                exifData.bodySerial = tags.exif?.BodySerialNumber?.description
-                    || tags.exif?.SerialNumber?.description;
-                exifData.lensSerial = tags.exif?.LensSerialNumber?.description;
-
-                // 拍摄参数
-                exifData.focalLength = tags.exif?.FocalLength?.description;
-                exifData.aperture = tags.exif?.FNumber?.description
-                    || tags.exif?.ApertureValue?.description;
-                exifData.shutterSpeed = tags.exif?.ExposureTime?.description
-                    || tags.exif?.ShutterSpeedValue?.description;
-                exifData.iso = tags.exif?.ISOSpeedRatings?.description
-                    || tags.exif?.PhotographicSensitivity?.description;
-                exifData.exposureCompensation = tags.exif?.ExposureBiasValue?.description;
-
-                // 时间
-                exifData.dateTime = tags.exif?.DateTimeOriginal?.description
-                    || tags.exif?.DateTime?.description;
-
-                // GPS
-                if (tags.gps?.Latitude && tags.gps?.Longitude) {
-                    exifData.gps = {
-                        latitude: tags.gps.Latitude,
-                        longitude: tags.gps.Longitude
-                    };
-                }
-
-                // 版权
-                exifData.artist = tags.exif?.Artist?.description;
-                exifData.copyright = tags.exif?.Copyright?.description;
-
-                // 图像尺寸
-                exifData.width = tags.file?.['Image Width']?.value
-                    || tags.exif?.PixelXDimension?.value;
-                exifData.height = tags.file?.['Image Height']?.value
-                    || tags.exif?.PixelYDimension?.value;
-
-                // 富士胶片模拟（通常在 MakerNotes 或 XMP 中）
-                // exifreader 可能需要特殊处理
-                if (tags.xmp?.FilmMode) {
-                    exifData.filmSimulation = tags.xmp.FilmMode.description;
-                }
-
-                setExif(exifData);
             } catch (err) {
                 if (!cancelled) {
                     setError(err instanceof Error ? err : new Error(String(err)));
-                    console.error('EXIF extraction failed:', err);
+                    console.error('EXIF cache load failed:', err);
                 }
             } finally {
                 if (!cancelled) {
@@ -159,7 +137,7 @@ export function useExif(
         return () => {
             cancelled = true;
         };
-    }, [imageUrl, rangeBytes, enabled]);
+    }, [imageUrl, enabled]);
 
     return { exif, loading, error };
 }

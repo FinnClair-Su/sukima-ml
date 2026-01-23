@@ -438,7 +438,7 @@ export default function FlyingSeimei() {
                         lineHeight: 1.9,
                     }}>
                         <Translate id="flyingSeimei.intro">
-                            翱翔于天际的晴明，光影交织的瞬间。
+                            玻璃不仅是介质，更是光线新的原点。山巅之上的光是飞翔的晴明，而玻璃幕墙之后的光，则是被捕获的标本。当太阳的能量重构为几何的切片时，光线也因人造介质的色彩而变得沉重。
                         </Translate>
                     </p>
                     <style>{`

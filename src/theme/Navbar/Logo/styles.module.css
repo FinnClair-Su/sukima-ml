@@ -1,0 +1,96 @@
+.navbarBrand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logoLink {
+    display: flex;
+    align-items: center;
+}
+
+.logoImage {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.brandContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1rem;
+}
+
+/* 隙间月影 - 经典优雅风格 */
+.sukimaLink {
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    font-weight: 500;
+    color: var(--ifm-color-content) !important;
+    text-decoration: none !important;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+}
+
+.sukimaLink:hover {
+    color: #b71c1c !important;
+    text-decoration: none !important;
+}
+
+/* & 分隔符 */
+.separator {
+    font-family: "Times New Roman", serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    color: #999;
+    margin: 0 0.1rem;
+}
+
+/* Studio Phantasm - 现代简约风格 */
+.phantasmLink {
+    font-family: "Courier New", monospace;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: #666 !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.phantasmLink:hover {
+    color: #b71c1c !important;
+    text-decoration: none !important;
+}
+
+/* 暗色模式 */
+[data-theme='dark'] .sukimaLink {
+    color: var(--ifm-color-content) !important;
+}
+
+[data-theme='dark'] .phantasmLink {
+    color: #999 !important;
+}
+
+[data-theme='dark'] .separator {
+    color: #666;
+}
+
+[data-theme='dark'] .sukimaLink:hover,
+[data-theme='dark'] .phantasmLink:hover {
+    color: #ef5350 !important;
+}
+
+/* 响应式 - 移动端隐藏 Studio Phantasm */
+@media (max-width: 768px) {
+
+    .phantasmLink,
+    .separator {
+        display: none;
+    }
+
+    .brandContainer {
+        gap: 0;
+    }
+}

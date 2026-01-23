@@ -101,13 +101,14 @@ const config: Config = {
       { property: 'og:title', content: '隙间月影 | Sukima Moonlight' },
       { property: 'og:description', content: '隙间月影 (Sukima Moonlight) - Where Classic Art Meets Touhou. Discover high-quality Gicleè art prints combining world masterpieces with characters from the Touhou Project.' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: 'img/social-card.jpg' },
+      { property: 'og:image', content: 'https://sukima-ml.club/img/artworks/The%20Bookworm%20to%20The%20Pachouli-sama.webp' },
     ],
     navbar: {
-      title: '隙间月影 | Sukima Moonlight',
+      // 标题由自定义 Logo 组件处理
+      title: '',
       logo: {
         alt: 'Sukima Moonlight Logo',
-        src: 'img/new.jpg',
+        src: 'img/new.webp',
         width: 32,
         height: 32,
       },
@@ -129,6 +130,12 @@ const config: Config = {
           label: '社团动态',
           position: 'left',
           className: 'navbar-sukima-item',
+        },
+        {
+          to: '/phantasm',
+          label: '摄影作品',
+          position: 'left',
+          className: 'navbar-phantasm-item',
         },
         {
           to: '/contact',
@@ -179,10 +186,11 @@ const config: Config = {
               label: 'Bilibili',
               href: 'https://space.bilibili.com/368984327',
             },
-            {
-              label: 'Pixiv',
-              href: 'https://www.pixiv.net/users/placeholder',
-            },
+            // Pixiv 链接待添加
+            // {
+            //   label: 'Pixiv',
+            //   href: 'https://www.pixiv.net/users/YOUR_ID',
+            // },
             {
               label: 'QQ群',
               to: '/qq-group',

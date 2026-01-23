@@ -412,11 +412,11 @@ const seriesList = [
     {
         id: 'flyingSeimei',
         link: '/phantasm/flying-seimei',
-        coverImage: '/photography/flying-seimei/DSCF0059.webp',
+        coverImage: '/photography/flying-seimei/DSCF0232.webp',
         titleId: 'gallery.series.flyingSeimei.title',
         defaultTitle: '飞翔晴明',
         descId: 'gallery.series.flyingSeimei.desc',
-        defaultDesc: '翱翔于天际的晴明',
+        defaultDesc: '玻璃不仅是介质，更是光线新的原点',
     }
 ];
 

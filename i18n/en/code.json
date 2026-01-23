@@ -835,5 +835,20 @@
   },
   "gallery.art-003.desc": {
     "message": "The ordinary magician, surrounded by the echoes of master painters."
+  },
+  "flyingSeimei.title": {
+    "message": "Flying Seimei | Phantasm"
+  },
+  "flyingSeimei.heading": {
+    "message": "Flying Seimei"
+  },
+  "flyingSeimei.intro": {
+    "message": "Glass is not merely a medium, but a new origin point for light. The light atop the mountain is flying Seimei, while the light behind the glass curtain wall becomes a captured specimen. When the sun's energy is reconstructed into geometric slices, the light itself grows heavy with the colors of artificial media."
+  },
+  "gallery.series.flyingSeimei.title": {
+    "message": "Flying Seimei"
+  },
+  "gallery.series.flyingSeimei.desc": {
+    "message": "Glass is not merely a medium, but a new origin point for light"
   }
 }
