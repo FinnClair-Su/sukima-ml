@@ -2,9 +2,9 @@
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
+ * 
+ * 字体通过 src/theme/Root.tsx 以非阻塞方式加载
  */
-/* 合并所有字体请求为单一 URL，减少 render-blocking 请求 */
-@import url("https://fonts.carolyn.sh/css2?family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Noto+Color+Emoji&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+SC:wght@200..900&family=Noto+Serif+TC&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Material+Symbols+Outlined&display=swap");
 
 @tailwind base;
 @tailwind components;
