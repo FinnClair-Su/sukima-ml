@@ -27,7 +27,9 @@ WEBP_QUALITY = 85
 # Directories to process
 TARGET_DIRS = [
     "/Users/yukari/Code/sukima-ml/static/photography/chaoyang2",
-    "/Users/yukari/Code/sukima-ml/static/photography/flying-seimei"
+    "/Users/yukari/Code/sukima-ml/static/photography/flying-seimei",
+    "/Users/yukari/Code/sukima-ml/static/photography/Skitting",
+    "/Users/yukari/Code/sukima-ml/static/photography/fu-and-cat"
 ]
 
 def compress_jpg_in_place(filepath):
