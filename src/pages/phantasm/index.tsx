@@ -417,6 +417,24 @@ const seriesList = [
         defaultTitle: '飞翔晴明',
         descId: 'gallery.series.flyingSeimei.desc',
         defaultDesc: '玻璃不仅是介质，更是光线新的原点',
+    },
+    {
+        id: 'skitting',
+        link: '/phantasm/skitting',
+        coverImage: '/photography/Skitting/DSCF0169.webp',
+        titleId: 'gallery.series.skitting.title',
+        defaultTitle: 'Skitting',
+        descId: 'gallery.series.skitting.desc',
+        defaultDesc: '被季节改变的水面，被人们改造的冰面',
+    },
+    {
+        id: 'fuAndCat',
+        link: '/phantasm/fu-and-cat',
+        coverImage: '/photography/fu-and-cat/DSCF0010.webp',
+        titleId: 'gallery.series.fuAndCat.title',
+        defaultTitle: 'Fu与猫',
+        descId: 'gallery.series.fuAndCat.desc',
+        defaultDesc: '一些毛绒的日常',
     }
 ];
 
