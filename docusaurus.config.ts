@@ -195,6 +195,10 @@ const config: Config = {
             //   href: 'https://www.pixiv.net/users/YOUR_ID',
             // },
             {
+              label: 'X',
+              href: 'https://x.com/fish2lab',
+            },
+            {
               label: 'QQ群',
               to: '/qq-group',
             },
@@ -205,7 +209,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/FinnClair-Su',
+              href: 'https://github.com/fish2lab',
             },
             {
               label: '创作者主页',

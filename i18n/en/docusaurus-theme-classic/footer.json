@@ -31,13 +31,17 @@
     "message": "Bilibili",
     "description": "The label of footer link with label=Bilibili linking to https://space.bilibili.com/368984327"
   },
+  "link.item.label.X": {
+    "message": "X",
+    "description": "The label of footer link with label=X linking to https://x.com/fish2lab"
+  },
   "link.item.label.QQ群": {
     "message": "QQ Group",
     "description": "The label of footer link with label=QQ群 linking to /qq-group"
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
-    "description": "The label of footer link with label=GitHub linking to https://github.com/FinnClair-Su"
+    "description": "The label of footer link with label=GitHub linking to https://github.com/fish2lab"
   },
   "link.item.label.创作者主页": {
     "message": "Organizer's Site",

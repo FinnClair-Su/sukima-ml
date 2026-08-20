@@ -349,7 +349,8 @@ export default function Home() {
               "url": "https://sukima-ml.club",
               "logo": organizationLogoUrl,
               "sameAs": [
-                "https://github.com/FinnClair-Su",
+                "https://github.com/fish2lab",
+                "https://x.com/fish2lab",
                 "https://space.bilibili.com/368984327",
                 "https://fcsu.dev"
               ]
