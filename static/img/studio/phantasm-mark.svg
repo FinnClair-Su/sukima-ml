@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72" role="img" aria-labelledby="title desc">
+  <title id="title">Studio Phantasm</title>
+  <desc id="desc">A black ghost with a terminal prompt face</desc>
+  <path fill="#111" d="M8 63V31C8 16.64 18.75 6 32 6s24 10.64 24 25v32l-8-6-8 8-8-8-8 8-8-8-8 6Z"/>
+  <path fill="none" stroke="#fff" stroke-width="2.9" stroke-linecap="square" stroke-linejoin="miter" d="m21.5 28 4.8 4-4.8 4M34 37h8"/>
+</svg>

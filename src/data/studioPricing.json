@@ -1,0 +1,73 @@
+{
+  "_comment": "Studio Phantasm 价格与预约文案的唯一来源。网站（src/data/studioSpaces.ts、StudioPricing 组件）和 PDF 资料册（scripts/brochure/build_studio_phantasm_brochure.py）都从这里读取；改价、改规则只改此文件，然后重新构建网站并重跑 PDF 脚本。",
+  "offer": {
+    "label": "OPENING OFFER",
+    "audience": "个人与独立创作",
+    "minimumHours": 2,
+    "validity": "2026.9.3 – 10.3"
+  },
+  "spaces": [
+    { "slug": "white-stage", "index": "01", "name": "两层高大白棚", "englishName": "DOUBLE-HEIGHT WHITE STAGE", "area": "70㎡", "openingPrice": 120, "priceUnit": "H" },
+    { "slug": "european", "index": "02", "name": "欧式空间", "englishName": "EUROPEAN ROOMS", "area": "180㎡", "openingPrice": 200, "priceUnit": "H" },
+    { "slug": "japanese", "index": "03", "name": "日式空间", "englishName": "JAPANESE ROOMS", "area": "180㎡", "openingPrice": 200, "priceUnit": "H" },
+    { "slug": "chinese-vintage", "index": "04", "name": "复古中式", "englishName": "CHINESE VINTAGE", "area": "150㎡", "openingPrice": 200, "priceUnit": "H" },
+    { "slug": "american-vintage", "index": "05", "name": "复古美式", "englishName": "AMERICAN VINTAGE", "area": "150㎡", "openingPrice": 200, "priceUnit": "H" }
+  ],
+  "priceRows": [
+    { "slugs": ["white-stage"], "name": "两层高大白棚", "short": "两层高大白棚", "detail": "70㎡ · 2 小时起租", "price": "¥120", "unit": "/ H" },
+    { "slugs": ["european", "japanese", "chinese-vintage", "american-vintage"], "name": "欧式 · 日式 · 复古中式 · 复古美式", "short": "其他四个场地任选其一", "detail": "150–180㎡ · 任选其一 · 2 小时起租", "price": "¥200", "unit": "/ H" },
+    { "slugs": [], "name": "同次拍摄串场", "short": "同次拍摄串场", "detail": "切换到第二个场地时加收，固定一次", "price": "+¥100", "unit": "" },
+    { "slugs": [], "name": "FUJIFILM GFX100S + GF45", "short": "GFX100S + GF45", "detail": "随场地预约；场地租 3 小时及以上按半价 ¥100 计", "price": "¥200", "unit": "/ 次" }
+  ],
+  "rules": [
+    {
+      "index": "01",
+      "title": "2 小时起租",
+      "body": "全部场地 2 小时起租，不足 2 小时按 2 小时计费。"
+    },
+    {
+      "index": "02",
+      "title": "准备与超时",
+      "body": "开始前、结束后各含 20 分钟免费准备与收拾时间。超出部分按该场地单价，以半小时为单位向上取整计费。"
+    },
+    {
+      "index": "03",
+      "title": "五个场地独立预约",
+      "body": "每个场地单独预约、单独计费，互不干扰；同一时段可由不同拍摄分别使用。"
+    },
+    {
+      "index": "04",
+      "title": "串场固定 +¥100",
+      "body": "同一次拍摄需要切换到其他场地时，在场地费之外加收一次固定棚管费，不随所选场地价格增长。"
+    },
+    {
+      "index": "05",
+      "title": "团片与商业拍摄",
+      "body": "团片可预约，请提供总人数及负责人联系方式。商业拍摄不适用开业价，请说明项目内容、人数与时间，按项目单独报价。"
+    }
+  ],
+  "equipment": {
+    "label": "EQUIPMENT",
+    "name": "FUJIFILM GFX100S + GF45",
+    "spec": "4433 medium format · 102MP",
+    "specZh": "中画幅一亿像素",
+    "price": "¥200",
+    "unit": "/ 次拍摄",
+    "offerShort": "场地租 3 小时及以上 ¥100 / 次",
+    "bookingShort": "随场地预约，同一档期仅一套",
+    "lines": [
+      "含存储卡、电池、肩带、L 板，及配徕图 G3 齿轮云台的脚架。",
+      "全场地共用一套，需随场地预约锁定档期；场地租 3 小时及以上按半价 ¥100 计。",
+      "另提供两个灯架，默认不含灯具，可协商租用。"
+    ]
+  },
+  "contact": {
+    "email": "fish2lab@gmail.com",
+    "qq": "3060657935",
+    "locationLines": ["朝阳区东五环", "「浪潮实景片场」"],
+    "locationShort": "CHAOYANG / BEIJING",
+    "site": "https://ph.sukima-ml.club",
+    "bookingFields": ["场地", "日期", "时间", "人数", "是否租用 GFX100S"],
+    "bookingNote": "邮件、微信、QQ 任一渠道均可，档期以确认回复为准。"
+  }
+}

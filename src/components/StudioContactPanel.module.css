@@ -1,0 +1,246 @@
+.contact {
+  --ink: #111;
+  --paper: #fff;
+  --mist: #f1f1ef;
+  --line: #d9d9d5;
+  --muted: #777772;
+  --mono: "Departure Mono", "SFMono-Regular", Consolas, monospace;
+  --sans: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
+  --info-large: clamp(30px, 3.2vw, 50px);
+  --info-small: 12px;
+  padding: clamp(72px, 9vw, 140px) 4.25vw 0;
+  border-top: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+.contact *,
+.contact *::before,
+.contact *::after {
+  box-sizing: border-box;
+}
+
+.contact a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.heading {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+  align-items: end;
+  margin-bottom: clamp(58px, 7vw, 108px);
+}
+
+.heading > p,
+.location span,
+.email span,
+.qrMeta span,
+.note {
+  font-family: var(--mono);
+  font-size: var(--info-small);
+  letter-spacing: .1em;
+}
+
+.heading > p,
+.location strong,
+.note p {
+  margin: 0;
+}
+
+.location strong,
+.email strong,
+.qrMeta strong {
+  font-size: var(--info-large);
+  font-weight: 400;
+  letter-spacing: -.045em;
+  line-height: 1.18;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.channels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--ink);
+}
+
+.email {
+  position: relative;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  gap: 30px;
+  align-items: center;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.email strong {
+  overflow-wrap: anywhere;
+  font-family: var(--mono);
+}
+
+.email b {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.qrCard {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vw, 58px);
+  margin: 0;
+  padding: clamp(36px, 5vw, 76px) clamp(24px, 4.25vw, 70px) clamp(44px, 6vw, 92px) 0;
+}
+
+.qrCard + .qrCard {
+  padding-right: 0;
+  padding-left: clamp(24px, 4.25vw, 70px);
+  border-left: 1px solid var(--line);
+}
+
+.qrMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.qrCard > a {
+  display: block;
+  width: min(100%, 440px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--mist);
+}
+
+.qrCard img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.note {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+  padding: 28px 0 32px;
+  border-top: 1px solid var(--ink);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.note > p {
+  grid-column: 1 / -1;
+  max-width: 48em;
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0;
+  line-height: 1.8;
+}
+
+.note a {
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.fields {
+  display: contents;
+}
+
+.fields > span {
+  color: var(--ink);
+}
+
+.fields ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 34px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  letter-spacing: 0;
+}
+
+.fields li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.fields i {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: .1em;
+}
+
+@media (max-width: 800px) {
+  .contact {
+    --info-large: clamp(28px, 8vw, 38px);
+    --info-small: 11px;
+    padding: 68px 18px 0;
+  }
+
+  .heading {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 54px;
+  }
+
+  .channels {
+    grid-template-columns: 1fr;
+  }
+
+  .email {
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+  }
+
+  .email span {
+    grid-column: 1 / -1;
+  }
+
+  .email b {
+    display: none;
+  }
+
+  .qrCard,
+  .qrCard + .qrCard {
+    gap: 24px;
+    padding: 36px 0 54px;
+    border-left: 0;
+  }
+
+  .qrCard + .qrCard {
+    border-top: 1px solid var(--line);
+  }
+
+  .qrCard > a {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .note {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .fields ol {
+    gap: 10px 22px;
+    font-size: 14px;
+  }
+}

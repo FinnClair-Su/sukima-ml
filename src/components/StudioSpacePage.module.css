@@ -1,0 +1,280 @@
+@font-face {
+  font-family: "Departure Mono";
+  src: url("/fonts/departure-mono.woff2") format("woff2");
+  font-display: swap;
+}
+
+:global(body:has(.phantasmPage) .navbar) {
+  display: none;
+}
+
+.page {
+  --ink: #111;
+  --line: #d9d9d5;
+  --muted: #777772;
+  --mono: "Departure Mono", "SFMono-Regular", Consolas, monospace;
+  --sans: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
+  min-height: 100vh;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
+}
+
+.page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 92px;
+  padding: 0 4.25vw;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.brand img {
+  display: block;
+}
+
+.back,
+.headerLinks,
+.intro > p,
+.meta,
+.gallery figcaption,
+.footer {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.headerLinks {
+  display: flex;
+  gap: clamp(18px, 2.5vw, 38px);
+  align-items: center;
+}
+
+.headerLinks a {
+  position: relative;
+}
+
+.headerLinks a::after {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 220ms ease;
+}
+
+.headerLinks a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 30px;
+  align-items: end;
+  padding: clamp(70px, 10vw, 150px) 4.25vw clamp(54px, 7vw, 100px);
+}
+
+.intro > p,
+.intro h1 {
+  margin: 0;
+}
+
+.intro h1 {
+  font-size: clamp(48px, 7vw, 112px);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 1;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: flex-end;
+  color: var(--muted);
+  text-align: right;
+}
+
+.meta strong {
+  margin-top: 8px;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.lead,
+.gallery {
+  width: min(62vw, 1080px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.lead {
+  margin-bottom: clamp(88px, 12vw, 180px);
+}
+
+.lead picture,
+.lead img,
+.gallery picture,
+.gallery img {
+  display: block;
+  width: 100%;
+}
+
+.lead img,
+.gallery img {
+  height: auto;
+  background: #efefed;
+}
+
+.lead figcaption,
+.gallery figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+}
+
+.gallery {
+  margin: clamp(88px, 12vw, 180px) auto 0;
+}
+
+.gallery figure {
+  margin: 0 0 clamp(64px, 9vw, 150px);
+}
+
+.equipment {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 30px;
+  align-items: start;
+  padding: 28px 4.25vw 32px;
+  border-top: 1px solid var(--ink);
+  background: #fff;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  line-height: 1.8;
+}
+
+.equipment p {
+  margin: 0;
+}
+
+.equipment p:nth-child(2) {
+  max-width: 62em;
+  font-family: var(--sans);
+  letter-spacing: 0;
+}
+
+.equipment strong {
+  display: inline-block;
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: .06em;
+}
+
+.equipmentPrice {
+  color: var(--ink);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 56px 4.25vw;
+  border-top: 1px solid var(--ink);
+}
+
+@media (max-width: 700px) {
+  .header {
+    min-height: 78px;
+    padding: 0 18px;
+  }
+
+  .brand span {
+    display: none;
+  }
+
+  .headerLinks {
+    gap: 16px;
+    font-size: 9px;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 68px 18px 52px;
+  }
+
+  .intro h1 {
+    font-size: clamp(44px, 15vw, 70px);
+  }
+
+  .meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .lead,
+  .gallery {
+    width: calc(100% - 36px);
+  }
+
+  .lead {
+    margin-bottom: 86px;
+  }
+
+  .gallery {
+    margin-top: 86px;
+  }
+
+  .gallery figure {
+    margin-bottom: 68px;
+  }
+
+  .equipment {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 26px 18px 30px;
+  }
+
+  .equipmentPrice {
+    text-align: left;
+  }
+
+  .footer {
+    gap: 16px;
+    padding: 42px 18px;
+  }
+}

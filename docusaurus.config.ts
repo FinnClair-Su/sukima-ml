@@ -135,8 +135,8 @@ const config: Config = {
           className: 'navbar-sukima-item',
         },
         {
-          href: 'https://fcsu.dev',
-          label: '摄影作品',
+          href: 'https://ph.sukima-ml.club',
+          label: 'Studio Phantasm',
           position: 'left',
           className: 'navbar-phantasm-item',
         },
